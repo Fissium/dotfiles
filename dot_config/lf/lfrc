@@ -15,7 +15,7 @@ cmd edit-config ${{
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json)
+        text/*|application/json|inode/x-empty)
             case "${f##*.}" in 
             ipynb) pandoc --from ipynb "$f" --standalone -t gfm | glow -s auto | less -r ;;
             *) $EDITOR "$f";;
