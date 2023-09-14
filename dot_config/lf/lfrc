@@ -1,0 +1,132 @@
+# preview
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+# icons
+set icons
+
+# custom functions
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json)
+            case "${f##*.}" in 
+            ipynb) pandoc --from ipynb "$f" --standalone -t gfm | glow -s auto | less -r ;;
+            *) $EDITOR "$f";;
+            esac ;;
+        *) xdg-open "$f" ;;
+    esac
+}}
+
+cmd on-select %{{
+    lsd -ld --color=always "$f"
+}}
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+# Archive bindings
+cmd unarchive ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd tar ${{
+    printf "Archive Name: "
+    read ans
+    set -f
+    mkdir $ans
+    cp -r $fx $ans
+    tar czf $ans.tar.gz $ans
+    rm -rf $ans
+}}
+
+cmd zip ${{
+    printf "Archive Name: "
+    read ans
+    set -f
+    mkdir $ans
+    cp -r $fx $ans
+    zip -r $ans.zip $ans
+    rm -rf $ans
+}}
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+# Bindings
+# Remove some defaults
+map d
+map m
+map c
+map f
+
+
+# Basic Functions
+map . set hidden!
+map dd delete
+map p paste
+map x cut
+map y copy
+map mf mkfile
+map mr sudomkfile
+map md mkdir
+map ch chmod
+map r rename
+map C edit-config
+map <c-f> fzf_jump
+
+# Archive Mappings
+map az zip
+map at tar
+map au unarchive

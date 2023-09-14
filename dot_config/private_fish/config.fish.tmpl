@@ -1,0 +1,59 @@
+{{- if eq .chezmoi.os "linux" }}
+# Configure Jump
+status --is-interactive; and source (jump shell fish | psub)
+{{- end }}
+
+## Syntax Highlighting Colors
+set -g fish_color_autosuggestion '555'  'brblack'
+set -g fish_color_cancel -r
+set -g fish_color_command --bold
+set -g fish_color_comment red
+set -g fish_color_cwd green
+set -g fish_color_cwd_root red
+set -g fish_color_end brmagenta
+set -g fish_color_error brred
+set -g fish_color_escape 'bryellow'  '--bold'
+set -g fish_color_history_current --bold
+set -g fish_color_host normal
+set -g fish_color_match --background=brblue
+set -g fish_color_normal normal
+set -g fish_color_operator bryellow
+set -g fish_color_param cyan
+set -g fish_color_quote yellow
+set -g fish_color_redirection brblue
+set -g fish_color_search_match 'bryellow'  '--background=brblack'
+set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
+set -g fish_color_user brgreen
+set -g fish_color_valid_path --underline
+
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -gx OPENAI_API_KEY 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
+set -gx MLFLOW_TRACKING_URI 'http://localhost:8000'
+set -U fish_greeting
+
+
+{{- if eq .chezmoi.os "linux" }}
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/fissium/tools/mambaforge/bin/conda
+    eval /home/fissium/tools/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+{{- else }}
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/fissium/tools/mambaforge/bin/conda
+    eval /Users/fissium/tools/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+{{- end }}
+
+
+{{- if eq .chezmoi.os "linux" }}
+# Install Starship
+starship init fish | source
+{{- else }}
+# Install Starship
+/opt/homebrew/bin/starship init fish | source
+{{- end }}

@@ -1,0 +1,10 @@
+set forcekitty
+priority bat
+
+preview jupyter .ipynb {{
+  tempfile="/tmp/ctpv-$RANDOM.md"
+  trap "rm -f $tempfile" 0 2 3 15
+  pandoc --from ipynb "${f}" --o $tempfile --standalone -t gfm
+  ctpv $tempfile
+  exit 1
+}}
