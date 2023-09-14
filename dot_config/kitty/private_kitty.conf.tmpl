@@ -3,10 +3,12 @@
 include current-theme.conf
 # END_KITTY_THEME
 
+{{- if eq .chezmoi.os "linux" }}
 # BEGIN WINDOW DECORATION
 hide_window_decorations no
 wayland_titlebar_color background
 # END WINDOW DECORATION
+{{- end }}
 
 # BEGIN_KITTY_SHELL
 {{ if eq .chezmoi.os "darwin" -}}
@@ -34,5 +36,10 @@ background_blur 0
 
 # START TERM SIZE
 remember_window_size  no
+{{- if eq .chezmoi.os "linux" }}
 initial_window_width  150c
 initial_window_height 45c
+{{- else }}
+initial_window_width  128c
+initial_window_height 35c
+{{- end }}
