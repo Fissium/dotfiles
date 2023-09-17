@@ -51,7 +51,11 @@ end
 {{- if eq .chezmoi.os "linux" }}
 # Install Starship
 starship init fish | source
+# Install zoxide
+zoxide init fish | source
 {{- else }}
 # Install Starship
 /opt/homebrew/bin/starship init fish | source
+# Install zoxide
+/opt/homebrew/bin/zoxide init fish | source
 {{- end }}
