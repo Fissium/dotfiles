@@ -30,6 +30,7 @@ set -gx HOMEBREW_INSTALL_FROM_API 1
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 set -gx GOPATH /projects/go
+set -gx GOCACHE /projects/.cache/go-build
 {{- end}}
 {{- if eq .chezmoi.os "darwin" }}
 set -gx GOPATH $HOME/Projects/go
