@@ -9,6 +9,3 @@ SETUVAR fish_key_bindings:fish_default_key_bindings
 {{- if eq .chezmoi.os "darwin" }}
 SETUVAR fish_user_paths:/opt/homebrew/bin
 {{- end }}
-{{- if eq .chezmoi.os "linux" }}
-SETUVAR fish_user_paths:/projects/go/bin
-{{- end }}
