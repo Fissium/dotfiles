@@ -38,17 +38,9 @@ set -gx GOPATH $HOME/Projects/go
 set -gx PYENV_ROOT $HOME/.pyenv
 set -U fish_greeting
 
-
-{{- if eq .chezmoi.os "linux" }}
 # Install Starship
 starship init fish | source
 # Install zoxide
 zoxide init fish | source
-{{- end }}
-{{- if eq .chezmoi.os "darwin" }}
-# Install Starship
-/opt/homebrew/bin/starship init fish | source
-# Install zoxide
-/opt/homebrew/bin/zoxide init fish | source
-{{- end }}
+# Install pyenv
 pyenv init - | source
