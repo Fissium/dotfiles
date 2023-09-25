@@ -7,8 +7,8 @@ SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:\x1d
 SETUVAR fish_key_bindings:fish_default_key_bindings
 {{- if eq .chezmoi.os "darwin" }}
-SETUVAR fish_user_paths:/Users/fissium/\x2elocal/bin\x1e/opt/homebrew/bin
+SETUVAR fish_user_paths:/Users/fissium/\x2epyenv/bin\x1e/Users/fissium/\x2elocal/bin\x1e/opt/homebrew/bin
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
-SETUVAR fish_user_paths:/home/fissium/\x2elocal/bin
+SETUVAR fish_user_paths:/home/fissium/\x2epyenv/bin\x1e/home/fissium/\x2elocal/bin
 {{- end }}

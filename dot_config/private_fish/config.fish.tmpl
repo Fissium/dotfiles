@@ -35,6 +35,7 @@ set -gx GOCACHE /projects/.cache/go-build
 {{- if eq .chezmoi.os "darwin" }}
 set -gx GOPATH $HOME/Projects/go
 {{- end}}
+set -gx PYENV_ROOT $HOME/.pyenv
 set -U fish_greeting
 
 
