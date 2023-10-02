@@ -24,7 +24,6 @@ set -g fish_color_valid_path --underline
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx OPENAI_API_KEY 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
-set -gx MLFLOW_TRACKING_URI 'http://localhost:8000'
 {{- if eq .chezmoi.os "darwin" }}
 set -gx HOMEBREW_INSTALL_FROM_API 1
 {{- end }}
