@@ -1,3 +1,0 @@
-auto_activate_base: false
-solver: libmamba
-env_prompt: ''
