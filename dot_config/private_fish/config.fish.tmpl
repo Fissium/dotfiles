@@ -40,3 +40,15 @@ set -U fish_greeting
 starship init fish | source
 # Install zoxide
 zoxide init fish | source
+
+{{- if eq .chezmoi.os "linux" }}
+if test -f /home/fissium/tools/miniconda3/bin/conda
+    eval /home/fissium/tools/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+if test -f /Users/fissium/tools/miniconda3/bin/conda
+    eval /Users/fissium/tools/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+{{- end }}
+
