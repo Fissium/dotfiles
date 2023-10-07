@@ -42,13 +42,21 @@ starship init fish | source
 zoxide init fish | source
 
 {{- if eq .chezmoi.os "linux" }}
-if test -f /home/fissium/tools/miniconda3/bin/conda
-    eval /home/fissium/tools/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /home/fissium/tools/miniforge3/bin/conda
+    eval /home/fissium/tools/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+end
+
+if test -f "/home/fissium/tools/miniforge3/etc/fish/conf.d/mamba.fish"
+    source "/home/fissium/tools/miniforge3/etc/fish/conf.d/mamba.fish"
 end
 {{- end }}
 {{- if eq .chezmoi.os "darwin" }}
-if test -f /Users/fissium/tools/miniconda3/bin/conda
-    eval /Users/fissium/tools/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /Users/fissium/tools/miniforge3/bin/conda
+    eval /Users/fissium/tools/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+end
+
+if test -f "/Users/fissium/tools/miniforge3/etc/fish/conf.d/mamba.fish"
+    source "/Users/fissium/tools/miniforge3/etc/fish/conf.d/mamba.fish"
 end
 {{- end }}
 
