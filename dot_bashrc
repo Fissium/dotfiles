@@ -1,0 +1,15 @@
+#!/bin/bash
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ $HOME/.local/bin:$HOME/bin: ]]; then
+	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+export HF_HOME="/data/.cache/huggingface"
+export HUGGINGFACE_HUB_CACHE="/data/.cache/huggingface/hub"

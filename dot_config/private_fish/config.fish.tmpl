@@ -36,6 +36,9 @@ set -gx GOPATH $HOME/Projects/go
 {{- end}}
 {{- if eq .chezmoi.os "linux" }}
 set -gx PIP_CACHE_DIR /data/.cache/pip
+set -gx HF_HOME /data/.cache/huggingface
+set -gx HUGGINGFACE_HUB_CACHE /data/.cache/huggingface/hub
+set -gx HUGGINGFACE_ASSETS_CACHE /data/.cache/huggingface/assets
 {{- end }}
 set -U fish_greeting
 
