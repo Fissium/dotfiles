@@ -34,6 +34,9 @@ set -gx GOCACHE /data/.cache/go-build
 {{- if eq .chezmoi.os "darwin" }}
 set -gx GOPATH $HOME/Projects/go
 {{- end}}
+{{- if eq .chezmoi.os "linux" }}
+set -gx PIP_CACHE_DIR /data/.cache/pip
+{{- end }}
 set -U fish_greeting
 
 # Install Starship
