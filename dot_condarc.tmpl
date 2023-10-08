@@ -2,3 +2,7 @@ channels:
   - conda-forge
 auto_activate_base: false
 env_prompt: ''
+{{ if eq .chezmoi.os "linux" }}
+pkgs_dirs:
+    - /data/.cache/conda/pkgs
+{{ end }}
