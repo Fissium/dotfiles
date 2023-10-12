@@ -38,6 +38,12 @@ set -gx PIP_CACHE_DIR /data/.cache/pip
 set -gx HF_HOME /data/.cache/huggingface
 set -gx TORCH_HOME /data/.cache/torch
 {{- end }}
+{{- if eq .chezmoi.os "linux" }}
+set -gx _CONDA_ROOT /home/fissium/tools/miniforge3
+{{- end}}
+{{- if eq .chezmoi.os "darwin" }}
+set -gx _CONDA_ROOT /Users/fissium/tools/miniforge3
+{{- end}}
 set -U fish_greeting
 
 # Install Starship
