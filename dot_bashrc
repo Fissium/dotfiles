@@ -13,3 +13,4 @@ fi
 export PATH
 export HF_HOME="/data/.cache/huggingface"
 export TORCH_HOME="/data/.cache/torch"
+export EASYOCR_MODULE_PATH="/data/.cache/EasyOCR"
