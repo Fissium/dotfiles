@@ -5,8 +5,14 @@ include current-theme.conf
 
 {{- if eq .chezmoi.os "linux" }}
 # BEGIN WINDOW DECORATION
-hide_window_decorations no
-wayland_titlebar_color background
+hide_window_decorations titlebar-only
+wayland_titlebar_color #2E3440
+# END WINDOW DECORATION
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+# BEGIN WINDOW DECORATION
+hide_window_decorations titlebar-only
+macos_titlebar_color system
 # END WINDOW DECORATION
 {{- end }}
 
