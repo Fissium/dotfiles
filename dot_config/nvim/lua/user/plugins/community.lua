@@ -10,5 +10,4 @@ return {
   { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.debugging.nvim-dap-virtual-text" },
   { import = "astrocommunity.completion.codeium-vim" },
-  { import = "astrocommunity.code-runner.sniprun" },
 }
