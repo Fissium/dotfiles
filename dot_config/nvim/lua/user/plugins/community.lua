@@ -7,7 +7,7 @@ return {
 	{ import = "astrocommunity.motion.leap-nvim" },
 	{ import = "astrocommunity.markdown-and-latex.glow-nvim" },
 	{ import = "astrocommunity.syntax.hlargs-nvim" },
-	{ import = "astrocommunity.editing-support.suda-vim" },
+	{ import = "astrocommunity.project.nvim-spectre" },
 	{ import = "astrocommunity.debugging.nvim-dap-virtual-text" },
 	{ import = "astrocommunity.completion.codeium-vim" },
 }
