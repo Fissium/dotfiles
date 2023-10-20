@@ -1,1 +1,0 @@
-return { mode = { bold = true } }
