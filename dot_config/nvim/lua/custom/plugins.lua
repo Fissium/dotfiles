@@ -46,8 +46,11 @@ local plugins = {
 			require("better_escape").setup()
 		end,
 	},
+
+	-- ChatGPT
 	{
 		"jackMort/ChatGPT.nvim",
+		ft = { "python", "lua", "go", "sh" },
 		config = function()
 			require("chatgpt").setup({
 				api_key_cmd = "gpg --decrypt " .. vim.fn.expand("$HOME") .. "/Documents/openai_api_key.txt.gpg",
@@ -66,6 +69,7 @@ local plugins = {
 		},
 	},
 
+	-- Codeium
 	{
 		"Exafunction/codeium.vim",
 		ft = { "python", "lua", "go", "sh" },
@@ -75,6 +79,17 @@ local plugins = {
 				return vim.fn["codeium#Accept"]()
 			end, { expr = true })
 		end,
+	},
+
+	-- Markdown Preview
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
 	},
 
 	-- To make a plugin not be loaded
