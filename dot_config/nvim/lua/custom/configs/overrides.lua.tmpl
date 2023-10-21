@@ -44,11 +44,12 @@ M.mason = {
     -- yaml stuff
     "prettierd",
     "yaml-language-server",
-
+    {{- if eq .chezmoi.os "linux" }}
     -- docker stuff
     "hadolint",
     "docker-compose-language-service",
     "docker_language_server",
+    {{- end }}
 
     -- go stuff
     "golps",

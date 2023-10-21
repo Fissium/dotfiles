@@ -9,8 +9,10 @@ local servers = {
   "pyright",
   "gopls",
   "yamlls",
+  {{- if eq .chezmoi.os "linux" }}
   "dockerls",
   "docker_compose_language_service",
+  {{- end }}
   "bashls",
 }
 

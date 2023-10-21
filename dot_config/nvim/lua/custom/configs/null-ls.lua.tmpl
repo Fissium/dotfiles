@@ -15,8 +15,10 @@ local sources = {
   b.code_actions.shellcheck,
   -- YAML
   b.formatting.prettierd,
+  {{- if eq .chezmoi.os "linux" }}
   -- Docker
   b.diagnostics.hadolint,
+  {{- end }}
   -- Go
   b.formatting.goimports,
   b.formatting.gofumpt,
