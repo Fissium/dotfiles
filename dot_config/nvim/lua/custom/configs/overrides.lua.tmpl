@@ -44,8 +44,11 @@ M.mason = {
     "shellcheck",
     "shfmt",
 
+    -- markdown stuff
+    "remark-cli",
+
     -- yaml stuff
-    "prettierd",
+    "yq",
     "yaml-language-server",
     {{- if eq .chezmoi.os "linux" }}
     -- docker stuff

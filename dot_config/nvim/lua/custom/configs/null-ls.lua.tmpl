@@ -14,7 +14,9 @@ local sources = {
   b.formatting.shfmt,
   b.code_actions.shellcheck,
   -- YAML
-  b.formatting.prettierd,
+  b.formatting.yq,
+  -- Markdown
+  b.formatting.remark,
   {{- if eq .chezmoi.os "linux" }}
   -- Docker
   b.diagnostics.hadolint,
