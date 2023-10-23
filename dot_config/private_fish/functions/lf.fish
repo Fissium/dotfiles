@@ -1,4 +1,4 @@
 function lf --wraps=lfcd --description 'alias lf=lfcd'
-  lfcd $argv
-        
+    lfcd $argv
+
 end

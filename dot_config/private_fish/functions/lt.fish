@@ -1,4 +1,4 @@
 function lt
- lsd --tree --depth $argv
-        
+    lsd --tree --depth $argv
+
 end
