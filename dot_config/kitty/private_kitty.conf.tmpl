@@ -42,3 +42,13 @@ initial_window_height 54c
 initial_window_width  128c
 initial_window_height 35c
 {{- end }}
+
+# START TAB BAR
+tab_bar_margin_width      9
+tab_bar_margin_height     9 0
+tab_bar_style             separator
+tab_bar_min_tabs          1
+tab_separator             ""
+tab_title_template        "{fmt.fg._5c6370}{fmt.bg.default}{fmt.fg._abb2bf}{fmt.bg._5c6370} {title.split()[0]} {fmt.fg._5c6370}{fmt.bg.default} "
+active_tab_title_template "{fmt.fg._e5c07b}{fmt.bg.default}{fmt.fg._282c34}{fmt.bg._e5c07b} {title.split()[0]} {fmt.fg._e5c07b}{fmt.bg.default} "
+# END TAB BAR
