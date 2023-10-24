@@ -8,7 +8,14 @@ local sources = {
   b.formatting.stylua,
   b.diagnostics.luacheck,
   -- Python
-  b.formatting.black,
+  b.formatting.ruff.with {
+    args = {
+      "format",
+      "--stdin-filename",
+      "$FILENAME",
+      "-",
+    },
+  },
   b.formatting.reorder_python_imports,
   -- Bash
   b.formatting.shfmt,
@@ -27,7 +34,6 @@ local sources = {
   -- Fish
   b.formatting.fish_indent,
   b.diagnostics.fish,
-  
 }
 
 null_ls.setup {
