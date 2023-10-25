@@ -2,6 +2,8 @@ local null_ls = require "null-ls"
 
 local b = null_ls.builtins
 
+local home = vim.fn.expand "$HOME"
+
 local sources = {
 
   -- Lua
@@ -9,6 +11,7 @@ local sources = {
   b.diagnostics.luacheck,
   -- Python
   b.formatting.ruff.with {
+    command = home .. "/.local/share/nvim/mason/packages/ruff-lsp/venv/bin/ruff",
     args = {
       "format",
       "--stdin-filename",
@@ -24,10 +27,8 @@ local sources = {
   b.formatting.yq,
   -- Markdown
   b.formatting.remark,
-  {{- if eq .chezmoi.os "linux" }}
   -- Docker
   b.diagnostics.hadolint,
-  {{- end }}
   -- Go
   b.formatting.goimports,
   b.formatting.gofumpt,
