@@ -23,8 +23,9 @@ end
 
 -- ruff_lsp
 lspconfig.ruff_lsp.setup {
-  capabilities = capabilities,
   on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
   init_options = {
     settings = {
       -- Any extra CLI arguments for `ruff` go here.
@@ -44,4 +45,5 @@ capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 lspconfig.pyright.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = { "python" },
 }
