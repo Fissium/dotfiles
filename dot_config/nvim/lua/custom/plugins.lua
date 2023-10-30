@@ -81,6 +81,24 @@ local plugins = {
 		end,
 	},
 
+	-- Neotest
+	{
+		"nvim-neotest/neotest",
+		keys = { "<leader>tt", "<leader>tf" },
+		dependencies = {
+			"nvim-neotest/neotest-python",
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-python"),
+				},
+			})
+		end,
+	},
+
 	-- To make a plugin not be loaded
 	-- {
 	--   "NvChad/nvim-colorizer.lua",
