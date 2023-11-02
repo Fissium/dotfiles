@@ -1,0 +1,64 @@
+shell:
+  program: /usr/bin/fish
+# Colors (Snazzy)
+colors:
+  # Default colors
+  primary:
+    background: '0x282a36'
+    foreground: '0xeff0eb'
+  # Normal colors
+  normal:
+    black: '0x282a36'
+    red: '0xff5c57'
+    green: '0x5af78e'
+    yellow: '0xf3f99d'
+    blue: '0x57c7ff'
+    magenta: '0xff6ac1'
+    cyan: '0x9aedfe'
+    white: '0xf1f1f0'
+  # Bright colors
+  bright:
+    black: '0x686868'
+    red: '0xff5c57'
+    green: '0x5af78e'
+    yellow: '0xf3f99d'
+    blue: '0x57c7ff'
+    magenta: '0xff6ac1'
+    cyan: '0x9aedfe'
+    white: '0xf1f1f0'
+window:
+  padding:
+    x: 0
+    y: 0
+  dimensions:
+    columns: 165
+    lines: 51
+  opacity: 1.0
+font:
+  normal:
+    family: FiraCode Nerd Font
+    style: Regular
+  bold:
+    family: FiraCode Nerd Font
+    style: Regular
+  italic:
+    family: FiraCode Nerd Font
+    style: Italic
+  size: 14.0
+key_bindings:
+  - {key: F11, action: ToggleFullscreen}
+  # - { key: K, mods: Control, action: ScrollLineUp }
+  - {key: K, mods: Control|Shift, action: ScrollPageUp}
+  # - { key: J, mods: Control, action: ScrollLineDown }
+  - {key: J, mods: Control|Shift, action: ScrollPageDown}
+scrolling:
+  history: 10000
+env:
+  TERM: xterm-256color
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  vi_mode_style:
+    shape: Block
+  blink_interval: 500
