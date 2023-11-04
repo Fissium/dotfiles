@@ -1,5 +1,5 @@
-set forcekitty
 priority bat
+set noimages
 
 preview jupyter .ipynb {{
   tempfile="/tmp/ctpv-$RANDOM.md"

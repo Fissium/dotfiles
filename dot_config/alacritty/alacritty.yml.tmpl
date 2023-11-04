@@ -1,5 +1,9 @@
 shell:
   program: /usr/bin/fish
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
 # Colors (Snazzy)
 colors:
   # Default colors
