@@ -376,8 +376,12 @@ tmux_conf_copy_to_os_clipboard=false
 # move status line to top
 #set -g status-position top
 # default shell
+{{ if eq .chezmoi.os "darwin" }}
+set -g default-shell /opt/homebrew/bin/fish
+{{ end }}
+{{ if eq .chezmoi.os "linux" }}
 set -g default-shell /usr/bin/fish
-
+{{ end }}
 
 # -- tpm -----------------------------------------------------------------------
 
