@@ -1,5 +1,10 @@
 shell:
+  {{- if eq .chezmoi.os "linux" }}
   program: /usr/bin/fish
+  {{- end }}
+  {{- if eq .chezmoi.os "darwin" }}
+  program: /opt/homebrew/bin/fish
+  {{- end }}
   args:
     - -l
     - -c
@@ -34,10 +39,18 @@ window:
   padding:
     x: 0
     y: 0
+  {{- if eq .chezmoi.os "linux" }}
   dimensions:
     columns: 165
     lines: 51
+  {{- end }}
   opacity: 1.0
+  {{- if eq .chezmoi.os "darwin" }}
+  startup_mode: Fullscreen
+  {{- end }}
+  {{- if eq .chezmoi.os "linux" }}
+  startup_mode: Windowed
+  {{- end }}
 font:
   normal:
     family: FiraCode Nerd Font
@@ -62,7 +75,5 @@ env:
 cursor:
   style:
     shape: Beam
-    blinking: Always
   vi_mode_style:
     shape: Block
-  blink_interval: 500
