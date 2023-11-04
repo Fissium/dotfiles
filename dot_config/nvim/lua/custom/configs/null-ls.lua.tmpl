@@ -10,15 +10,7 @@ local sources = {
   b.formatting.stylua,
   b.diagnostics.luacheck,
   -- Python
-  b.formatting.ruff.with {
-    command = home .. "/.local/share/nvim/mason/packages/ruff-lsp/venv/bin/ruff",
-    args = {
-      "format",
-      "--stdin-filename",
-      "$FILENAME",
-      "-",
-    },
-  },
+  b.formatting.ruff_format,
   b.formatting.reorder_python_imports,
   -- Bash
   b.formatting.shfmt,
@@ -32,9 +24,6 @@ local sources = {
   -- Go
   b.formatting.goimports,
   b.formatting.gofumpt,
-  -- Fish
-  b.formatting.fish_indent,
-  b.diagnostics.fish,
   -- TOML
   b.formatting.taplo,
 }
