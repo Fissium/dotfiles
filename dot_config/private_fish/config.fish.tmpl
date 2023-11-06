@@ -39,7 +39,23 @@ set -gx HF_HOME /data/.cache/huggingface
 set -gx TORCH_HOME /data/.cache/torch
 set -gx EASYOCR_MODULE_PATH /data/.cache/EasyOCR
 {{- end }}
-set -U fish_greeting
+set -g fish_greeting
+{{- if eq .chezmoi.os "darwin" }}
+if status is-login
+    contains /Users/fissium/.local/bin $PATH
+    or set PATH /Users/fissium/.local/bin $PATH
+end
+if status is-login
+    contains /opt/homebrew/bin $PATH
+    or set PATH /opt/homebrew/bin $PATH
+end
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+if status is-login
+    contains /home/fissium/.local/bin $PATH
+    or set PATH /home/fissium/.local/bin $PATH
+end
+{{- end }}
 
 # Install Starship
 starship init fish | source
