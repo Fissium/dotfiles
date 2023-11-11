@@ -9,10 +9,6 @@ M.treesitter = {
     "python",
     "dockerfile",
     "toml",
-    "go",
-    "gomod",
-    "gosum",
-    "gowork",
     "yaml",
     "json",
     "jsonc",
@@ -44,11 +40,8 @@ M.mason = {
     "bash-language-server",
     "shellcheck",
     "shfmt",
-
-    -- markdown stuff
-    "remark-cli",
-
-    -- yaml stuff
+    
+    -- yaml, markdown stuff
     "prettierd",
     "yaml-language-server",
     {{- if eq .chezmoi.os "linux" }}
@@ -57,11 +50,6 @@ M.mason = {
     "docker-compose-language-service",
     "docker_language_server",
     {{- end }}
-
-    -- go stuff
-    "golps",
-    "gofumpt",
-    "goimports",
 
     -- toml stuff
     "taplo",
