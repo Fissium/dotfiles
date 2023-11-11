@@ -27,17 +27,9 @@ set -gx VISUAL nvim
 set -gx HOMEBREW_INSTALL_FROM_API 1
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
-set -gx GOPATH /projects/go
-set -gx GOCACHE /data/.cache/go-build
-{{- end}}
-{{- if eq .chezmoi.os "darwin" }}
-set -gx GOPATH $HOME/Projects/go
-{{- end}}
-{{- if eq .chezmoi.os "linux" }}
 set -gx PIP_CACHE_DIR /data/.cache/pip
 set -gx HF_HOME /data/.cache/huggingface
 set -gx TORCH_HOME /data/.cache/torch
-set -gx EASYOCR_MODULE_PATH /data/.cache/EasyOCR
 {{- end }}
 set -g fish_greeting
 {{- if eq .chezmoi.os "darwin" }}
