@@ -7,6 +7,9 @@
 .config/electron-flags.conf
 .config/electron25-flags.conf
 .bashrc
-.config/Code - OSS/User/settings.json
+.config/Code - OSS/
 {{ end }}
 README.md
+{{ if ne .chezmoi.os "darwin" }}
+/Users/
+{{ end }}
