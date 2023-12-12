@@ -1,0 +1,33 @@
+{
+    "window.titleBarStyle": "custom",
+    "workbench.startupEditor": "none",
+    "extensions.autoUpdate": false,
+    "explorer.confirmDragAndDrop": false,
+    "ruff.importStrategy": "useBundled",
+    "editor.fontFamily": "Fira Code",
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.fontLigatures": true,
+		"files.watcherExclude": {
+			"**/.venv": true
+		},
+		"files.exclude": {
+			"**/.venv": true
+		},
+		"python.analysis.typeCheckingMode": "basic",
+		"python.analysis.diagnosticMode": "openFilesOnly",
+		"python.analysis.diagnosticSeverityOverrides": {
+			"reportUnusedImport": "none",
+			"reportUnusedVariable": "none",
+			"reportUndefinedVariable": "none",
+			"reportUnusedClass": "none",
+			"reportUnusedExpression": "none",
+			"reportUnusedFunction": "none",
+		},
+		"ruff.lint.args": [
+			"--select=ARG",
+			"--select=F",
+			"--select=E",
+			"--select=I001",
+		],
+		"explorer.confirmDelete": false
+}
