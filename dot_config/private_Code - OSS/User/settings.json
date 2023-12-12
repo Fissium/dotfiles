@@ -29,5 +29,6 @@
 			"--select=E",
 			"--select=I001",
 		],
-		"explorer.confirmDelete": false
+		"explorer.confirmDelete": false,
+		"python.terminal.activateEnvironment": false
 }
