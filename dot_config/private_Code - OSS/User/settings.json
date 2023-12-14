@@ -30,5 +30,6 @@
 			"--select=I001",
 		],
 		"explorer.confirmDelete": false,
-		"python.terminal.activateEnvironment": false
+		"python.terminal.activateEnvironment": false,
+		"editor.unicodeHighlight.ambiguousCharacters": false
 }
