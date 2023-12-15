@@ -7,7 +7,9 @@ local sources = {
   -- Lua
   b.formatting.stylua,
   -- Python
-  b.formatting.ruff_format,
+  b.formatting.ruff_format.with({
+    extra_args = { "--line-length=88" },
+  }),
   -- Bash
   b.formatting.shfmt,
   b.code_actions.shellcheck,

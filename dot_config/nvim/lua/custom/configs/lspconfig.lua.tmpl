@@ -30,10 +30,8 @@ lspconfig.ruff_lsp.setup {
       -- Any extra CLI arguments for `ruff` go here.
       lint = {
         args = {
-          "--select=ARG",
-          "--select=F",
-          "--select=E",
-          "--select=I001",
+          "--select=ARG,F,E,I001",
+          "--line-length=88",
         },
       },
     },
