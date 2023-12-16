@@ -47,18 +47,6 @@ local plugins = {
 		end,
 	},
 
-	-- Codeium
-	{
-		"Exafunction/codeium.vim",
-		ft = { "python" },
-		config = function()
-			-- Change '<C-g>' here to any keycode you like.
-			vim.keymap.set("i", "<C-g>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true })
-		end,
-	},
-
 	-- Neotest
 	{
 		"nvim-neotest/neotest",
@@ -96,6 +84,26 @@ local plugins = {
 			vim.api.nvim_set_keymap("n", "<leader>rm", "<Plug>SnipReplMemoryClean", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rc", "<Plug>SnipReset", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rq", "<Plug>SnipClose", { silent = true })
+		end,
+	},
+
+	--Copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		ft = { "python" },
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					keymap = {
+						accept = "<C-g>",
+						accept_word = false,
+						accept_line = false,
+					},
+				},
+			})
 		end,
 	},
 
