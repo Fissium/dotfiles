@@ -75,8 +75,7 @@ local plugins = {
 				selected_interpreters = { "Python3_fifo" },
 				repl_enable = { "Python3_fifo" },
 				display = {
-					"VirtualTextOk",
-					"VirtualTextErr",
+					"Classic",
 				},
 			})
 			vim.api.nvim_set_keymap("v", "<leader>rl", "<Plug>SnipRun", { silent = true })
@@ -84,26 +83,6 @@ local plugins = {
 			vim.api.nvim_set_keymap("n", "<leader>rm", "<Plug>SnipReplMemoryClean", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rc", "<Plug>SnipReset", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rq", "<Plug>SnipClose", { silent = true })
-		end,
-	},
-
-	--Copilot
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		ft = { "python" },
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-g>",
-						accept_word = false,
-						accept_line = false,
-					},
-				},
-			})
 		end,
 	},
 
