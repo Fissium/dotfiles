@@ -50,7 +50,7 @@ local plugins = {
 	-- Codeium
 	{
 		"Exafunction/codeium.vim",
-		ft = { "python", "lua", "go", "sh" },
+		ft = { "python" },
 		config = function()
 			-- Change '<C-g>' here to any keycode you like.
 			vim.keymap.set("i", "<C-g>", function()
@@ -74,6 +74,28 @@ local plugins = {
 					require("neotest-python"),
 				},
 			})
+		end,
+	},
+
+	--SnipRun
+	{
+		"michaelb/sniprun",
+		ft = { "python" },
+		build = "bash ./install.sh",
+		config = function()
+			require("sniprun").setup({
+				selected_interpreters = { "Python3_fifo" },
+				repl_enable = { "Python3_fifo" },
+				display = {
+					"VirtualTextOk",
+					"VirtualTextErr",
+				},
+			})
+			vim.api.nvim_set_keymap("v", "<leader>rl", "<Plug>SnipRun", { silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>rl", "<Plug>SnipRun", { silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>rm", "<Plug>SnipReplMemoryClean", { silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>rc", "<Plug>SnipReset", { silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>rq", "<Plug>SnipClose", { silent = true })
 		end,
 	},
 
