@@ -38,6 +38,10 @@ if status is-login
     or set PATH /Users/fissium/.local/bin $PATH
 end
 if status is-login
+    contains /Users/fissium/.cargo/bin $PATH
+    or set PATH /Users/fissium/.cargo/bin $PATH
+end
+if status is-login
     contains /opt/homebrew/bin $PATH
     or set PATH /opt/homebrew/bin $PATH
 end
