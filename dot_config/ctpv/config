@@ -1,2 +1,17 @@
 priority bat
 set noimages
+
+preview notebook .ipynb {{
+  jq -j '
+  .cells
+  | map( select(.cell_type == "code") | .source + ["\n\n"] )
+  | .[][]
+  ' \
+  "${f}" | bat \
+    --color always \
+    --style plain \
+    --paging never \
+    --terminal-width "$w" \
+    --wrap character \
+    --language python
+}}

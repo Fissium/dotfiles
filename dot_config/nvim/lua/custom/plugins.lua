@@ -68,7 +68,7 @@ local plugins = {
 	--SnipRun
 	{
 		"michaelb/sniprun",
-		ft = { "python" },
+		event = { "BufEnter *.py" },
 		build = "bash ./install.sh",
 		config = function()
 			require("sniprun").setup({
@@ -83,6 +83,23 @@ local plugins = {
 			vim.api.nvim_set_keymap("n", "<leader>rm", "<Plug>SnipReplMemoryClean", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rc", "<Plug>SnipReset", { silent = true })
 			vim.api.nvim_set_keymap("n", "<leader>rq", "<Plug>SnipClose", { silent = true })
+		end,
+	},
+
+	--Codeium
+	{
+		"Exafunction/codeium.vim",
+		event = { "BufEnter *.py" },
+		config = function()
+			vim.keymap.set("i", "<C-g>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+			vim.keymap.set("i", "<C-n>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true })
+			vim.keymap.set("i", "<C-p", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true })
 		end,
 	},
 

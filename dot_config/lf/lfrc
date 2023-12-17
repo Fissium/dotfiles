@@ -15,7 +15,12 @@ cmd edit-config ${{
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json|inode/x-empty) $EDITOR "$f";;
+        text/*|application/json|inode/x-empty)
+            case "${f##*.}" in 
+            ipynb) jq -j '.cells | map( select(.cell_type == "code") | .source + ["\n\n"] ) | .[][]' "$f" | \
+            $EDITOR +':setlocal ft=python | TSBufEnable python' -R - ;;
+            *) $EDITOR "$f" ;;
+            esac ;;
         *) xdg-open "$f" ;;
     esac
 }}
