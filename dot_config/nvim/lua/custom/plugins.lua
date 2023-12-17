@@ -75,7 +75,10 @@ local plugins = {
 				selected_interpreters = { "Python3_fifo" },
 				repl_enable = { "Python3_fifo" },
 				display = {
-					"Classic",
+					"TerminalWithCode",
+				},
+				display_options = {
+					terminal_width = 60,
 				},
 			})
 			vim.api.nvim_set_keymap("v", "<leader>rl", "<Plug>SnipRun", { silent = true })
