@@ -2,14 +2,24 @@ local null_ls = require "null-ls"
 
 local b = null_ls.builtins
 
+local home = vim.fn.expand "$HOME"
+
 local sources = {
 
   -- Lua
   b.formatting.stylua,
   -- Python
-  b.formatting.ruff_format.with({
-    extra_args = { "--line-length=88" },
-  }),
+  b.formatting.ruff.with {
+    command = home .. "/.local/share/nvim/mason/packages/ruff-lsp/venv/bin/ruff",
+    args = {
+      "format",
+      "-n",
+      "--stdin-filename",
+      "$FILENAME",
+      "-",
+      "--line-length=88",
+    },
+  },
   -- Bash
   b.formatting.shfmt,
   b.diagnostics.shellcheck,
