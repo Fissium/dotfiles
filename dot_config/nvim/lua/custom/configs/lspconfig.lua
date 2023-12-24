@@ -7,6 +7,7 @@ local lspconfig = require("lspconfig")
 local servers = {
 	"bashls",
 	"taplo",
+	"yamlls",
 }
 
 for _, lsp in ipairs(servers) do
