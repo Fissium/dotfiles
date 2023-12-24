@@ -56,7 +56,7 @@ local plugins = {
 		end,
 	},
 
-	--Codeium
+	-- Codeium
 	{
 		"Exafunction/codeium.vim",
 		event = { "BufEnter *.py" },
@@ -73,12 +73,21 @@ local plugins = {
 		end,
 	},
 
-	--Formatter
+	-- Formatter
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
 		config = function()
 			require("custom.configs.conform")
+		end,
+	},
+
+	-- Linter
+	{
+		"mfussenegger/nvim-lint",
+		event = "VeryLazy",
+		config = function()
+			require("custom.configs.nvim-lint")
 		end,
 	},
 

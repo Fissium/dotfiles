@@ -41,10 +41,8 @@ M.mason = {
     
     -- yaml, markdown stuff
     "yamlfmt",
-    {{- if eq .chezmoi.os "linux" }}
     -- docker stuff
     "hadolint",
-    {{- end }}
 
     -- toml stuff
     "taplo",

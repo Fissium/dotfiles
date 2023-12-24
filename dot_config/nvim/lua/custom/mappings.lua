@@ -26,6 +26,16 @@ M.neotest = {
 	},
 }
 
--- more keybinds!
+M.lsp = {
+	n = {
+		["<leader>fm"] = {
+
+			function()
+				require("conform").format()
+			end,
+			"format with conform",
+		},
+	},
+}
 
 return M
