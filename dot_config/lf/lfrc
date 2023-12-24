@@ -25,8 +25,8 @@ cmd open ${{
     esac
 }}
 
-cmd on-select %{{
-    lsd -ld --color=always "$f"
+cmd on-select &{{
+    lf -remote "send $id set statfmt \"$(lsd -ld --color=always "$f")\""
 }}
 
 cmd mkdir ${{
