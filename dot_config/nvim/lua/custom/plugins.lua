@@ -82,14 +82,8 @@ local plugins = {
 		end,
 	},
 
-	-- Linter
-	{
-		"mfussenegger/nvim-lint",
-		event = "VeryLazy",
-		config = function()
-			require("custom.configs.nvim-lint")
-		end,
-	},
+	-- Telescope fzf
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
 	-- To make a plugin not be loaded
 	{
