@@ -25,11 +25,19 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 {{- if eq .chezmoi.os "darwin" }}
 set -gx HOMEBREW_INSTALL_FROM_API 1
+set -gx CARGO_HOME /Users/fissium/rust/.cargo
+set -gx RUSTUP_HOME /Users/fissium/rust/.rustup
+set -gx GOPATH /Users/fissium/go
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 set -gx PIP_CACHE_DIR /data/.cache/pip
 set -gx HF_HOME /data/.cache/huggingface
 set -gx TORCH_HOME /data/.cache/torch
+set -gx GOPATH /projects/go
+set -gx GOCACHE /data/.cache/go-build
+set -gx GOMODCACHE /projects/go/pkg/mod
+set -gx CARGO_HOME /projects/rust/.cargo
+set -gx RUSTUP_HOME /projects/rust/.rustup
 {{- end }}
 set -g fish_greeting
 {{- if eq .chezmoi.os "darwin" }}
@@ -41,11 +49,27 @@ if status is-login
     contains /opt/homebrew/bin $PATH
     or set PATH /opt/homebrew/bin $PATH
 end
+if status is-login
+    contains $GOPATH/bin $PATH
+    or set PATH $GOPATH/bin $PATH
+end
+if status is-login
+    contains $CARGO_HOME/bin $PATH
+    or set PATH $CARGO_HOME/bin $PATH
+end
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 if status is-login
     contains /home/fissium/.local/bin $PATH
     or set PATH /home/fissium/.local/bin $PATH
+end
+if status is-login
+    contains $GOPATH/bin $PATH
+    or set PATH $GOPATH/bin $PATH
+end
+if status is-login
+    contains $CARGO_HOME/bin $PATH
+    or set PATH $CARGO_HOME/bin $PATH
 end
 {{- end }}
 

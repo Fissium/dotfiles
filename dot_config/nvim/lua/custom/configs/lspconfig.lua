@@ -8,6 +8,7 @@ local servers = {
 	"bashls",
 	"taplo",
 	"yamlls",
+	"gopls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -49,6 +50,20 @@ lspconfig.pyright.setup({
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "basis",
 			},
+		},
+	},
+})
+
+--rust_analyzer
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "rust" },
+	settings = {
+		checkOnSave = {
+			allFeatures = true,
+			command = "clippy",
+			extraArgs = { "--no-deps" },
 		},
 	},
 })

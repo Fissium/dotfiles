@@ -7,11 +7,14 @@ local options = {
 		python = { "ruff_format" },
 		-- toml
 		toml = { "taplo" },
-
 		-- yaml
 		yaml = { "yamlfmt" },
 		-- shell
 		sh = { "shfmt" },
+		-- go
+		go = { "gofmt", "goimports", "golines" },
+		-- rust
+		rust = { "rustfmt" },
 	},
 }
 
