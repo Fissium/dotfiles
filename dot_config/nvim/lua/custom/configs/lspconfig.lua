@@ -20,8 +20,8 @@ end
 
 -- ruff_lsp
 lspconfig.ruff_lsp.setup({
-	on_attach = on_attach,
 	capabilities = capabilities,
+	on_attach = on_attach,
 	filetypes = { "python" },
 	init_options = {
 		settings = {
@@ -36,6 +36,22 @@ lspconfig.ruff_lsp.setup({
 	},
 })
 
+--rust_analyzer
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	filetypes = { "rust" },
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true,
+			},
+			checkOnSave = {
+				command = "clippy",
+			},
+		},
+	},
+})
 -- pyright
 capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 lspconfig.pyright.setup({
@@ -50,20 +66,6 @@ lspconfig.pyright.setup({
 				useLibraryCodeForTypes = true,
 				typeCheckingMode = "basis",
 			},
-		},
-	},
-})
-
---rust_analyzer
-lspconfig.rust_analyzer.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	filetypes = { "rust" },
-	settings = {
-		checkOnSave = {
-			allFeatures = true,
-			command = "clippy",
-			extraArgs = { "--no-deps" },
 		},
 	},
 })
