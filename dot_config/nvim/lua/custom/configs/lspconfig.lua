@@ -8,7 +8,6 @@ local servers = {
 	"bashls",
 	"taplo",
 	"yamlls",
-	"gopls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -36,19 +35,39 @@ lspconfig.ruff_lsp.setup({
 	},
 })
 
---rust_analyzer
+-- rust_analyzer
 lspconfig.rust_analyzer.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	filetypes = { "rust" },
 	settings = {
 		["rust-analyzer"] = {
+			diagnostics = {
+				enable = true,
+			},
 			cargo = {
 				allFeatures = true,
 			},
 			checkOnSave = {
 				command = "clippy",
 			},
+		},
+	},
+})
+
+-- gopls
+lspconfig.gopls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
 		},
 	},
 })

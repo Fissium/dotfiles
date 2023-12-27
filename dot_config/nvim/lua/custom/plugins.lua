@@ -59,7 +59,7 @@ local plugins = {
 	-- Codeium
 	{
 		"Exafunction/codeium.vim",
-		event = { "BufEnter *.py" },
+		ft = { "python", "go", "rust" },
 		config = function()
 			vim.keymap.set("i", "<C-g>", function()
 				return vim.fn["codeium#Accept"]()
