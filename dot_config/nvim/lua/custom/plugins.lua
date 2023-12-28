@@ -90,8 +90,13 @@ local plugins = {
 		end,
 	},
 
-	-- Telescope fzf
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+	},
 
 	-- To make a plugin not be loaded
 	{
