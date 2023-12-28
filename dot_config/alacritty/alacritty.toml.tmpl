@@ -65,14 +65,24 @@ history = 10000
 
 [shell]
 args = ["-l", "-c", "tmux new -A -s main"]
+{{- if eq .chezmoi.os "linux" }}
 program = "/usr/bin/fish"
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+program = "/opt/homebrew/bin/fish"
+{{- end }}
 
 [window]
 opacity = 1.0
+{{- if eq .chezmoi.os "darwin" }}
+startup_mode = "Fullscreen"
+{{- end }}
 
 [window.dimensions]
+{{- if eq .chezmoi.os "linux" }}
 columns = 165
 lines = 51
+{{- end }}
 
 [window.padding]
 x = 0
