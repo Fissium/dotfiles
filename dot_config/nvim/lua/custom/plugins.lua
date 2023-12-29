@@ -81,6 +81,7 @@ local plugins = {
 			require("custom.configs.conform")
 		end,
 	},
+
 	-- smooth scroll
 	{
 		"karb94/neoscroll.nvim",
