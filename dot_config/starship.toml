@@ -11,6 +11,10 @@ symbol = " "
 [c]
 symbol = " "
 
+[cmd_duration]
+min_time = 10_000
+format = " took [$duration]($style)"
+
 [conda]
 symbol = " "
 
@@ -34,6 +38,12 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+
+[git_metrics]
+disabled = false
+added_style = 'bold green'
+deleted_style = 'bold red'
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
 
 [golang]
 symbol = " "
@@ -63,13 +73,13 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛"
 
 [meson]
-symbol = "喝 "
+symbol = "󰔷 "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
@@ -91,7 +101,7 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
+Garuda = " "
 Gentoo = " "
 HardenedBSD = "ﲊ "
 Illumos = " "
@@ -104,19 +114,19 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = " "
+OpenBSD = "󰈺 "
 openSUSE = " "
-OracleLinux = " "
+OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
 Redox = " "
-Solus = "ﴱ "
+Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰍲 "
 
 [package]
 symbol = "󰏗 "
@@ -128,7 +138,7 @@ symbol = "🪺 "
 symbol = " "
 
 [rlang]
-symbol = "ﳒ "
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
@@ -140,7 +150,7 @@ symbol = " "
 symbol = " "
 
 [spack]
-symbol = "🅢 "
+symbol = " "
 
 [time]
 disabled = true
