@@ -11,10 +11,6 @@ symbol = " "
 [c]
 symbol = " "
 
-[cmd_duration]
-min_time = 10_000
-format = " took [$duration]($style)"
-
 [conda]
 symbol = " "
 
