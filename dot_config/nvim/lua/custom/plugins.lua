@@ -60,17 +60,6 @@ local plugins = {
 	{
 		"Exafunction/codeium.vim",
 		ft = { "python", "go", "rust" },
-		config = function()
-			vim.keymap.set("i", "<C-g>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<C-n>", function()
-				return vim.fn["codeium#CycleCompletions"](1)
-			end, { expr = true, silent = true })
-			vim.keymap.set("i", "<C-p", function()
-				return vim.fn["codeium#CycleCompletions"](-1)
-			end, { expr = true, silent = true })
-		end,
 	},
 
 	-- Formatter
