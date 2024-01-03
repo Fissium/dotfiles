@@ -1,7 +1,12 @@
 function up --description 'update the system'
   
   echo (set_color yellow) "Updating packages..."(set_color normal)
+  {{- if eq .chezmoi.os "linux" }}
   sudo pacman -Syu
+  {{- end}}
+  {{- if eq .chezmoi.os "darwin" }}
+  brew upgrade
+  {{- end}}
   sleep 1
   echo (set_color yellow) "Done"(set_color normal)
   echo (set_color yellow) "Updating mamba..."(set_color normal)
