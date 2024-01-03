@@ -5,7 +5,7 @@ function up --description 'update the system'
   sudo pacman -Syu
   {{- end}}
   {{- if eq .chezmoi.os "darwin" }}
-  brew upgrade
+  brew upgrade && brew cleanup
   {{- end}}
   sleep 1
   echo (set_color yellow) "Done"(set_color normal)

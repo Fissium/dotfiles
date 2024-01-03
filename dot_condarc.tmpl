@@ -7,3 +7,7 @@ channel_priority: strict
 pkgs_dirs:
   - /data/.cache/conda/pkgs
 {{ end -}}
+{{ if eq .chezmoi.os "darwin" }}
+pkgs_dirs:
+  - /Users/fissium/.cache/conda/pkgs
+{{ end -}}

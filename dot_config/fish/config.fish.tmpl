@@ -25,9 +25,9 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 {{- if eq .chezmoi.os "darwin" }}
 set -gx HOMEBREW_INSTALL_FROM_API 1
-set -gx CARGO_HOME /Users/fissium/rust/.cargo
-set -gx RUSTUP_HOME /Users/fissium/rust/.rustup
-set -gx GOPATH /Users/fissium/go
+set -gx CARGO_HOME /Users/fissium/Projects/rust/.cargo
+set -gx RUSTUP_HOME /Users/fissium/Projects/rust/.rustup
+set -gx GOPATH /Users/fissium/Projects/go
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 set -gx PIP_CACHE_DIR /data/.cache/pip
