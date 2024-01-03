@@ -59,7 +59,7 @@ local plugins = {
 	-- Codeium
 	{
 		"Exafunction/codeium.vim",
-		ft = { "python", "go", "rust" },
+		ft = { "python", "go", "rust", "sh" },
 	},
 
 	-- Formatter
