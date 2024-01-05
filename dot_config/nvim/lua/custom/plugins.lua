@@ -1,4 +1,6 @@
 local overrides = require("custom.configs.overrides")
+local codeium_bin = vim.fn.expand("$HOME/.codeium/bin")
+local codeium_config = vim.fn.expand("$HOME/.codeium/config.json")
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -56,12 +58,6 @@ local plugins = {
 		end,
 	},
 
-	-- Codeium
-	{
-		"Exafunction/codeium.vim",
-		ft = { "python", "go", "rust", "sh" },
-	},
-
 	-- Formatter
 	{
 		"stevearc/conform.nvim",
@@ -81,8 +77,38 @@ local plugins = {
 	},
 
 	-- Telescope fzf extension
-	"NvChad/nvcommunity",
-	{ import = "nvcommunity.tools.telescope-fzf-native" },
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
+		},
+		opts = {
+			extensions_list = { "fzf" },
+		},
+	},
+
+	-- Codeium
+	{
+		"hrsh7th/nvim-cmp",
+		config = function(_, opts)
+			table.insert(opts.sources, { name = "codeium" })
+			require("cmp").setup(opts)
+		end,
+		dependencies = {
+			{
+				"jcdickinson/codeium.nvim",
+				config = function()
+					require("codeium").setup({
+						config_path = codeium_config,
+						bin_path = codeium_bin,
+					})
+				end,
+			},
+		},
+	},
 
 	-- To make a plugin not be loaded
 	{
