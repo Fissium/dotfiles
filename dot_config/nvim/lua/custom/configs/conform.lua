@@ -1,11 +1,10 @@
 local options = {
-	lsp_fallback = true,
 
 	formatters_by_ft = {
 		-- lua
 		lua = { "stylua" },
 		-- python
-		python = { "ruff_format" },
+		-- use language server for python
 		-- toml
 		toml = { "taplo" },
 		-- yaml
