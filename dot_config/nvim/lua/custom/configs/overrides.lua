@@ -50,9 +50,6 @@ M.mason = {
 
 		-- go stuff
 		"gopls",
-		"gofmt",
-		"goimports",
-		"golines",
 
 		-- rust stuff
 		"rust-analyzer",

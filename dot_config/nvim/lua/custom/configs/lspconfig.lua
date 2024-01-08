@@ -68,6 +68,7 @@ lspconfig.gopls.setup({
 				shadow = true,
 			},
 			staticcheck = true,
+			gofumpt = true,
 		},
 	},
 })

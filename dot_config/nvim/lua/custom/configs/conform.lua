@@ -4,7 +4,7 @@ local options = {
 		-- lua
 		lua = { "stylua" },
 		-- python
-		-- use language server for python
+		-- use ruff_lsp for python
 		-- toml
 		toml = { "taplo" },
 		-- yaml
@@ -12,7 +12,7 @@ local options = {
 		-- shell
 		sh = { "shfmt" },
 		-- go
-		go = { "gofmt", "goimports", "golines" },
+    -- use gopls for golang
 		-- rust
 		rust = { "rustfmt" },
 	},
