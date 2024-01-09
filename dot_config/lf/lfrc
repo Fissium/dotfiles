@@ -21,7 +21,7 @@ cmd open ${{
             $EDITOR +':setlocal ft=python | TSBufEnable python' -R - ;;
             *) $EDITOR "$f" ;;
             esac ;;
-        *) xdg-open "$f" ;;
+        *) $OPENER "$f" ;;
     esac
 }}
 
