@@ -14,7 +14,7 @@ local options = {
 		-- go
     -- use gopls for golang
 		-- rust
-		rust = { "rustfmt" },
+    -- use rust_analyzer for rust
 	},
 }
 
