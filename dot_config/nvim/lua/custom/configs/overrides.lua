@@ -16,6 +16,8 @@ M.treesitter = {
 		"fish",
 		"gitignore",
 		"go",
+		"gomod",
+		"gosum",
 		"rust",
 	},
 	indent = {
@@ -35,6 +37,8 @@ M.mason = {
 		-- python stuff
 		"pyright",
 		"ruff-lsp",
+		"ruff",
+		"isort",
 
 		-- bash stuff
 		"bash-language-server",
@@ -50,6 +54,8 @@ M.mason = {
 
 		-- go stuff
 		"gopls",
+		"gofumpt",
+		"goimports",
 
 		-- rust stuff
 		"rust-analyzer",

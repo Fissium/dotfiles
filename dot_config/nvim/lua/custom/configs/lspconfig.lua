@@ -27,7 +27,7 @@ lspconfig.ruff_lsp.setup({
 			-- Any extra CLI arguments for `ruff` go here.
 			lint = {
 				args = {
-					"--select=ARG,F,E,I001",
+					"--select=ARG,F,E",
 					"--line-length=88",
 				},
 			},
@@ -68,7 +68,6 @@ lspconfig.gopls.setup({
 				shadow = true,
 			},
 			staticcheck = true,
-			gofumpt = true,
 		},
 	},
 })

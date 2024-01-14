@@ -93,6 +93,29 @@ local plugins = {
 	{
 		"Exafunction/codeium.vim",
 		event = "BufEnter",
+		build = function()
+			local bin_path = os.getenv("HOME") .. "/.codeium/bin"
+			local old_binaries = vim.fs.find(function()
+				return true
+			end, { type = "file", limit = math.huge, path = bin_path })
+			table.remove(old_binaries)
+			for _, binary_path in pairs(old_binaries) do
+				os.remove(binary_path)
+				os.remove(vim.fs.dirname(binary_path))
+			end
+		end,
+	},
+
+	-- Remote edit
+	{
+		"chipsenkbeil/distant.nvim",
+		cmd = {
+			"DistantConnect",
+		},
+		branch = "v0.3",
+		config = function()
+			require("distant"):setup()
+		end,
 	},
 
 	-- To make a plugin not be loaded
