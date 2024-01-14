@@ -93,7 +93,7 @@ local plugins = {
 	-- Codeium
 	{
 		"Exafunction/codeium.vim",
-		event = "BufEnter",
+    event = "InsertEnter",
 		build = function()
 			local bin_path = os.getenv("HOME") .. "/.codeium/bin"
 			local old_binaries = vim.fs.find(function()
