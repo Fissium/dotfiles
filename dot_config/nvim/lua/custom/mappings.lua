@@ -66,12 +66,9 @@ M.lsp = {
 		["<leader>fm"] = {
 
 			function()
-				require("conform").format({
-					lsp_fallback = true,
-					async = true,
-				})
+				require("conform").format()
 			end,
-			"format with conform",
+			"Format with conform",
 		},
 	},
 }

@@ -5,7 +5,7 @@ M.formatters_by_ft = {
 	-- lua
 	lua = { "stylua" },
 	-- python
-	python = { "ruff_format", "isort" },
+	python = { "isort", "ruff_format" },
 	-- toml
 	toml = { "taplo" },
 	-- yaml
@@ -13,7 +13,7 @@ M.formatters_by_ft = {
 	-- shell
 	sh = { "shfmt" },
 	-- go
-	go = { "gofumpt", "goimports" },
+	go = { "goimports", "gofumpt" },
 	-- rust
 	rust = { "rustfmt" },
 }
