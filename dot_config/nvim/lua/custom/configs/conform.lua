@@ -5,7 +5,7 @@ M.formatters_by_ft = {
 	-- lua
 	lua = { "stylua" },
 	-- python
-	python = { "isort", "ruff_format" },
+	python = { "ruff_sort", "ruff_format" },
 	-- toml
 	toml = { "taplo" },
 	-- yaml
@@ -16,6 +16,22 @@ M.formatters_by_ft = {
 	go = { "goimports", "gofumpt" },
 	-- rust
 	rust = { "rustfmt" },
+}
+
+M.formatters = {
+	ruff_sort = {
+		command = "ruff",
+		args = {
+			"check",
+			"--fix",
+			"--select",
+			"I",
+			"--stdin-filename",
+			"$FILENAME",
+			"-",
+		},
+		stdin = true,
+	},
 }
 
 return M

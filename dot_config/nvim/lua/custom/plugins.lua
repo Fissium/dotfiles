@@ -63,6 +63,7 @@ local plugins = {
 		event = "BufWritePre",
 		opts = {
 			formatters_by_ft = conform_options.formatters_by_ft,
+      formatters = conform_options.formatters,
 		},
 	},
 
