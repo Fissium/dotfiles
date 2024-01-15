@@ -63,7 +63,7 @@ local plugins = {
 		event = "BufWritePre",
 		opts = {
 			formatters_by_ft = conform_options.formatters_by_ft,
-      formatters = conform_options.formatters,
+			formatters = conform_options.formatters,
 		},
 	},
 
@@ -93,7 +93,7 @@ local plugins = {
 	-- Codeium
 	{
 		"Exafunction/codeium.vim",
-    event = "InsertEnter",
+		event = "InsertEnter",
 		build = function()
 			local bin_path = os.getenv("HOME") .. "/.codeium/bin"
 			local old_binaries = vim.fs.find(function()

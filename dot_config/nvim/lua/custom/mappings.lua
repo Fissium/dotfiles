@@ -72,5 +72,13 @@ M.lsp = {
 		},
 	},
 }
+M.distant = {
+	n = {
+		["<leader>fs"] = {
+			":SSHConnect<CR>",
+			"Connect to a remote server",
+		},
+	},
+}
 
 return M

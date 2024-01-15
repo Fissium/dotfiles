@@ -16,6 +16,8 @@ M.formatters_by_ft = {
 	go = { "goimports", "gofumpt" },
 	-- rust
 	rust = { "rustfmt" },
+	-- json
+	json = { "jq" },
 }
 
 M.formatters = {
