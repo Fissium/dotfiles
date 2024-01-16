@@ -75,7 +75,14 @@ M.lsp = {
 M.distant = {
 	n = {
 		["<leader>fs"] = {
-			":SSHConnect<CR>",
+			function()
+				vim.ui.input({ prompt = "Connecting to: " }, function(input)
+					if input == nil then
+						return
+					end
+					vim.cmd.DistantConnect("ssh://" .. input)
+				end)
+			end,
 			"Connect to a remote server",
 		},
 	},
