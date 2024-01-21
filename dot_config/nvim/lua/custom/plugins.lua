@@ -98,7 +98,7 @@ local plugins = {
 			local bin_path = os.getenv("HOME") .. "/.codeium/bin"
 			local old_binaries = vim.fs.find(function()
 				return true
-			end, { type = "file", limit = math.huge, path = bin_path })
+			end, { type = "directory", limit = math.huge, path = bin_path })
 			table.remove(old_binaries)
 			for _, binary_path in pairs(old_binaries) do
 				os.remove(binary_path)
