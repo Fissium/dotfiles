@@ -107,18 +107,6 @@ local plugins = {
 		end,
 	},
 
-	-- Remote edit
-	{
-		"chipsenkbeil/distant.nvim",
-		cmd = {
-			"DistantConnect",
-		},
-		branch = "v0.3",
-		config = function()
-			require("distant"):setup()
-		end,
-	},
-
 	-- To make a plugin not be loaded
 	{
 		"NvChad/nvim-colorizer.lua",
