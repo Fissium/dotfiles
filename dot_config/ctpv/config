@@ -15,3 +15,12 @@ preview notebook .ipynb {{
     --wrap character \
     --language python
 }}
+
+preview javascript application/javascript {{
+  bat \
+  --color always \
+  --style plain \
+  --paging never \
+  --terminal-width "$w" \
+  --wrap character "$f"
+}}

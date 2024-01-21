@@ -15,7 +15,7 @@ cmd edit-config ${{
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json|inode/x-empty)
+        text/*|application/json|inode/x-empty|application/javascript)
             case "${f##*.}" in 
             ipynb) jq -j '.cells | map( select(.cell_type == "code") | .source + ["\n\n"] ) | .[][]' "$f" | \
             $EDITOR +':setlocal ft=python | TSBufEnable python' -R - ;;
