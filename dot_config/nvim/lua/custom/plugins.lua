@@ -90,20 +90,25 @@ local plugins = {
 		},
 	},
 
-	-- Codeium
+	-- Copilot
 	{
-		"Exafunction/codeium.vim",
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
 		event = "InsertEnter",
-		build = function()
-			local bin_path = os.getenv("HOME") .. "/.codeium/bin"
-			local old_binaries = vim.fs.find(function()
-				return true
-			end, { type = "directory", limit = math.huge, path = bin_path })
-			table.remove(old_binaries)
-			for _, binary_path in pairs(old_binaries) do
-				os.remove(binary_path)
-				os.remove(vim.fs.dirname(binary_path))
-			end
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					auto_trigger = true,
+					keymap = {
+						accept = "<C-g>",
+						accept_word = false,
+						accept_line = false,
+						next = "<C-n>",
+						prev = "<C-p>",
+						dismiss = "<C-x>",
+					},
+				},
+			})
 		end,
 	},
 
