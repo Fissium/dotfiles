@@ -112,6 +112,15 @@ local plugins = {
 		end,
 	},
 
+	-- Diffview
+	{
+		"sindrets/diffview.nvim",
+    cmd = "DiffviewOpen",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+
 	-- To make a plugin not be loaded
 	{
 		"NvChad/nvim-colorizer.lua",
