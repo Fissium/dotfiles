@@ -29,6 +29,11 @@ set -gx HOMEBREW_INSTALL_FROM_API 1
 set -gx CARGO_HOME /Users/fissium/Projects/rust/.cargo
 set -gx RUSTUP_HOME /Users/fissium/Projects/rust/.rustup
 set -gx GOPATH /Users/fissium/Projects/go
+
+set -gx PATH $PATH $GOPATH/bin
+set -gx PATH $PATH $CARGO_HOME/bin
+set -gx PATH $PATH /Users/fissium/.local/bin
+set -gx PATH $PATH /opt/homebrew/bin
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
 set -gx OPENER xdg-open
@@ -42,40 +47,14 @@ set -gx CARGO_HOME /projects/rust/.cargo
 set -gx RUSTUP_HOME /projects/rust/.rustup
 set -gx PRE_COMMIT_HOME /data/.cache/pre-commit
 set -gx PYRIGHT_PYTHON_CACHE_DIR /data/.cache
+
+set -gx PATH $PATH $GOPATH/bin
+set -gx PATH $PATH $CARGO_HOME/bin
+set -gx PATH $PATH /home/fissium/.local/bin
 {{- end }}
+
+# Set the greeting
 set -g fish_greeting
-{{- if eq .chezmoi.os "darwin" }}
-if status is-login
-    contains /Users/fissium/.local/bin $PATH
-    or set PATH /Users/fissium/.local/bin $PATH
-end
-if status is-login
-    contains /opt/homebrew/bin $PATH
-    or set PATH /opt/homebrew/bin $PATH
-end
-if status is-login
-    contains $GOPATH/bin $PATH
-    or set PATH $GOPATH/bin $PATH
-end
-if status is-login
-    contains $CARGO_HOME/bin $PATH
-    or set PATH $CARGO_HOME/bin $PATH
-end
-{{- end }}
-{{- if eq .chezmoi.os "linux" }}
-if status is-login
-    contains /home/fissium/.local/bin $PATH
-    or set PATH /home/fissium/.local/bin $PATH
-end
-if status is-login
-    contains $GOPATH/bin $PATH
-    or set PATH $GOPATH/bin $PATH
-end
-if status is-login
-    contains $CARGO_HOME/bin $PATH
-    or set PATH $CARGO_HOME/bin $PATH
-end
-{{- end }}
 
 # Install Starship
 starship init fish | source
