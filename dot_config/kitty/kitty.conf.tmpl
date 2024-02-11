@@ -1,0 +1,44 @@
+# BEGIN_KITTY_THEME
+# Snazzy
+include current-theme.conf
+# END_KITTY_THEME
+
+{{- if eq .chezmoi.os "linux" }}
+# BEGIN WINDOW DECORATION
+hide_window_decorations no
+wayland_titlebar_color #2E3440
+# END WINDOW DECORATION
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+# BEGIN WINDOW DECORATION
+macos_titlebar_color system
+# END WINDOW DECORATION
+{{- end }}
+
+# BEGIN_KITTY_SHELL
+{{ if eq .chezmoi.os "darwin" -}}
+shell /opt/homebrew/bin/fish
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
+shell fish
+{{ end -}}
+# END_KITTY_SHELL
+
+# BEGIN_FONTS
+font_family      FiraCode Nerd Font
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        14.0
+# END_FONTS
+
+# START TERM SIZE
+remember_window_size  no
+{{- if eq .chezmoi.os "linux" }}
+initial_window_width  165c
+initial_window_height 54c
+{{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+initial_window_width  128c
+initial_window_height 35c
+{{- end }}
