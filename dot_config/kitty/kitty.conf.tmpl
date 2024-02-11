@@ -26,7 +26,12 @@ shell fish
 
 # BEGIN_FONTS
 font_family      FiraCode Nerd Font
+{{ if eq .chezmoi.os "darwin" -}}
+bold_font        auto
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
 bold_font        FiraCode Nerd Font Reg
+{{ end -}}
 italic_font      auto
 bold_italic_font auto
 font_size        14.0
