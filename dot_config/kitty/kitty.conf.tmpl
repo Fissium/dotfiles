@@ -25,11 +25,12 @@ shell fish
 # END_KITTY_SHELL
 
 # BEGIN_FONTS
-font_family      FiraCode Nerd Font
 {{ if eq .chezmoi.os "darwin" -}}
+font_family      FiraCode Nerd Font
 bold_font        auto
 {{ end -}}
 {{ if eq .chezmoi.os "linux" -}}
+font_family      FiraCode Nerd Font
 bold_font        FiraCode Nerd Font Reg
 {{ end -}}
 italic_font      auto
