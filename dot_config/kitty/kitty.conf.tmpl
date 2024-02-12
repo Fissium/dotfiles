@@ -47,3 +47,20 @@ initial_window_height 54c
 initial_window_width  128c
 initial_window_height 35c
 {{- end }}
+
+# START TAB BAR
+tab_bar_edge top
+# END TAB BAR
+
+{{if eq .chezmoi.os "linux" -}}
+# START VIM LIKE NAVIGATION
+map kitty_mod+k neighboring_window up
+map kitty_mod+j neighboring_window down
+map kitty_mod+h neighboring_window left
+map kitty_mod+l neighboring_window right
+# END VIM LIKE NAVIGATION
+
+# START CHANGE LAYOUT
+map kitty_mod+space next_layout
+# END CHANGE LAYOUT
+{{- end }}
