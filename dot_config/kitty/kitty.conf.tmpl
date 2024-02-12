@@ -52,7 +52,6 @@ initial_window_height 35c
 tab_bar_edge top
 # END TAB BAR
 
-{{if eq .chezmoi.os "linux" -}}
 # START VIM LIKE NAVIGATION
 map kitty_mod+k neighboring_window up
 map kitty_mod+j neighboring_window down
@@ -63,4 +62,10 @@ map kitty_mod+l neighboring_window right
 # START CHANGE LAYOUT
 map kitty_mod+space next_layout
 # END CHANGE LAYOUT
-{{- end }}
+
+# START RESIZE PANE
+map ctrl+left resize_window narrower
+map ctrl+right resize_window wider
+map ctrl+up resize_window taller
+map ctrl+down resize_window shorter
+# END RESIZE PANE
