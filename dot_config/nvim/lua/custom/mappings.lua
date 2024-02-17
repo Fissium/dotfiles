@@ -26,6 +26,20 @@ M.neotest = {
 	},
 }
 
+M.git = {
+	n = {
+		["<leader>gd"] = {
+			":DiffviewOpen<CR>",
+			"Open diffview",
+		},
+
+		["<leader>gc"] = {
+			":DiffviewClose<CR>",
+			"Close diffview",
+		},
+	},
+}
+
 M.lsp = {
 	n = {
 		["<leader>fm"] = {
