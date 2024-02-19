@@ -115,10 +115,21 @@ local plugins = {
 	-- Diffview
 	{
 		"sindrets/diffview.nvim",
-    cmd = "DiffviewOpen",
+		cmd = "DiffviewOpen",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
+	},
+
+	-- Hlargs
+	{
+		"m-demare/hlargs.nvim",
+		ft = { "python", "go", "rust" },
+		config = function()
+			require("hlargs").setup({
+				hl_priority = 200,
+			})
+		end,
 	},
 
 	-- To make a plugin not be loaded
