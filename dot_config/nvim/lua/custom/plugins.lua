@@ -132,6 +132,14 @@ local plugins = {
 		end,
 	},
 
+	-- Todo
+	{
+		"folke/todo-comments.nvim",
+		ft = { "python", "go", "rust" },
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+
 	-- To make a plugin not be loaded
 	{
 		"NvChad/nvim-colorizer.lua",
