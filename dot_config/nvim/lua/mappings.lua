@@ -1,8 +1,11 @@
 require "nvchad.mappings"
-local M = {}
+local map = vim.keymap.set
 
-M.neotest = {
+local mappings = {
   n = {
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<C-i>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     ["<leader>tt"] = {
       function()
         require("neotest").run.run()
@@ -23,11 +26,6 @@ M.neotest = {
       ":Neotest summary<CR>",
       "Test summary",
     },
-  },
-}
-
-M.git = {
-  n = {
     ["<leader>gd"] = {
       ":DiffviewOpen<CR>",
       "Open diffview",
@@ -37,11 +35,6 @@ M.git = {
       ":DiffviewClose<CR>",
       "Close diffview",
     },
-  },
-}
-
-M.lsp = {
-  n = {
     ["<leader>fm"] = {
 
       function()
@@ -52,4 +45,10 @@ M.lsp = {
   },
 }
 
-return M
+
+
+for mode, maps in pairs(mappings) do
+  for key, val in pairs(maps) do
+    map(mode, key, val[1], { desc = val[2] })
+  end
+end
