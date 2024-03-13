@@ -25,6 +25,7 @@ end
 lspconfig.ruff_lsp.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	on_init = on_init,
 	filetypes = { "python" },
 	init_options = {
 		settings = {
@@ -43,6 +44,7 @@ lspconfig.ruff_lsp.setup({
 lspconfig.rust_analyzer.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	on_init = on_init,
 	filetypes = { "rust" },
 	settings = {
 		["rust-analyzer"] = {
@@ -63,6 +65,7 @@ lspconfig.rust_analyzer.setup({
 lspconfig.gopls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	on_init = on_init,
 	cmd = { "gopls", "serve" },
 	filetypes = { "go", "gomod" },
 	settings = {
@@ -80,6 +83,7 @@ capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
 lspconfig.pyright.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	on_init = on_init,
 	filetypes = { "python" },
 	settings = {
 		python = {
