@@ -93,7 +93,7 @@ local plugins = {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		event = "InsertEnter",
+		ft = { "python", "go", "rust", "lua", "yaml" },
 		config = function()
 			require("copilot").setup({
 				suggestion = {
