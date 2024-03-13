@@ -47,7 +47,6 @@ M.mason = {
 		"shfmt",
 
 		-- yaml stuff
-		"yamlfmt",
 		"yaml-language-server",
 
 		-- toml stuff
