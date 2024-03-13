@@ -144,6 +144,14 @@ local plugins = {
 		"NvChad/nvim-colorizer.lua",
 		enabled = false,
 	},
+
+	-- Nvim-tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		opts = {
+			git = { enable = true },
+		},
+	},
 }
 
 return plugins
