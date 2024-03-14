@@ -89,26 +89,10 @@ local plugins = {
 		},
 	},
 
-	-- Copilot
+	-- Codeium
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		ft = { "python", "go", "rust", "lua", "yaml" },
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-g>",
-						accept_word = false,
-						accept_line = false,
-						next = "<C-n>",
-						prev = "<C-p>",
-						dismiss = "<C-x>",
-					},
-				},
-			})
-		end,
+		"Exafunction/codeium.vim",
+		event = "InsertEnter",
 	},
 
 	-- Diffview
