@@ -15,9 +15,6 @@ end
 
 local mappings = {
 	n = {
-		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-		["<C-i>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-		["<C-b>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 		["<leader>tt"] = {
 			function()
 				require("neotest").run.run()
