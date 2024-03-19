@@ -1,98 +1,76 @@
 local configs = require("nvchad.configs.lspconfig")
 
-local on_attach = configs.on_attach
-local on_init = configs.on_init
-local capabilities = configs.capabilities
-
-local lspconfig = require("lspconfig")
-
--- if you just want default config for the servers then put them in a table
 local servers = {
-	"bashls",
-	"taplo",
-	"yamlls",
-}
-
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		on_init = on_init,
-	})
-end
-
--- ruff_lsp
-lspconfig.ruff_lsp.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	on_init = on_init,
-	filetypes = { "python" },
-	init_options = {
-		settings = {
-			-- Any extra CLI arguments for `ruff` go here.
-			lint = {
-				args = {
-					"--select=ARG,F,E,W,B,C4,UP,RUF",
-					"--line-length=88",
+	bashls = {},
+	taplo = {},
+	yamlls = {},
+	ruff_lsp = {
+		init_options = {
+			settings = {
+				-- Any extra CLI arguments for `ruff` go here.
+				lint = {
+					args = {
+						"--select=ARG,F,E,W,B,C4,UP,RUF",
+						"--line-length=88",
+					},
 				},
 			},
 		},
 	},
-})
+	rust_analyzer = {
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					enable = true,
+				},
+				cargo = {
+					allFeatures = true,
+				},
+				checkOnSave = {
+					command = "clippy",
+				},
+			},
+		},
+	},
+	gopls = {
+		cmd = { "gopls", "serve" },
+		settings = {
+			gopls = {
+				analyses = {
+					unusedparams = true,
+					shadow = true,
+				},
+				staticcheck = true,
+			},
+		},
+	},
+	pyright = {
+		settings = {
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "openFilesOnly",
+					useLibraryCodeForTypes = true,
+					typeCheckingMode = "basis",
+				},
+			},
+		},
+	},
+}
 
--- rust_analyzer
-lspconfig.rust_analyzer.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	on_init = on_init,
-	filetypes = { "rust" },
-	settings = {
-		["rust-analyzer"] = {
-			diagnostics = {
-				enable = true,
-			},
-			cargo = {
-				allFeatures = true,
-			},
-			checkOnSave = {
-				command = "clippy",
-			},
-		},
-	},
-})
+for name, opts in pairs(servers) do
+	opts.on_init = configs.on_init
+	opts.on_attach = configs.on_attach
 
--- gopls
-lspconfig.gopls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	on_init = on_init,
-	cmd = { "gopls", "serve" },
-	filetypes = { "go", "gomod" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-				shadow = true,
-			},
-			staticcheck = true,
-		},
-	},
-})
--- pyright
-capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-lspconfig.pyright.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-	on_init = on_init,
-	filetypes = { "python" },
-	settings = {
-		python = {
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "openFilesOnly",
-				useLibraryCodeForTypes = true,
-				typeCheckingMode = "basis",
-			},
-		},
-	},
-})
+	if name == "pyright" then
+		opts.capabilities = (function()
+			local capabilities = configs.capabilities
+			capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+			return capabilities
+		end)()
+	else
+		opts.capabilities = configs.capabilities
+	end
+
+	require("lspconfig")[name].setup(opts)
+end
