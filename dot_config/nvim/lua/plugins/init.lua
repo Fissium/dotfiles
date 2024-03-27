@@ -46,6 +46,8 @@ local plugins = {
 			"nvim-neotest/neotest-python",
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-neotest/nvim-nio",
 		},
 		config = function()
 			require("neotest").setup({
