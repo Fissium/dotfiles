@@ -11,7 +11,7 @@ local servers = {
 				lint = {
 					args = {
 						"--select=ARG,F,E,W,B,C4,UP,RUF",
-						"--line-length=88",
+						"--line-length=120",
 					},
 				},
 			},
