@@ -9,7 +9,7 @@ M.formatters_by_ft = {
 	-- toml
 	toml = { "taplo" },
 	-- yaml
-	yaml = { "prettierd" },
+	yaml = { "yamlfmt" },
 	-- shell
 	sh = { "shfmt" },
 	-- go
@@ -18,8 +18,6 @@ M.formatters_by_ft = {
 	rust = { "rustfmt" },
 	-- json
 	json = { "jq" },
-	-- javascript
-	javascript = { "prettierd" },
 }
 
 M.formatters = {

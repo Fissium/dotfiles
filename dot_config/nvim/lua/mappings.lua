@@ -1,17 +1,5 @@
 require("nvchad.mappings")
 local map = vim.keymap.set
-local fn = vim.fn
-
--- Options for the Codeium mappings
-local function codeiumOpts(desc)
-	local codeium_opts = {
-		noremap = true,
-		silent = true,
-		expr = true,
-	}
-	codeium_opts.desc = desc
-	return codeium_opts
-end
 
 local mappings = {
 	n = {
@@ -59,16 +47,3 @@ for mode, maps in pairs(mappings) do
 		map(mode, key, val[1], { desc = val[2] })
 	end
 end
-
-map("i", "<C-g>", function()
-	return fn["codeium#Accept"]()
-end, codeiumOpts("Codeium accept suggestion"))
-map("i", "<C-n>", function()
-	return fn["codeium#CycleCompletions"](1)
-end, codeiumOpts("Codeium cycle completions forwards"))
-map("i", "<C-p>", function()
-	return fn["codeium#CycleCompletions"](-1)
-end, codeiumOpts("Codeium cycle completions backwards"))
-map("i", "<C-x>", function()
-	return fn["codeium#Clear"]()
-end, codeiumOpts("Codeium clear completions"))

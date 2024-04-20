@@ -20,7 +20,6 @@ M.treesitter = {
 		"gosum",
 		"rust",
 		"make",
-		"javascript",
 	},
 	indent = {
 		enable = true,
@@ -48,6 +47,7 @@ M.mason = {
 
 		-- yaml stuff
 		"yaml-language-server",
+		"yamlfmt",
 
 		-- toml stuff
 		"taplo",
@@ -59,9 +59,6 @@ M.mason = {
 
 		-- rust stuff
 		"rust-analyzer",
-
-		-- javascript stuff
-		"prettierd",
 	},
 }
 
