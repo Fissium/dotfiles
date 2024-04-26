@@ -4,19 +4,7 @@ local servers = {
 	bashls = {},
 	taplo = {},
 	yamlls = {},
-	ruff_lsp = {
-		init_options = {
-			settings = {
-				-- Any extra CLI arguments for `ruff` go here.
-				lint = {
-					args = {
-						"--select=ARG,F,E,W,B,C4,UP,RUF",
-						"--line-length=88",
-					},
-				},
-			},
-		},
-	},
+	ruff = {},
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
