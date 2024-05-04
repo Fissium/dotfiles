@@ -38,6 +38,7 @@ M.mason = {
 		-- python stuff
 		"pyright",
 		"ruff",
+		"ruff_lsp",
 
 		-- bash stuff
 		"bash-language-server",
