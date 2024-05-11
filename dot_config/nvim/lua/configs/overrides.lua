@@ -18,7 +18,6 @@ M.treesitter = {
 		"go",
 		"gomod",
 		"gosum",
-		"rust",
 		"make",
 	},
 	indent = {
@@ -57,7 +56,6 @@ M.mason = {
 		"goimports",
 
 		-- rust stuff
-		"rust-analyzer",
 	},
 }
 
