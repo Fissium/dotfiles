@@ -5,21 +5,6 @@ local servers = {
 	taplo = {},
 	yamlls = {},
 	ruff = {},
-	rust_analyzer = {
-		settings = {
-			["rust-analyzer"] = {
-				diagnostics = {
-					enable = true,
-				},
-				cargo = {
-					allFeatures = true,
-				},
-				checkOnSave = {
-					command = "clippy",
-				},
-			},
-		},
-	},
 	gopls = {
 		cmd = { "gopls", "serve" },
 		settings = {
