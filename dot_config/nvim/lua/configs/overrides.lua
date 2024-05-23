@@ -15,6 +15,7 @@ M.treesitter = {
 		"bash",
 		"fish",
 		"gitignore",
+		"gitcommit",
 		"go",
 		"gomod",
 		"gosum",
