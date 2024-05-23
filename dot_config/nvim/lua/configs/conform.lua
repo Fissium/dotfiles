@@ -5,7 +5,7 @@ M.formatters_by_ft = {
 	-- lua
 	lua = { "stylua" },
 	-- python
-	python = { "ruff_sort", "ruff_organize_imports" },
+	python = { "ruff_organize_imports", "ruff_format" },
 	-- toml
 	toml = { "taplo" },
 	-- yaml
