@@ -71,9 +71,15 @@ local plugins = {
 	-- Smooth scroll
 	{
 		"karb94/neoscroll.nvim",
-		keys = { "<C-d>", "<C-u>" },
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
-			require("neoscroll").setup()
+			local opts = {
+				mappings = {
+					"<C-u>",
+					"<C-d>",
+				},
+			}
+			require("neoscroll").setup(opts)
 		end,
 	},
 
