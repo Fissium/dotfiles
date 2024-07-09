@@ -1,2 +1,34 @@
+local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "fish"
 vim.g.copilot_proxy = "http://localhost:1080"
+
+autocmd("VimEnter", {
+	command = ":silent !kitty @ set-spacing padding=0 margin=0",
+})
+
+autocmd("VimLeavePre", {
+	command = ":silent !kitty @ set-spacing padding=20 margin=10",
+})
+
+autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		local line = vim.fn.line("'\"")
+		if
+			line > 1
+			and line <= vim.fn.line("$")
+			and vim.bo.filetype ~= "commit"
+			and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
+		then
+			vim.cmd('normal! g`"')
+		end
+	end,
+})
+
+autocmd("BufEnter", {
+	callback = function()
+		if vim.fn.winnr("$") == 1 and vim.bo.filetype == "NvimTree" then
+			vim.cmd("q")
+		end
+	end,
+})
