@@ -147,15 +147,6 @@ local plugins = {
 		opts = {},
 	},
 
-  -- Pretty diagnostic
-	{
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("tiny-inline-diagnostic").setup()
-		end,
-	},
-
 	-- To make a plugin not be loaded
 	{
 		"NvChad/nvim-colorizer.lua",

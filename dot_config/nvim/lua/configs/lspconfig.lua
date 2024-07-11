@@ -1,5 +1,4 @@
 local configs = require("nvchad.configs.lspconfig")
-vim.diagnostic.config({ virtual_text = false })
 
 local servers = {
 	bashls = {},
