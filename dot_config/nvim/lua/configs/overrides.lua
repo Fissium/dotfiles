@@ -56,7 +56,13 @@ M.mason = {
 		"gofumpt",
 		"goimports",
 
-		-- rust stuff
+		-- docker stuff
+		"hadolint",
+		"dockerfile-language-server",
+		"docker-compose-language-service",
+
+		-- json stuff
+		"jq",
 	},
 }
 
