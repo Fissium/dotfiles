@@ -39,6 +39,10 @@ local mappings = {
 			end,
 			"Format with conform",
 		},
+		["<leader>yc"] = {
+			":Telescope yaml_schema<CR>",
+			"Select a schema for the current buffer",
+		},
 	},
 }
 

@@ -47,6 +47,7 @@ M.mason = {
 		-- yaml stuff
 		"yaml-language-server",
 		"yamlfmt",
+		"yamllint",
 
 		-- toml stuff
 		"taplo",
@@ -59,7 +60,6 @@ M.mason = {
 		-- docker stuff
 		"hadolint",
 		"dockerfile-language-server",
-		"docker-compose-language-service",
 
 		-- json stuff
 		"jq",

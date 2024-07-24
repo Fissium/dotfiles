@@ -6,7 +6,6 @@ local servers = {
 	yamlls = {},
 	ruff = {},
 	dockerls = {},
-	docker_compose_language_service = {},
 	gopls = {
 		cmd = { "gopls", "serve" },
 		settings = {

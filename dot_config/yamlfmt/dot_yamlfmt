@@ -1,0 +1,8 @@
+formatter:
+  retain_line_breaks_single: true
+  indentless_arrays: false
+  scan_folded_as_literal: true
+  indent: 2
+  doublestar: true
+  max_line_length: 80
+  include_document_start: true

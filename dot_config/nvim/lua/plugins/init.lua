@@ -1,5 +1,6 @@
 local overrides = require("configs.overrides")
-local conform_options = require("configs.conform")
+local conform_opts = require("configs.conform")
+local yaml_opts = require("configs.yaml-companion")
 
 local plugins = {
 
@@ -63,8 +64,8 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
 		opts = {
-			formatters_by_ft = conform_options.formatters_by_ft,
-			formatters = conform_options.formatters,
+			formatters_by_ft = conform_opts.formatters_by_ft,
+			formatters = conform_opts.formatters,
 		},
 	},
 
@@ -75,6 +76,7 @@ local plugins = {
 		config = function()
 			require("lint").linters_by_ft = {
 				dockerfile = { "hadolint" },
+				yaml = { "yamllint" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
@@ -118,7 +120,7 @@ local plugins = {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		ft = { "python", "go", "rust" },
+		ft = { "python", "go", "rust", "yaml" },
 		config = function()
 			require("copilot").setup({
 				suggestion = {
@@ -159,9 +161,35 @@ local plugins = {
 	-- Todo
 	{
 		"folke/todo-comments.nvim",
-		ft = { "python", "go", "rust" },
+		ft = { "python", "go", "rust", "yaml" },
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+	},
+
+	-- K8S
+	{
+		"someone-stole-my-name/yaml-companion.nvim",
+		ft = { "yaml" },
+		opts = yaml_opts.opts,
+		dependencies = {
+			{ "neovim/nvim-lspconfig" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		config = function(_, opts)
+			local cfg = require("yaml-companion").setup(opts)
+			require("lspconfig")["yamlls"].setup(cfg)
+			require("telescope").load_extension("yaml_schema")
+		end,
+	},
+
+	-- Markdown
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		ft = { "markdown" },
+		main = "render-markdown",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- To make a plugin not be loaded
