@@ -6,3 +6,4 @@ formatter:
   doublestar: true
   max_line_length: 80
   include_document_start: true
+  pad_line_comments: 2

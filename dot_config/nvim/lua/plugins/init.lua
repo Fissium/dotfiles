@@ -39,26 +39,6 @@ local plugins = {
 		end,
 	},
 
-	-- Neotest
-	{
-		"nvim-neotest/neotest",
-		keys = { "<leader>tt", "<leader>tf" },
-		dependencies = {
-			"nvim-neotest/neotest-python",
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-lua/plenary.nvim",
-			"antoinemadec/FixCursorHold.nvim",
-			"nvim-neotest/nvim-nio",
-		},
-		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-python"),
-				},
-			})
-		end,
-	},
-
 	-- Formatter
 	{
 		"stevearc/conform.nvim",
@@ -116,26 +96,10 @@ local plugins = {
 		},
 	},
 
-	-- Copilot
+	-- Codeium
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
+		"Exafunction/codeium.vim",
 		ft = { "python", "go", "rust", "yaml" },
-		config = function()
-			require("copilot").setup({
-				suggestion = {
-					auto_trigger = true,
-					keymap = {
-						accept = "<C-g>",
-						accept_word = false,
-						accept_line = false,
-						next = "<C-n>",
-						prev = "<C-p>",
-						dismiss = "<C-x>",
-					},
-				},
-			})
-		end,
 	},
 
 	-- Diffview
