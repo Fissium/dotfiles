@@ -1,5 +1,5 @@
+set forcekitty
 priority bat
-set noimages
 
 preview notebook .ipynb {{
   jq -j '
