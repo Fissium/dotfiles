@@ -1,8 +1,10 @@
 # preview
-set previewer ctpv
-set cleaner ctpvclear
-&ctpv -s $id
-&ctpvquit $id
+# set previewer ctpv
+# set cleaner ctpvclear
+# &ctpv -s $id
+# &ctpvquit $id
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
 
 # icons
 set icons
