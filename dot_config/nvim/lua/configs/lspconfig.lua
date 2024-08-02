@@ -30,8 +30,6 @@ local servers = {
 					diagnosticMode = "openFilesOnly",
 					useLibraryCodeForTypes = true,
 					typeCheckingMode = "basis",
-					-- Ignore all files for analysis to exclusively use Ruff for linting
-					ignore = { "*" },
 				},
 			},
 		},
