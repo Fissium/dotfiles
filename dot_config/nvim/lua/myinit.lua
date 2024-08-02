@@ -1,6 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "fish"
-vim.g.codeium_disable_bindings = 1
 
 autocmd("VimEnter", {
 	command = ":silent !kitty @ set-spacing padding=0 margin=0",

@@ -96,12 +96,6 @@ local plugins = {
 		},
 	},
 
-	-- Codeium
-	{
-		"Exafunction/codeium.vim",
-		ft = { "python", "go", "rust", "yaml" },
-	},
-
 	-- Diffview
 	{
 		"sindrets/diffview.nvim",
