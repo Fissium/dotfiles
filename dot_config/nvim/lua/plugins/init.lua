@@ -124,6 +124,28 @@ local plugins = {
 		opts = {},
 	},
 
+	-- Copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		ft = { "python", "go", "rust", "dockerfile" },
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					auto_trigger = true,
+					keymap = {
+						accept = "<C-g>",
+						accept_word = false,
+						accept_line = false,
+						next = "<C-n>",
+						prev = "<C-p>",
+						dismiss = "<C-x>",
+					},
+				},
+			})
+		end,
+	},
+
 	-- K8S
 	{
 		"someone-stole-my-name/yaml-companion.nvim",
