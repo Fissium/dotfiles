@@ -7,3 +7,4 @@ formatter:
   max_line_length: 80
   include_document_start: true
   pad_line_comments: 2
+  trim_trailing_whitespace: true
