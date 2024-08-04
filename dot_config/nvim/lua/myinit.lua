@@ -1,6 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "fish"
-vim.g.copilot_proxy = "http://localhost:1080"
+vim.g.copilot_proxy = "socks5://localhost:1080"
 
 autocmd("VimEnter", {
 	command = ":silent !kitty @ set-spacing padding=0 margin=0",

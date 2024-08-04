@@ -3,26 +3,6 @@ local map = vim.keymap.set
 
 local mappings = {
 	n = {
-		["<leader>tt"] = {
-			function()
-				require("neotest").run.run()
-			end,
-			"Run nearest test",
-		},
-		["<leader>tf"] = {
-			function()
-				require("neotest").run.run(vim.fn.expand("%"))
-			end,
-			"Run file test",
-		},
-		["<leader>to"] = {
-			":Neotest output<CR>",
-			"Test output",
-		},
-		["<leader>ts"] = {
-			":Neotest summary<CR>",
-			"Test summary",
-		},
 		["<leader>gd"] = {
 			":DiffviewOpen<CR>",
 			"Open diffview",
