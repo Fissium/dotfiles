@@ -20,6 +20,7 @@ M.treesitter = {
 		"gomod",
 		"gosum",
 		"make",
+		"html",
 	},
 	indent = {
 		enable = true,
