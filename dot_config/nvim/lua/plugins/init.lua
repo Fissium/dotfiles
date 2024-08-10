@@ -165,9 +165,8 @@ local plugins = {
 
 	-- Markdown
 	{
-		"MeanderingProgrammer/markdown.nvim",
-		lazy = false,
-		main = "render-markdown",
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown" },
 		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	},
