@@ -5,7 +5,7 @@ env_prompt: ''
 channel_priority: strict
 {{ if eq .chezmoi.os "linux" }}
 pkgs_dirs:
-  - /data/.cache/conda/pkgs
+  - /home/fissium/.cache/conda/pkgs
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" }}
 pkgs_dirs:
