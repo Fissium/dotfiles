@@ -37,7 +37,16 @@ zinit ice lucid wait'0'
 zinit light joshskidmore/zsh-fzf-history-search
 
 #load
+{{- if eq .chezmoi.os "darwin" }}
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  autoload -U compinit && compinit -d "${ZSH_COMPDUMP}"
+fi
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
 autoload -U compinit && compinit -d "${ZSH_COMPDUMP}"
+{{- end }}
 zinit cdreplay -q
 
 
