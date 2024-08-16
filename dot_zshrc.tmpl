@@ -2,9 +2,6 @@
 unsetopt beep
 # Emacs keys
 bindkey -e
-# Cycle history
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
 # Zinit 
 {{- if eq .chezmoi.os "darwin" }}
 ZINIT_HOME="/Users/$USER/.local/share/zinit/zinit.git"
