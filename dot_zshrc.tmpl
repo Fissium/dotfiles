@@ -1,0 +1,72 @@
+# No bell: Shut up Zsh
+unsetopt beep
+# Emacs keys
+bindkey -e
+# Zinit 
+ZINIT_HOME="/home/$USER/.local/share/zinit/zinit.git"
+
+# ZSH COMPDUMP
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}-${ZSH_VERSION}"
+
+# Fix cursor
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+precmd_functions+=(_fix_cursor)
+
+# check zinit
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git --depth 1 "$ZINIT_HOME"
+fi
+
+source "$ZINIT_HOME/zinit.zsh"
+
+#plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+zinit ice lucid wait'0'
+zinit light joshskidmore/zsh-fzf-history-search
+
+#load
+autoload -U compinit && compinit -d "${ZSH_COMPDUMP}"
+zinit cdreplay -q
+
+
+#History
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+#completion-style
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}' 
+zstyle ':completion:*' menu no 
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd $realpath' 
+
+# Functions
+lfcd () {
+    cd "$(command lf -print-last-dir "$@")"
+}
+
+#Alias
+alias ls="lsd"
+alias mamba="micromamba"
+alias lt="lsd --tree --depth"
+alias ssh="kitten ssh"
+alias lf="lfcd"
+
+# starship
+eval "$(starship init zsh)"
