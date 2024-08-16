@@ -1,0 +1,10 @@
+export EDITOR="nvim"
+export VISUAL="nvim"
+export OPENER="xdg-open"
+export GOPATH="/projects/go"
+export GOMODCACHE="/projects/go/pkg/mod"
+export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
+
+typeset -U path PATH
+path=(~/.local/bin $GOPATH/bin $path)
+export PATH
