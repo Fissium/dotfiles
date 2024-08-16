@@ -14,10 +14,10 @@ export PATH
 
 {{- if eq .chezmoi.os "darwin" }}
 export OPENER="open"
-export GOPATH="/Users/fissium/Projects/go"
+export GOPATH="${HOME}/Projects/go"
 export HOMEBREW_INSTALL_FROM_API=1
 
 typeset -U path PATH
-path=(~/.local/bin /opt/homebrew/bin $GOPATH/bin $path)
+path=($HOME/.local/bin /opt/homebrew/bin $GOPATH/bin $path)
 export PATH
 {{- end }}
