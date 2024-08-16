@@ -1,10 +1,23 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
+export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
+
+{{- if eq .chezmoi.os "linux" }}
 export OPENER="xdg-open"
 export GOPATH="/projects/go"
 export GOMODCACHE="/projects/go/pkg/mod"
-export ZSH_CACHE_DIR="${HOME}/.cache/zsh"
 
 typeset -U path PATH
 path=(~/.local/bin $GOPATH/bin $path)
 export PATH
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+export OPENER="open"
+export GOPATH="/Users/fissium/Projects/go"
+export HOMEBREW_INSTALL_FROM_API=1
+
+typeset -U path PATH
+path=(~/.local/bin /opt/homebrew/bin $GOPATH/bin $path)
+export PATH
+{{- end }}
