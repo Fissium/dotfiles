@@ -35,6 +35,7 @@ unsetopt beep
 export HISTSIZE=100000
 export SAVEHIST=20000
 export HISTFILE="$HOME/.config/zsh/history"
+export HIST_STAMPS="%d/%m/%y %T"
 setopt hist_ignore_dups     # do not record an event that was just recorded again
 setopt hist_ignore_all_dups # delete an old recorded event if a new event is a duplicate
 setopt hist_ignore_space    # do not record an event starting with a space
@@ -94,11 +95,13 @@ eval "$(starship init zsh)"
 # fzf in terminal, fzf must be installed to use this
 eval "$(fzf --zsh)"
 
-# fzf catppuccin theme
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#2c313a,bg:#1e222a,spinner:#c678dd,hl:#61afef \
---color=fg:#abb2bf,header:#61afef,info:#56b6c2,pointer:#e06c75 \
---color=marker:#e06c75,fg+:#dcdfe4,prompt:#98c379,hl+:#61afef"
+# fzf theme
+export FZF_DEFAULT_OPTS="\
+--border \
+--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 \
+--color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 \
+--color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 \
+--color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 
 {{- if eq .chezmoi.os "linux" }}
 # >>> mamba initialize >>>
