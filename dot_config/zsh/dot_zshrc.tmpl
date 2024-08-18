@@ -28,6 +28,10 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
+# zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # No bell: Shut up Zsh
 unsetopt beep
 
@@ -54,6 +58,9 @@ lfcd () {
 
 # fix vi plugin conflicting with fzf
 export ZVM_INIT_MODE=sourcing
+
+# zsh-history-substring-search
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=""
 
 # basic plugin manager to automatically import zsh plugins
 # script by mattmc3 from https://github.com/mattmc3/zsh_unplugged
@@ -84,8 +91,9 @@ repos=(
 	jeffreytse/zsh-vi-mode
 
 	romkatv/zsh-defer
-	zsh-users/zsh-autosuggestions
 	zdharma-continuum/fast-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+	zsh-users/zsh-autosuggestions
 )
 plugin-load $repos
 
