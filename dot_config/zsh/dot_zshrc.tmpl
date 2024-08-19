@@ -7,7 +7,6 @@ if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
-  zstyle ':completion:*' menu select
   zmodload zsh/complist
   _comp_options+=(globdots)
   compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
@@ -20,13 +19,6 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 compinit -d $XDG_CONFIG_HOME/zsh/zcompdump-$ZSH_VERSION
 {{- end }}
-
-# use vim keys in tab complete menu
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 # zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
@@ -91,11 +83,20 @@ repos=(
 	jeffreytse/zsh-vi-mode
 
 	romkatv/zsh-defer
+  Aloxaf/fzf-tab
 	zdharma-continuum/fast-syntax-highlighting
   zsh-users/zsh-history-substring-search
 	zsh-users/zsh-autosuggestions
 )
 plugin-load $repos
+
+#completion-style
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}' 
+zstyle ':completion:*' menu no 
+zstyle ':fzf-tab:*' fzf-flags --height=~10
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd $realpath'
+zstyle ':completion:*:descriptions' format '[%d]'
 
 # starship
 eval "$(starship init zsh)"
