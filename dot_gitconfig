@@ -21,3 +21,9 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[includeIf "gitdir:${HOME}/Projects/hoff/"]
+    path = ~/.gitconfig-work
+[includeIf "gitdir:/projects/hoff/"]
+    path = ~/.gitconfig-work
+[includeIf "gitdir:${HOME}/Work/"]
+    path = ~/.gitconfig-work
