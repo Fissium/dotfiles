@@ -98,6 +98,9 @@ zstyle ':fzf-tab:*' fzf-flags --height=~10
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd $realpath'
 zstyle ':completion:*:descriptions' format '[%d]'
 
+# fast-syntax-highlighting
+zle_highlight=('paste:none')
+
 # starship
 eval "$(starship init zsh)"
 
