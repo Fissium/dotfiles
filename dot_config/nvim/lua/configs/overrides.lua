@@ -19,8 +19,8 @@ M.treesitter = {
 		"go",
 		"gomod",
 		"gosum",
+		"helm",
 		"make",
-		"html",
 	},
 	indent = {
 		enable = true,
@@ -61,9 +61,6 @@ M.mason = {
 		-- docker stuff
 		"hadolint",
 		"dockerfile-language-server",
-
-		-- json stuff
-		"jq",
 	},
 }
 

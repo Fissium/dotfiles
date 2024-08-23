@@ -177,6 +177,16 @@ local plugins = {
 		enabled = false,
 	},
 
+	-- Override nvim-autopairs
+	{
+		"windwp/nvim-autopairs",
+		dependencies = { "hrsh7th/nvim-cmp" },
+		event = "InsertEnter",
+		config = function()
+			require("configs.nvim-autopairs")
+		end,
+	},
+
 	-- Nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",

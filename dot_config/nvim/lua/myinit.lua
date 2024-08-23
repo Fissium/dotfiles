@@ -47,3 +47,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 	desc = "LSP: Disable hover capability from Ruff",
 })
+
+-- Helm
+vim.filetype.add({
+	extension = {
+		gotmpl = "helm", -- For files with the ".gotmpl" extension
+	},
+	pattern = {
+		[".*/templates/.*%.ya?ml"] = "helm", -- Matches Helm templates with .yaml or .yml extensions
+		[".*/templates/.*%.tpl"] = "helm", -- Matches Helm templates with .tpl extension
+		["helmfile.*%.ya?ml"] = "helm", -- Matches helmfile.yaml or helmfile.yml
+	},
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "helm",
+	callback = function()
+		-- Set a custom commentstring for Helm files
+		vim.opt_local.commentstring = "{{/* %s */}}"
+	end,
+})

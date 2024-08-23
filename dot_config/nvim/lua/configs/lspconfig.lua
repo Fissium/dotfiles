@@ -5,6 +5,7 @@ local servers = {
 	taplo = {},
 	yamlls = {},
 	ruff = {},
+  helm_ls = {},
 	dockerls = {},
 	gopls = {
 		cmd = { "gopls", "serve" },
