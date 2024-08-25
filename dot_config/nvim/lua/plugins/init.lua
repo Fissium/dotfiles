@@ -187,6 +187,21 @@ local plugins = {
 		end,
 	},
 
+	-- Fix helm commentstring
+	{
+		"numToStr/Comment.nvim",
+		ft = "helm",
+		config = function()
+			require("Comment").setup({
+				pre_hook = function()
+					if vim.bo.filetype == "helm" then
+						return "{{/* %s */}}"
+					end
+				end,
+			})
+		end,
+	},
+
 	-- Nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
