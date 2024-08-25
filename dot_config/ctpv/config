@@ -24,3 +24,12 @@ preview javascript application/javascript {{
   --terminal-width "$w" \
   --wrap character "$f"
 }}
+
+preview markdown .md {{
+  bat \
+  --color always \
+  --style plain \
+  --paging never \
+  --terminal-width "$w" \
+  --wrap character "$f"
+}}
