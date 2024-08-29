@@ -55,9 +55,11 @@ vim.filetype.add({
 		gotmpl = "helm", -- For files with the ".gotmpl" extension
 	},
 	pattern = {
-		[".*/templates/.*%.ya?ml"] = "helm", -- Matches Helm templates with .yaml or .yml extensions
-		[".*/templates/.*%.tpl"] = "helm", -- Matches Helm templates with .tpl extension
-		["helmfile.*%.ya?ml"] = "helm", -- Matches helmfile.yaml or helmfile.yml
+		[".*/templates/.*%.ya?ml"] = function(filename)
+			return filename:match("ci.yaml") and "yaml" or "helm"
+		end,
+		[".*/templates/.*%.tpl"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
 
