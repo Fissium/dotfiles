@@ -1,3 +1,8 @@
+{{ if eq .chezmoi.os "linux" }}
 log_dir = "/home/fissium/.cache/pdm/log"
+{{- end }}
+{{ if eq .chezmoi.os "darwin" }}
+log_dir = "/Users/fissium/.cache/pdm/log"
+{{- end }}
 [install]
 cache = false
