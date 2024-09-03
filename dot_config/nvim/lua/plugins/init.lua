@@ -202,6 +202,13 @@ local plugins = {
 		end,
 	},
 
+  -- Colorful separator
+	{
+		"nvim-zh/colorful-winsep.nvim",
+		config = true,
+		event = { "WinLeave" },
+	},
+
 	-- Nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
