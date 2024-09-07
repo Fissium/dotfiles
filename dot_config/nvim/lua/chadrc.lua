@@ -20,4 +20,39 @@ M.ui = {
 	},
 }
 
+M.mason = {
+	cmd = true,
+	pkgs = {
+		-- lua stuff
+		"lua-language-server",
+		"stylua",
+
+		-- python stuff
+		"pyright",
+		"ruff",
+
+		-- bash stuff
+		"bash-language-server",
+		"shellcheck",
+		"shfmt",
+
+		-- yaml stuff
+		"yaml-language-server",
+		"yamlfmt",
+		"yamllint",
+
+		-- toml stuff
+		"taplo",
+
+		-- go stuff
+		"gopls",
+		"gofumpt",
+		"goimports",
+
+		-- docker stuff
+		"hadolint",
+		"dockerfile-language-server",
+	},
+}
+
 return M
