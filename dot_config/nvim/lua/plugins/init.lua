@@ -202,11 +202,31 @@ local plugins = {
 		end,
 	},
 
-  -- Colorful separator
+	-- Remote development
 	{
-		"nvim-zh/colorful-winsep.nvim",
-		config = true,
-		event = { "WinLeave" },
+		"nosduco/remote-sshfs.nvim",
+		cmd = {
+			"RemoteSSHFSConnect",
+			"RemoteSSHFSDisconnect",
+			"RemoteSSHFSEdit",
+			"RemoteSSHFSFindFiles",
+			"RemoteSSHFSLiveGrep",
+		},
+		opts = {
+			mounts = {
+				base_dir = vim.fn.expand("$HOME") .. "/.cache/.sshfs/",
+				unmount_on_exit = true,
+			},
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope.nvim",
+				opts = function()
+					require("telescope").load_extension("remote-sshfs")
+				end,
+			},
+		},
 	},
 
 	-- Nvim-tree

@@ -1,5 +1,6 @@
 require("nvchad.mappings")
 local map = vim.keymap.set
+local api = require("remote-sshfs.api")
 
 local mappings = {
 	n = {
@@ -22,6 +23,14 @@ local mappings = {
 		["<leader>yc"] = {
 			":Telescope yaml_schema<CR>",
 			"Select a schema for the current buffer",
+		},
+		["<leader>rc"] = {
+			api.connect,
+			"SSHFS Connect",
+		},
+		["<leader>rd"] = {
+			api.disconnect,
+			"SSHFS Disconnect",
 		},
 	},
 }
