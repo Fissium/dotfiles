@@ -41,9 +41,6 @@ M.mason = {
 		"yamlfmt",
 		"yamllint",
 
-		-- toml stuff
-		"taplo",
-
 		-- go stuff
 		"gopls",
 		"gofumpt",

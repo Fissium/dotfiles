@@ -2,7 +2,6 @@ local configs = require("nvchad.configs.lspconfig")
 
 local servers = {
 	bashls = {},
-	taplo = {},
 	yamlls = {},
 	ruff = {},
 	helm_ls = {},
