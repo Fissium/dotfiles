@@ -220,12 +220,7 @@ local plugins = {
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope.nvim",
-				opts = function()
-					require("telescope").load_extension("remote-sshfs")
-				end,
-			},
+			"nvim-telescope/telescope.nvim",
 		},
 	},
 
