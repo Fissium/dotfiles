@@ -197,9 +197,6 @@ local plugins = {
 		cmd = {
 			"RemoteSSHFSConnect",
 			"RemoteSSHFSDisconnect",
-			"RemoteSSHFSEdit",
-			"RemoteSSHFSFindFiles",
-			"RemoteSSHFSLiveGrep",
 		},
 		opts = {
 			mounts = {
