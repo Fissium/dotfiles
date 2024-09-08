@@ -105,17 +105,6 @@ local plugins = {
 		},
 	},
 
-	-- Hlargs
-	{
-		"m-demare/hlargs.nvim",
-		ft = { "python", "go", "rust" },
-		config = function()
-			require("hlargs").setup({
-				hl_priority = 200,
-			})
-		end,
-	},
-
 	-- Todo
 	{
 		"folke/todo-comments.nvim",
@@ -222,6 +211,40 @@ local plugins = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+	},
+
+	-- Jump
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+  -- stylua: ignore
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+	},
+
+	-- Git
+	{
+		"NeogitOrg/neogit",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		init = function()
+			local map = vim.keymap.set
+			map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Neogit Open" })
+		end,
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "neogit")
+			require("neogit").setup(opts)
+		end,
 	},
 
 	-- Nvim-tree

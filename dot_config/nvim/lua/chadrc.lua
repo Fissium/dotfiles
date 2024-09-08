@@ -7,6 +7,7 @@ M.base46 = {
 	theme = "chadracula",
 	hl_override = highlights.override,
 	hl_add = highlights.add,
+	integrations = { "neogit" },
 }
 
 M.ui = {
