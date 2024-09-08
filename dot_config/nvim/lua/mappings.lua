@@ -31,6 +31,10 @@ local mappings = {
 			":RemoteSSHFSDisconnect<CR>",
 			"SSHFS Disconnect",
 		},
+		["<leader>dm"] = {
+			"<cmd>NoiceDismiss<CR>",
+			"Dismiss Noice Message",
+		},
 	},
 }
 
