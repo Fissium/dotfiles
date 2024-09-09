@@ -117,7 +117,7 @@ local plugins = {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		ft = { "python", "go", "rust", "dockerfile" },
+		ft = { "python", "go", "rust" },
 		config = function()
 			require("copilot").setup({
 				suggestion = {
