@@ -11,7 +11,7 @@ M.base46 = {
 }
 
 M.lsp = {
-	signature = false,
+	signature = true,
 }
 
 M.mason = {
