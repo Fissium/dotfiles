@@ -5,31 +5,41 @@ local mappings = {
 	n = {
 		["<leader>gd"] = {
 			":DiffviewOpen<CR>",
-			"Open diffview",
+			"open diffview",
 		},
 
 		["<leader>gc"] = {
 			":DiffviewClose<CR>",
-			"Close diffview",
+			"close diffview",
 		},
 		["<leader>fm"] = {
 
 			function()
 				require("conform").format()
 			end,
-			"Format with conform",
+			"format with conform",
 		},
 		["<leader>yc"] = {
 			":Telescope yaml_schema<CR>",
-			"Select a schema for the current buffer",
+			"select a schema for the current buffer",
 		},
 		["<leader>rc"] = {
 			":RemoteSSHFSConnect<CR>",
-			"SSHFS Connect",
+			"sshfs connect",
 		},
 		["<leader>rd"] = {
 			":RemoteSSHFSDisconnect<CR>",
-			"SSHFS Disconnect",
+			"sshfs disconnect",
+		},
+		["<leader>fd"] = {
+			function()
+				require("telescope.builtin").live_grep({
+					additional_args = function()
+						return { "--hidden", "--no-ignore" }
+					end,
+				})
+			end,
+			"telescope live grep all files",
 		},
 	},
 }
