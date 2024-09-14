@@ -41,6 +41,98 @@ local mappings = {
 			end,
 			"telescope live grep all files",
 		},
+		["<leader>sr"] = {
+			function()
+				local grug = require("grug-far")
+				local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+				grug.grug_far({
+					transient = true,
+					prefills = {
+						filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+					},
+				})
+			end,
+			"search and replace",
+		},
+		["s"] = {
+			function()
+				require("flash").jump()
+			end,
+			"Flash",
+		},
+		["S"] = {
+			function()
+				require("flash").treesitter()
+			end,
+			"Flash Treesitter",
+		},
+		["R"] = {
+			function()
+				require("flash").treesitter_search()
+			end,
+			"Treesitter Search",
+		},
+	},
+
+	v = {
+		["<leader>sr"] = {
+			function()
+				local grug = require("grug-far")
+				local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+				grug.grug_far({
+					transient = true,
+					prefills = {
+						filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+					},
+				})
+			end,
+			"search and replace",
+		},
+	},
+
+	o = {
+		["r"] = {
+			function()
+				require("flash").remote()
+			end,
+			"Remote Flash",
+		},
+		["R"] = {
+			function()
+				require("flash").treesitter_search()
+			end,
+			"Treesitter Search",
+		},
+	},
+
+	x = {
+		["s"] = {
+			function()
+				require("flash").jump()
+			end,
+			"Flash",
+		},
+		["S"] = {
+			function()
+				require("flash").treesitter()
+			end,
+			"Flash Treesitter",
+		},
+		["R"] = {
+			function()
+				require("flash").treesitter_search()
+			end,
+			"Treesitter Search",
+		},
+	},
+
+	c = {
+		["<c-s>"] = {
+			function()
+				require("flash").toggle()
+			end,
+			"Toggle Flash Search",
+		},
 	},
 }
 
