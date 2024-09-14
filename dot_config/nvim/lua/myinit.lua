@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "zsh"
 vim.g.copilot_proxy = "socks5://localhost:1080"
 vim.lsp.set_log_level("off")
+vim.g.maplocalleader = "\\"
 
 autocmd("VimEnter", {
 	command = ":silent !kitty @ set-spacing padding=0 margin=0",
