@@ -24,7 +24,7 @@ export GOPATH="${HOME}/Projects/go"
 export HOMEBREW_INSTALL_FROM_API=1
 
 typeset -U path PATH
-path=($HOME/.local/bin /opt/homebrew/bin $GOPATH/bin $path)
+path=($HOME/.local/bin /opt/homebrew/bin /usr/local/bin $GOPATH/bin $path)
 export PATH
 {{- end }}
 
