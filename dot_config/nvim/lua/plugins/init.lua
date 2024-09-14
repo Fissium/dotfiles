@@ -215,33 +215,13 @@ local plugins = {
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},
-  -- stylua: ignore
-  keys = {
-    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-  },
 	},
 
-	-- Git
+	-- search/replace in multiple files
 	{
-		"NeogitOrg/neogit",
-		cmd = { "Neogit" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		init = function()
-			local map = vim.keymap.set
-			map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Neogit Open" })
-		end,
-		config = function(_, opts)
-			dofile(vim.g.base46_cache .. "neogit")
-			require("neogit").setup(opts)
-		end,
+		"MagicDuck/grug-far.nvim",
+		opts = { headerMaxWidth = 80 },
+		cmd = "GrugFar",
 	},
 
 	-- Nvim-tree
