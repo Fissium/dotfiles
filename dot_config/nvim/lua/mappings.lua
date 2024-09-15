@@ -54,24 +54,6 @@ local mappings = {
 			end,
 			"search and replace",
 		},
-		["s"] = {
-			function()
-				require("flash").jump()
-			end,
-			"Flash",
-		},
-		["S"] = {
-			function()
-				require("flash").treesitter()
-			end,
-			"Flash Treesitter",
-		},
-		["R"] = {
-			function()
-				require("flash").treesitter_search()
-			end,
-			"Treesitter Search",
-		},
 	},
 
 	v = {
@@ -87,51 +69,6 @@ local mappings = {
 				})
 			end,
 			"search and replace",
-		},
-	},
-
-	o = {
-		["r"] = {
-			function()
-				require("flash").remote()
-			end,
-			"Remote Flash",
-		},
-		["R"] = {
-			function()
-				require("flash").treesitter_search()
-			end,
-			"Treesitter Search",
-		},
-	},
-
-	x = {
-		["s"] = {
-			function()
-				require("flash").jump()
-			end,
-			"Flash",
-		},
-		["S"] = {
-			function()
-				require("flash").treesitter()
-			end,
-			"Flash Treesitter",
-		},
-		["R"] = {
-			function()
-				require("flash").treesitter_search()
-			end,
-			"Treesitter Search",
-		},
-	},
-
-	c = {
-		["<c-s>"] = {
-			function()
-				require("flash").toggle()
-			end,
-			"Toggle Flash Search",
 		},
 	},
 }
