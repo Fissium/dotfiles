@@ -1,6 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "zsh"
-vim.g.copilot_proxy = "socks5://localhost:1080"
 vim.lsp.set_log_level("off")
 
 autocmd("VimEnter", {
