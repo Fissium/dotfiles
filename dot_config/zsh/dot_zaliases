@@ -10,3 +10,6 @@ alias ls='lsd --group-directories-first'
 alias ll='lsd -l --group-directories-first'
 alias la='lsd -la --group-directories-first'
 alias lt='lsd -l --group-directories-first --tree --depth=2'
+
+# disk usage
+alias duf='du -h --max-depth=1 2>&1 | grep -v "denied" | sort -hr'
