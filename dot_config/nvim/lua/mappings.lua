@@ -23,14 +23,6 @@ local mappings = {
 			":Telescope yaml_schema<CR>",
 			"select a schema for the current buffer",
 		},
-		["<leader>rc"] = {
-			":RemoteSSHFSConnect<CR>",
-			"sshfs connect",
-		},
-		["<leader>rd"] = {
-			":RemoteSSHFSDisconnect<CR>",
-			"sshfs disconnect",
-		},
 		["<leader>fd"] = {
 			function()
 				require("telescope.builtin").live_grep({
