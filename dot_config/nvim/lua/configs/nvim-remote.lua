@@ -10,12 +10,16 @@ M.opts = {
 				port
 			)
 		end
-		vim.fn.jobstart(cmd, {
-			detach = true,
-			on_exit = function(job_id, exit_code, event_type)
-				print("Client", job_id, "exited with code", exit_code, "Event type:", event_type)
-			end,
-		})
+		if cmd then
+			vim.fn.jobstart(cmd, {
+				detach = true,
+				on_exit = function(job_id, exit_code, event_type)
+					print("Client", job_id, "exited with code", exit_code, "Event type:", event_type)
+				end,
+			})
+		else
+			print("Unsupported terminal. Command not set.")
+		end
 	end,
 }
 

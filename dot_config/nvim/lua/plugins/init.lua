@@ -180,11 +180,7 @@ local plugins = {
 			"MunifTanjim/nui.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		config = function()
-			require("remote-nvim").setup({
-				client_callback = nvim_remote.opts.client_callback,
-			})
-		end,
+		opts = nvim_remote.opts,
 	},
 	-- Jump
 	{
