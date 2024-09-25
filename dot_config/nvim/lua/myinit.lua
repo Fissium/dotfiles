@@ -2,14 +2,6 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.o.shell = "zsh"
 vim.lsp.set_log_level("off")
 
-autocmd("VimEnter", {
-	command = ":silent !kitty @ set-spacing padding=0 margin=0",
-})
-
-autocmd("VimLeavePre", {
-	command = ":silent !kitty @ set-spacing padding=20 margin=10",
-})
-
 autocmd("BufReadPost", {
 	pattern = "*",
 	callback = function()
