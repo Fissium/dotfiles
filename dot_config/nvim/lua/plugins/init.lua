@@ -58,6 +58,9 @@ local plugins = {
 			require("lint").linters_by_ft = {
 				dockerfile = { "hadolint" },
 				yaml = { "yamllint" },
+				tf = { "tflint" },
+				terraform = { "tflint" },
+				["terraform-vars"] = { "tflint" },
 			}
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {

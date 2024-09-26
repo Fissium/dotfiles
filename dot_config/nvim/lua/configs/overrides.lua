@@ -21,6 +21,7 @@ M.treesitter = {
 		"gosum",
 		"helm",
 		"make",
+		"terraform",
 	},
 	indent = {
 		enable = true,

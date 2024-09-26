@@ -5,6 +5,7 @@ local servers = {
 	yamlls = {},
 	ruff = {},
 	helm_ls = {},
+	terraformls = {},
 	dockerls = {},
 	gopls = {
 		cmd = { "gopls", "serve" },
