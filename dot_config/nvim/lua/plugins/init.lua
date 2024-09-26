@@ -2,6 +2,7 @@ local overrides = require("configs.overrides")
 local conform_opts = require("configs.conform")
 local yaml_opts = require("configs.yaml-companion")
 local nvim_remote = require("configs.nvim-remote")
+local nvim_lint = require("configs.nvim-lint")
 
 local plugins = {
 
@@ -55,13 +56,7 @@ local plugins = {
 		"mfussenegger/nvim-lint",
 		event = "LspAttach",
 		config = function()
-			require("lint").linters_by_ft = {
-				dockerfile = { "hadolint" },
-				yaml = { "yamllint" },
-				tf = { "tflint" },
-				terraform = { "tflint" },
-				["terraform-vars"] = { "tflint" },
-			}
+			require("lint").linters_by_ft = nvim_lint.linters_by_ft
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
 				callback = function()
