@@ -1,6 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
-vim.o.shell = "zsh"
 vim.lsp.set_log_level("off")
+
+if vim.fn.executable("zsh") == 1 then
+	vim.o.shell = "zsh"
+else
+	vim.o.shell = "bash"
+end
 
 autocmd("BufReadPost", {
 	pattern = "*",
