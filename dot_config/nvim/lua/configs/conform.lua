@@ -10,9 +10,6 @@ M.formatters_by_ft = {
 	yaml = { "yamlfmt" },
 	-- shell
 	sh = { "shfmt" },
-	-- go
-	go = { "goimports", "gofumpt" },
-	-- rust
 	-- json
 	json = { "jq" },
 	-- terraform

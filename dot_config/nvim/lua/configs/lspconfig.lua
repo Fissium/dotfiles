@@ -7,18 +7,6 @@ local servers = {
 	helm_ls = {},
 	terraformls = {},
 	dockerls = {},
-	gopls = {
-		cmd = { "gopls", "serve" },
-		settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-					shadow = true,
-				},
-				staticcheck = true,
-			},
-		},
-	},
 	pyright = {
 		settings = {
 			pyright = {
