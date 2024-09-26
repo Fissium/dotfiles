@@ -3,7 +3,7 @@
 alias mamba="micromamba"
 alias ssh="kitten ssh"
 alias lf="lfcd"
-alias cat="bat"
+alias batcat="bat"
 
 # Create alias override commands using 'lsd'
 alias ls='lsd --group-directories-first'
