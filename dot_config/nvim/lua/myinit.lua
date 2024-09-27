@@ -58,11 +58,3 @@ vim.filetype.add({
 		["helmfile.*%.ya?ml"] = "helm",
 	},
 })
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "helm",
-	callback = function()
-		-- Set a custom commentstring for Helm files
-		vim.opt_local.commentstring = "{{/* %s */}}"
-	end,
-})

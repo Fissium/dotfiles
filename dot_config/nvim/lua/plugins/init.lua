@@ -153,10 +153,10 @@ local plugins = {
 		end,
 	},
 
-	-- Fix helm commentstring
+	-- Commentstring
 	{
 		"numToStr/Comment.nvim",
-		ft = "helm",
+		ft = { "helm", "terraform" },
 		config = function()
 			require("Comment").setup({
 				pre_hook = function()
