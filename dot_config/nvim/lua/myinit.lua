@@ -45,16 +45,65 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP: Disable hover capability from Ruff",
 })
 
--- Helm
+-- Helm filetype
+local is_helm_file = function(path)
+	local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
+	return not vim.tbl_isempty(check)
+end
+
+-- exclude gitlab-ci.yaml
+local is_gitlab_ci_file = function(path)
+	return path:match("templates/.*%.gitlab%-ci%.ya?ml$") ~= nil
+end
+
+local yaml_filetype = function(path, _)
+	if is_gitlab_ci_file(path) then
+		return "yaml"
+	elseif is_helm_file(path) then
+		return "helm"
+	else
+		return "yaml"
+	end
+end
+
+local tmpl_filetype = function(path, _)
+	return is_helm_file(path) and "helm" or "template"
+end
+local tpl_filetype = function(path, _)
+	return is_helm_file(path) and "helm" or "smarty"
+end
+
 vim.filetype.add({
 	extension = {
-		gotmpl = "helm", -- For files with the ".gotmpl" extension
+		gotmpl = "helm",
+		yaml = yaml_filetype,
+		yml = yaml_filetype,
+		tmpl = tmpl_filetype,
+		tpl = tpl_filetype,
+	},
+	filename = {
+		["Chart.yaml"] = "yaml",
+		["Chart.lock"] = "yaml",
 	},
 	pattern = {
-		[".*/templates/.*%.ya?ml"] = function(filename)
-			return filename:match("ci.yaml") and "yaml" or "helm"
-		end,
-		[".*/templates/.*%.tpl"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
+		["templates/.*%.gitlab%-ci%.ya?ml"] = "yaml",
 	},
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("FixHelmCommentString", { clear = true }),
+-- 	callback = function(ev)
+-- 		vim.bo[ev.buf].commentstring = "{{/* %s */}}"
+-- 	end,
+-- 	pattern = { "helm" },
+-- })
+
+-- Terraform
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
+-- 	callback = function(ev)
+-- 		vim.bo[ev.buf].commentstring = "# %s"
+-- 	end,
+-- 	pattern = { "terraform", "hcl" },
+-- })
