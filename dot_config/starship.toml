@@ -150,6 +150,9 @@ symbol = " "
 [spack]
 symbol = " "
 
+[vagrant]
+disabled = true
+
 [time]
 disabled = true
 format = '[\[ $time \]]($style) '

@@ -137,12 +137,6 @@ local plugins = {
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- To make a plugin not be loaded
-	{
-		"NvChad/nvim-colorizer.lua",
-		enabled = false,
-	},
-
 	-- Override nvim-autopairs
 	{
 		"windwp/nvim-autopairs",
