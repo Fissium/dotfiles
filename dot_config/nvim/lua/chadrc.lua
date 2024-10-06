@@ -14,6 +14,20 @@ M.lsp = {
 	signature = true,
 }
 
+M.ui = {
+	cmp = {
+		icons_left = true,
+		lspkind_text = true,
+		style = "atom_colored",
+	},
+
+	statusline = {
+		enabled = true,
+		theme = "minimal",
+		separator_style = "round",
+	},
+}
+
 M.mason = {
 	cmd = true,
 	pkgs = {
