@@ -2,6 +2,7 @@
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
 
 # tab autocompletions
+fpath=(~/.docker/completions \\$fpath)
 {{- if eq .chezmoi.os "darwin" }}
 if type brew &>/dev/null
 then
