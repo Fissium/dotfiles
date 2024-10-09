@@ -2,7 +2,6 @@
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
 
 # tab autocompletions
-fpath=(~/.docker/completions \\$fpath)
 {{- if eq .chezmoi.os "darwin" }}
 if type brew &>/dev/null
 then
@@ -82,7 +81,6 @@ function plugin-load {
 # list of github repos of plugins
 repos=(
 	jeffreytse/zsh-vi-mode
-
 	romkatv/zsh-defer
   Aloxaf/fzf-tab
 	zdharma-continuum/fast-syntax-highlighting
