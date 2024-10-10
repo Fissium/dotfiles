@@ -103,16 +103,8 @@ zle_highlight=('paste:none')
 # starship
 eval "$(starship init zsh)"
 
-# fzf in terminal, fzf must be installed to use this
-eval "$(fzf --zsh)"
-
-# fzf theme
-export FZF_DEFAULT_OPTS="\
---border \
---color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 \
---color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 \
---color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 \
---color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+# atuin
+eval "$(atuin init zsh --disable-up-arrow)"
 
 {{- if eq .chezmoi.os "linux" }}
 # >>> mamba initialize >>>
