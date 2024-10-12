@@ -1,4 +1,5 @@
-{{ if eq .chezmoi.os "linux" }}
+check_update = false
+{{- if eq .chezmoi.os "linux" }}
 log_dir = "/home/fissium/.cache/pdm/log"
 {{- end }}
 {{ if eq .chezmoi.os "darwin" }}

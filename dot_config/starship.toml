@@ -134,6 +134,7 @@ symbol = "🪺 "
 
 [python]
 symbol = " "
+format = 'via [${symbol}${pyenv_prefix}(${version} )]($style)'
 
 [rlang]
 symbol = "󰟔 "
