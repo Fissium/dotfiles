@@ -105,32 +105,3 @@ eval "$(starship init zsh)"
 
 # atuin
 eval "$(atuin init zsh --disable-up-arrow)"
-
-{{- if eq .chezmoi.os "linux" }}
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE='/home/fissium/.local/bin/micromamba';
-export MAMBA_ROOT_PREFIX='/home/fissium/.config/micromamba';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-{{- end }}
-{{- if eq .chezmoi.os "darwin" }}
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE='/Users/fissium/.local/bin/micromamba';
-export MAMBA_ROOT_PREFIX='/Users/fissium/.config/micromamba';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-{{- end }}
