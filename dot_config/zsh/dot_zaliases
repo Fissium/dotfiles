@@ -1,6 +1,5 @@
 #!/bin/sh
 
-alias mm="micromamba"
 alias ssh="kitten ssh"
 alias lf="lfcd"
 alias batcat="bat"
