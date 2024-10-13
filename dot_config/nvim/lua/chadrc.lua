@@ -57,6 +57,9 @@ M.mason = {
 		-- docker stuff
 		"hadolint",
 		"dockerfile-language-server",
+
+    -- markdown
+    "marksman"
 	},
 }
 

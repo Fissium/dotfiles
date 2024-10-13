@@ -7,6 +7,7 @@ local servers = {
 	helm_ls = {},
 	terraformls = {},
 	dockerls = {},
+  marksman = {},
 	pyright = {
 		settings = {
 			pyright = {
