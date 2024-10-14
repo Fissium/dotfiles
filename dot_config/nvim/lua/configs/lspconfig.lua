@@ -5,7 +5,6 @@ local servers = {
 	yamlls = {},
 	ruff = {},
 	helm_ls = {},
-	terraformls = {},
 	dockerls = {},
   marksman = {},
 	pyright = {

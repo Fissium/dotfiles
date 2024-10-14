@@ -12,10 +12,6 @@ M.formatters_by_ft = {
 	sh = { "shfmt" },
 	-- json
 	json = { "jq" },
-	-- terraform
-	tf = { "terraform_fmt" },
-	terraform = { "terraform_fmt" },
-	["terraform-vars"] = { "terraform_fmt" },
 }
 
 M.formatters = {
