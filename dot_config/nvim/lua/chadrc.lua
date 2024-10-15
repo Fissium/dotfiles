@@ -59,7 +59,10 @@ M.mason = {
 		"dockerfile-language-server",
 
     -- markdown
-    "marksman"
+    "marksman",
+
+    -- gitlab
+    "gitlab-ci-ls",
 	},
 }
 

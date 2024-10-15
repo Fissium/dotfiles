@@ -162,6 +162,9 @@ local plugins = {
 		end,
 	},
 
+	-- Helm support
+	{ "towolf/vim-helm", ft = "helm" },
+
 	-- Remote development
 	{
 		"amitds1997/remote-nvim.nvim",
