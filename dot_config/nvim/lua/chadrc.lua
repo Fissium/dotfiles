@@ -60,9 +60,6 @@ M.mason = {
 
     -- markdown
     "marksman",
-
-    -- gitlab
-    "gitlab-ci-ls",
 	},
 }
 

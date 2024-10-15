@@ -7,7 +7,6 @@ local servers = {
 	helm_ls = {},
 	dockerls = {},
   marksman = {},
-  gitlab_ci_ls = {},
 	pyright = {
 		settings = {
 			pyright = {
