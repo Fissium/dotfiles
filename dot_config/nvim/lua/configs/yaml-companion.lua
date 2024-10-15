@@ -6,7 +6,12 @@ M.opts = {
 		cloud_init = { enabled = true },
 	},
 
-	schemas = {},
+	schemas = {
+		{
+			name = "Gitlab CI",
+			url = "https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json",
+		},
+	},
 
 	lspconfig = {
 		flags = {
