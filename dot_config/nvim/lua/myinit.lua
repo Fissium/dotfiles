@@ -47,8 +47,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Gitlab
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.gitlab-ci*.{yml,yaml}" },
+	pattern = { "*.gitlab-ci*.{yml,yaml}", "*cicd*.{yml,yaml}" },
 	callback = function()
-		vim.bo.filetype = "yaml"
+		vim.bo.filetype = "yaml.gitlab"
 	end,
 })

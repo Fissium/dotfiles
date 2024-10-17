@@ -106,6 +106,7 @@ history_filter = [
   "^conda",
   "^mamba",
   "^micromamba",
+  "^export GITLAB",
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
