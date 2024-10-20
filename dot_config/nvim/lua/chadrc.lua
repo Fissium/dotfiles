@@ -25,6 +25,28 @@ M.ui = {
 		enabled = true,
 		theme = "minimal",
 		separator_style = "round",
+		order = {
+			"mode",
+			"file",
+			"yaml_schema",
+			"git",
+			"%=",
+			"lsp_msg",
+			"%=",
+			"diagnostics",
+			"lsp",
+			"cwd",
+			"cursor",
+		},
+		modules = {
+			yaml_schema = function()
+				local schema = require("yaml-companion").get_buf_schema(0)
+				if schema.result[1].name == "none" then
+					return ""
+				end
+				return "%#St_schema#" .. schema.result[1].name
+			end,
+		},
 	},
 }
 
@@ -58,8 +80,8 @@ M.mason = {
 		"hadolint",
 		"dockerfile-language-server",
 
-    -- markdown
-    "marksman",
+		-- markdown
+		"marksman",
 	},
 }
 
