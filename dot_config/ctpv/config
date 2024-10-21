@@ -1,5 +1,6 @@
 set forcekitty
 priority bat
+remove glow
 
 preview notebook .ipynb {{
   jq -j '
