@@ -108,6 +108,7 @@ history_filter = [
   "^micromamba",
   "^export GITLAB",
   "TOKEN",
+  "docker login",
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
