@@ -71,11 +71,6 @@ M.mason = {
 		"yamlfmt",
 		"yamllint",
 
-		-- go stuff
-		"gopls",
-		"gofumpt",
-		"goimports",
-
 		-- docker stuff
 		"hadolint",
 		"dockerfile-language-server",
