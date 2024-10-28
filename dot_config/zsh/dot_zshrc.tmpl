@@ -1,5 +1,6 @@
 # source external files
 [[ -r ${ZDOTDIR:-$HOME}/.zaliases ]] && source ${ZDOTDIR:-$HOME}/.zaliases
+[[ -r ${ZDOTDIR:-$HOME}/.zfunctions ]] && source ${ZDOTDIR:-$HOME}/.zfunctions
 
 # tab autocompletions
 {{- if eq .chezmoi.os "darwin" }}
