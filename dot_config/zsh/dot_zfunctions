@@ -4,5 +4,5 @@ function gi() {
 
 function lt() {
     local depth=${1:-2}
-    lsd -l --group-directories-first --tree --depth=$depth
+    lsd -l --group-directories-first --tree --depth=$depth --all
 }
