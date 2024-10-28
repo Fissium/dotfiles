@@ -1,3 +1,8 @@
 function gi() {
     curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@
 }
+
+function lt() {
+    local depth=${1:-2}
+    lsd -l --group-directories-first --tree --depth=$depth
+}
