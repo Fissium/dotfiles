@@ -165,15 +165,6 @@ local plugins = {
 	-- Helm support
 	{ "towolf/vim-helm", ft = "helm" },
 
-	-- Chezmoi support
-	{
-		"alker0/chezmoi.vim",
-		lazy = false,
-		init = function()
-			vim.g["chezmoi#use_tmp_buffer"] = true
-		end,
-	},
-
 	-- Remote development
 	{
 		"amitds1997/remote-nvim.nvim",
