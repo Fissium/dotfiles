@@ -52,3 +52,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "yaml.gitlab"
 	end,
 })
+
+-- Dockefile
+-- Gitlab
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.Dockefile" },
+	callback = function()
+		vim.bo.filetype = "Dockefile"
+	end,
+})
