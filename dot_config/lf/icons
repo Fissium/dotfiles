@@ -187,6 +187,7 @@ fi             # FILE
 *react.jsx              
 *procfile               
 *dockerfile             
+*.dockerfile            
 *docker-compose.yml     
 *rakefile               
 *config.ru              
