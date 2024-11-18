@@ -8,7 +8,9 @@ fi
 
 alias ssh="kitten ssh"
 alias lf="lfcd"
+{{- if eq .chezmoi.os "linux" }}
 alias docker="podman"
+{{- end }}
 alias sudo="sudo "
 
 # Create alias override commands using 'lsd'
