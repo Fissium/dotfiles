@@ -19,6 +19,7 @@ M.treesitter = {
 		"helm",
 		"make",
 		"terraform",
+		"hcl",
 		"nginx",
 	},
 	indent = {
