@@ -109,6 +109,8 @@ history_filter = [
   "^export GITLAB",
   "TOKEN",
   "docker login",
+  "VAULT",
+  "YC",
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
