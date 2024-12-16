@@ -25,3 +25,7 @@ preview javascript application/javascript {{
   --terminal-width "$w" \
   --wrap character "$f"
 }}
+
+preview markdown .md {{
+  CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark -w "$w" "$f"
+}}
