@@ -77,6 +77,9 @@ M.mason = {
 
 		-- markdown
 		"marksman",
+
+		-- typos
+		"typos",
 	},
 }
 

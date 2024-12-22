@@ -185,14 +185,6 @@ local plugins = {
 		cmd = "GrugFar",
 	},
 
-	-- hardtime
-	{
-		"m4xshen/hardtime.nvim",
-		event = "VeryLazy",
-		dependencies = { "MunifTanjim/nui.nvim" },
-		opts = {},
-	},
-
 	-- Nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
