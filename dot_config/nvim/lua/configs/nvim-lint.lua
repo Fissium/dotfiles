@@ -13,6 +13,10 @@ M.linters_by_ft = {
 	python = { "typos" },
 	-- bash
 	bash = { "typos" },
+	-- markdown
+	markdown = { "typos" },
+	-- helm
+	helm = { "typos" },
 }
 
 return M
