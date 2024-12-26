@@ -8,6 +8,8 @@ M.formatters_by_ft = {
 	python = { "ruff_organize_imports", "ruff_format" },
 	-- yaml
 	yaml = { "yamlfmt" },
+	-- ansible
+	ansible = { "yamlfmt" },
 	-- shell
 	sh = { "shfmt" },
 	-- json

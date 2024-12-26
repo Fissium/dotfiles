@@ -8,6 +8,7 @@ local servers = {
 	terraformls = {},
 	dockerls = {},
 	marksman = {},
+  ansiblels = {},
 	pyright = {
 		settings = {
 			pyright = {

@@ -80,6 +80,10 @@ M.mason = {
 
 		-- typos
 		"typos",
+
+		-- ansible
+		"ansible-language-server",
+		"ansible-lint",
 	},
 }
 

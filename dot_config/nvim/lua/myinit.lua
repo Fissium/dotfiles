@@ -55,10 +55,37 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Dockefile
--- Gitlab
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.Dockefile" },
 	callback = function()
 		vim.bo.filetype = "Dockefile"
+	end,
+})
+
+-- Ansible
+local function yaml_ft(path, bufnr)
+	local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+	if type(content) == "table" then
+		content = table.concat(content, "\n")
+	end
+
+	local path_regex = vim.regex("(ansible\\|group_vars\\|handlers\\|host_vars\\|playbooks\\|roles\\|vars\\|tasks)/")
+	if path_regex and path_regex:match_str(path) then
+		return "yaml.ansible"
+	end
+
+	local regex = vim.regex("hosts:\\|tasks:")
+	if regex and regex:match_str(content) then
+		return "yaml.ansible"
+	end
+
+	return "yaml"
+end
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.yml", "*.yaml" },
+	callback = function()
+		local ft = yaml_ft(vim.fn.expand("%:p"), vim.fn.bufnr("%"))
+		vim.bo.filetype = ft
 	end,
 })

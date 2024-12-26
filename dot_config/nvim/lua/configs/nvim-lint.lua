@@ -17,6 +17,8 @@ M.linters_by_ft = {
 	markdown = { "typos" },
 	-- helm
 	helm = { "typos" },
+  -- ansible
+  ansible = {"ansible_lint"}
 }
 
 return M
