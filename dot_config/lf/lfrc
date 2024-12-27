@@ -1,6 +1,6 @@
 # preview
 set previewer ctpv
-set cleaner ctpvclear
+set cleaner ~/.config/lf/cleaner.sh
 &ctpv -s $id
 &ctpvquit $id
 
