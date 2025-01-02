@@ -87,4 +87,8 @@ M.mason = {
 	},
 }
 
+M.colorify = {
+	enabled = false,
+}
+
 return M
