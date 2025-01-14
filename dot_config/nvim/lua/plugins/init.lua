@@ -185,6 +185,9 @@ local plugins = {
 		cmd = "GrugFar",
 	},
 
+	-- ansible-vim
+	{ "pearofducks/ansible-vim", ft = { "jinja2" } },
+
 	-- Nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
