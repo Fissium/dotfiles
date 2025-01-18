@@ -76,7 +76,7 @@ local function yaml_ft(path, bufnr)
 		return "yaml.ansible"
 	end
 
-	local regex = vim.regex("hosts:\\|tasks:")
+	local regex = vim.regex("^hosts:\\|^tasks:")
 
 	if regex and regex:match_str(content) then
 		return "yaml.ansible"
@@ -90,5 +90,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	callback = function()
 		local ft = yaml_ft(vim.fn.expand("%:p"), vim.fn.bufnr("%"))
 		vim.bo.filetype = ft
+	end,
+})
+
+-- Docker Compose
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "docker-compose.yml", "*.docker-compose.yaml", "*.docker-compose.yml", "docker-compose.yaml" },
+	callback = function()
+		vim.bo.filetype = "yaml.docker-compose"
 	end,
 })
