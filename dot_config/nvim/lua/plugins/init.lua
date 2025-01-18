@@ -137,16 +137,6 @@ local plugins = {
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- Override nvim-autopairs
-	{
-		"windwp/nvim-autopairs",
-		dependencies = { "hrsh7th/nvim-cmp" },
-		event = "InsertEnter",
-		config = function()
-			require("configs.nvim-autopairs")
-		end,
-	},
-
 	-- Commentstring
 	{
 		"numToStr/Comment.nvim",
