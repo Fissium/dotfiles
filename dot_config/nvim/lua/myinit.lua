@@ -95,8 +95,16 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- Docker Compose
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "docker-compose.yml", "*.docker-compose.yaml", "*.docker-compose.yml", "docker-compose.yaml" },
+	pattern = { "docker-compose.{yml,yaml}", "*.docker-compose.{yml,yaml}" },
 	callback = function()
 		vim.bo.filetype = "yaml.docker-compose"
+	end,
+})
+
+-- Env
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { ".envrc" },
+	callback = function()
+		vim.bo.filetype = "sh"
 	end,
 })
