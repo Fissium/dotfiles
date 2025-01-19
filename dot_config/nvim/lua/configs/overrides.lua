@@ -13,7 +13,6 @@ M.treesitter = {
 		"json",
 		"jsonc",
 		"bash",
-		"fish",
 		"gitignore",
 		"gitcommit",
 		"helm",
