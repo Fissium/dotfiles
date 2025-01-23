@@ -46,14 +46,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP: Disable hover capability from Ruff",
 })
 
--- Gitlab
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.gitlab-ci*.{yml,yaml}", "*cicd*.{yml,yaml}" },
-	callback = function()
-		vim.bo.filetype = "yaml.gitlab"
-	end,
-})
-
 -- Dockefile
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.Dockefile" },
@@ -62,11 +54,36 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
--- Ansible
 local function yaml_ft(path, bufnr)
 	local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 	if type(content) == "table" then
+		---@diagnostic disable-next-line: cast-local-type
 		content = table.concat(content, "\n")
+	end
+
+	local function is_helm_file(_)
+		local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
+		return not vim.tbl_isempty(check)
+	end
+
+	local function is_gitlab_ci_file()
+		return path:match("%.gitlab%-ci.*%.ya?ml$") or path:match("[cC][iI][cC][dD].*%.ya?ml$")
+	end
+
+	local function is_docker_compose_file()
+		return path:match("docker%-compose%.ya?ml$") or path:match(".*%.docker%-compose%.ya?ml$")
+	end
+
+	if is_helm_file() then
+		return "helm"
+	elseif is_gitlab_ci_file() then
+		return "yaml.gitlab"
+	elseif is_docker_compose_file() then
+		return "yaml.docker-compose"
+	end
+
+	if is_helm_file(path) then
+		return "helm"
 	end
 
 	local path_regex =
@@ -85,19 +102,12 @@ local function yaml_ft(path, bufnr)
 	return "yaml"
 end
 
+-- Helm, Ansible, Gitlab CI/CD, Docker Compose
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = { "*.yml", "*.yaml" },
 	callback = function()
 		local ft = yaml_ft(vim.fn.expand("%:p"), vim.fn.bufnr("%"))
 		vim.bo.filetype = ft
-	end,
-})
-
--- Docker Compose
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "docker-compose.{yml,yaml}", "*.docker-compose.{yml,yaml}" },
-	callback = function()
-		vim.bo.filetype = "yaml.docker-compose"
 	end,
 })
 
