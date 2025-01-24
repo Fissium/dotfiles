@@ -61,9 +61,15 @@ local function yaml_ft(path, bufnr)
 		content = table.concat(content, "\n")
 	end
 
-	local function is_helm_file(_)
+	local function is_helm_file()
 		local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
-		return not vim.tbl_isempty(check)
+		if vim.tbl_isempty(check) then
+			return false
+		end
+		if path:match("Chart%.ya?ml$") or path:match("values%..*%.ya?ml$") or path:match("values%.ya?ml$") then
+			return false
+		end
+		return true
 	end
 
 	local function is_gitlab_ci_file()
@@ -80,10 +86,6 @@ local function yaml_ft(path, bufnr)
 		return "yaml.gitlab"
 	elseif is_docker_compose_file() then
 		return "yaml.docker-compose"
-	end
-
-	if is_helm_file(path) then
-		return "helm"
 	end
 
 	local path_regex =
