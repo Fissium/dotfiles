@@ -2,7 +2,9 @@
 set previewer ctpv
 set cleaner ~/.config/lf/cleaner.sh
 &ctpv -s $id
-cmd on-quit $ctpv -e $id
+cmd on-quit ${{
+	  pkill ctpv
+}}
 
 # icons
 set icons
