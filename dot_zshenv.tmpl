@@ -10,8 +10,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # VMs
 {{- if eq .chezmoi.os "linux" }}
-export VBOX_USER_HOME=/data/.vbox.d
-export VAGRANT_HOME=/data/.vagrant.d
 {{- end }}
 
 {{- if eq .chezmoi.os "linux" }}
