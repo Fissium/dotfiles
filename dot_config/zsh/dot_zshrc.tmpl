@@ -20,6 +20,7 @@ zmodload zsh/complist
 _comp_options+=(globdots)
 compinit -d $XDG_CONFIG_HOME/zsh/zcompdump-$ZSH_VERSION
 {{- end }}
+compdef kubecolor=kubectl
 
 # zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
