@@ -2,14 +2,17 @@
 set previewer ctpv
 set cleaner ~/.config/lf/cleaner.sh
 &ctpv -s $id
-cmd on-quit ${{
-	  pkill ctpv
-}}
 
 # icons
 set icons
 
 # custom functions
+cmd on-quit ${{
+    pwd > "$LF_CD_FILE"
+    lf -remote "send $id quit"
+	  pkill ctpv
+}}
+
 cmd edit-config ${{
     $EDITOR ~/.config/lf/lfrc
     lf -remote "send $id source ~/.config/lf/lfrc"
@@ -108,12 +111,12 @@ cmd fzf_jump ${{
 }}
 
 # Bindings
+
 # Remove some defaults
 map d
 map m
 map c
 map f
-
 
 # Basic Functions
 map . set hidden!

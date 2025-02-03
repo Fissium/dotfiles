@@ -45,11 +45,6 @@ setopt share_history        # share history between terminals
 autoload -U select-word-style
 select-word-style bash
 
-# cd to folder when quitting lf (terminal file manager)
-lfcd () {
-	cd "$(command lf -print-last-dir "$@")"
-}
-
 # fix vi plugin conflicting with fzf
 export ZVM_INIT_MODE=sourcing
 
