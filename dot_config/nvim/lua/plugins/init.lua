@@ -9,6 +9,13 @@ local plugins = {
 	-- Override plugin definition options
 
 	{
+		"hrsh7th/nvim-cmp",
+		opts = function(_, opts)
+			table.insert(opts.sources, { name = "render-markdown" })
+		end,
+	},
+
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("nvchad.configs.lspconfig").defaults()
