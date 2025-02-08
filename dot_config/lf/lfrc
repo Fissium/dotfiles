@@ -11,6 +11,10 @@ cmd edit-config ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
+cmd on-quit ${{
+	pkill ctpv
+}}
+
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json|inode/x-empty|application/javascript)
