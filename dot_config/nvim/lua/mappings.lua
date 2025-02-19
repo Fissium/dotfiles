@@ -12,6 +12,10 @@ local mappings = {
 			":DiffviewClose<CR>",
 			"close diffview",
 		},
+		["<leader>gb"] = {
+			":Gitsigns blame<CR>",
+			"git blame",
+		},
 		["<leader>fm"] = {
 
 			function()
