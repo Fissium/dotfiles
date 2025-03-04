@@ -1,6 +1,5 @@
 local overrides = require("configs.overrides")
 local conform_opts = require("configs.conform")
-local yaml_opts = require("configs.yaml-companion")
 local nvim_remote = require("configs.nvim-remote")
 local nvim_lint = require("configs.nvim-lint")
 
@@ -119,20 +118,38 @@ local plugins = {
 		opts = {},
 	},
 
-	-- K8S
+	-- schema-companion
 	{
-		"someone-stole-my-name/yaml-companion.nvim",
+		"cenk1cenk2/schema-companion.nvim",
 		ft = { "yaml" },
-		opts = yaml_opts.opts,
 		dependencies = {
-			{ "neovim/nvim-lspconfig" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope.nvim" },
 		},
-		config = function(_, opts)
-			local cfg = require("yaml-companion").setup(opts)
-			require("lspconfig")["yamlls"].setup(cfg)
-			require("telescope").load_extension("yaml_schema")
+		config = function()
+			require("schema-companion").setup({
+				enable_telescope = true,
+				matchers = {
+					require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
+				},
+			})
+			require("lspconfig").yamlls.setup(require("schema-companion").setup_client({
+				settings = {
+					redhat = { telemetry = { enabled = false } },
+					yaml = {
+						hover = true,
+						completion = true,
+						keyOrdering = false,
+						format = {
+							enable = false,
+						},
+						validate = true,
+						schemas = {},
+						schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+						schemaDownload = { enable = true },
+					},
+				},
+			}))
 		end,
 	},
 

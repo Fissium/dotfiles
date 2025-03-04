@@ -17,15 +17,22 @@ local mappings = {
 			"git blame",
 		},
 		["<leader>fm"] = {
-
 			function()
 				require("conform").format()
 			end,
 			"format with conform",
 		},
 		["<leader>yc"] = {
-			":Telescope yaml_schema<CR>",
+			function()
+				require("telescope").extensions.schema_companion.select_schema()
+			end,
 			"select a schema for the current buffer",
+		},
+		["<leader>ym"] = {
+			function()
+				require("telescope").extensions.schema_companion.select_from_matching_schemas()
+			end,
+			"select a matched schema for the current buffer",
 		},
 		["<leader>fd"] = {
 			function()
