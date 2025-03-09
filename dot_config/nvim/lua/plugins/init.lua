@@ -8,6 +8,16 @@ local plugins = {
 	-- Override plugin definition options
 
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		cmd = "WhichKey",
+		opts = function()
+			dofile(vim.g.base46_cache .. "whichkey")
+			return {}
+		end,
+	},
+
+	{
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
 			table.insert(opts.sources, { name = "render-markdown" })
