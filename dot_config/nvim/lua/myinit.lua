@@ -95,7 +95,7 @@ local function yaml_ft(path, bufnr)
 		return "yaml.ansible"
 	end
 
-	local regex = vim.regex("^hosts:\\|^tasks:")
+   local regex = vim.regex "hosts:\\|tasks:"
 
 	if regex and regex:match_str(content) then
 		return "yaml.ansible"
