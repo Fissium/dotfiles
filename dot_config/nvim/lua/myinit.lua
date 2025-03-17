@@ -56,10 +56,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 local function yaml_ft(path, bufnr)
 	local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-	if type(content) == "table" then
-		---@diagnostic disable-next-line: cast-local-type
-		content = table.concat(content, "\n")
-	end
 
 	local function is_helm_file()
 		local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
@@ -95,10 +91,23 @@ local function yaml_ft(path, bufnr)
 		return "yaml.ansible"
 	end
 
-   local regex = vim.regex "hosts:\\|tasks:"
+	local max_lines = math.min(#content, 20)
 
-	if regex and regex:match_str(content) then
-		return "yaml.ansible"
+	for i = 1, max_lines do
+		local line = content[i]
+		if
+			line
+			and (
+				line:match("^%s*-%s*name:")
+				or line:match("^%s*-%s*hosts:")
+				or line:match("^%s*hosts:")
+				or line:match("^%s*tasks:")
+				or line:match("^%s*roles:")
+				or line:match("^%s*handlers:")
+			)
+		then
+			return "yaml.ansible"
+		end
 	end
 
 	return "yaml"
