@@ -82,6 +82,13 @@ M.mason = {
 		-- typos
 		"typos",
 
+    -- helm
+    "helm-ls",
+
+    -- terraform
+    "terraform-ls",
+    "tflint",
+
 		-- ansible
 		"ansible-language-server",
 		"ansible-lint",
