@@ -2,23 +2,17 @@ local M = {}
 
 M.linters_by_ft = {
 	-- docker
-	dockerfile = { "hadolint", "typos" },
+	dockerfile = { "hadolint" },
 	-- yaml
-	yaml = { "yamllint", "typos" },
+	yaml = { "yamllint" },
 	-- terraform
-	tf = { "tflint", "typos" },
-	terraform = { "tflint", "typos" },
-	["terraform-vars"] = { "tflint", "typos" },
-	-- python
-	python = { "typos" },
-	-- bash
-	bash = { "typos" },
-	-- markdown
-	markdown = { "typos" },
-	-- helm
-	helm = { "typos" },
+	tf = { "tflint" },
+	terraform = { "tflint" },
+	["terraform-vars"] = { "tflint" },
 	-- ansible
-	ansible = { "ansible_lint", "typos" },
+	ansible = { "ansible_lint" },
+	-- all
+	["*"] = { "typos" },
 }
 
 return M
