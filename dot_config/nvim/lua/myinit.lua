@@ -2,6 +2,8 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.lsp.set_log_level("off")
 vim.o.relativenumber = true
 
+dofile(vim.g.base46_cache .. "render-markdown")
+
 if vim.fn.executable("zsh") == 1 then
 	vim.o.shell = "zsh"
 else
