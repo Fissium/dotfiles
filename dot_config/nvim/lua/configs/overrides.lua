@@ -22,6 +22,7 @@ M.treesitter = {
 		"terraform",
 		"hcl",
 		"nginx",
+		"requirements",
 	},
 	indent = {
 		enable = true,
