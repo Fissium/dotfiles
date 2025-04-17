@@ -1,4 +1,7 @@
-local configs = require("nvchad.configs.lspconfig")
+local nvlsp = require("nvchad.configs.lspconfig")
+local lspconfig = require("lspconfig")
+
+nvlsp.defaults()
 
 local servers = {
 	bashls = {},
@@ -7,13 +10,12 @@ local servers = {
 	helm_ls = {},
 	terraformls = {},
 	dockerls = {},
-  docker_compose_language_service = {},
+	docker_compose_language_service = {},
 	marksman = {},
-  ansiblels = {},
+	ansiblels = {},
 	pyright = {
 		settings = {
 			pyright = {
-				-- Using Ruff's import organizer
 				disableOrganizeImports = true,
 			},
 			python = {
@@ -21,7 +23,7 @@ local servers = {
 					autoSearchPaths = true,
 					diagnosticMode = "openFilesOnly",
 					useLibraryCodeForTypes = true,
-					typeCheckingMode = "basis",
+					typeCheckingMode = "basic",
 				},
 			},
 		},
@@ -29,18 +31,20 @@ local servers = {
 }
 
 for name, opts in pairs(servers) do
-	opts.on_init = configs.on_init
-	opts.on_attach = configs.on_attach
+	opts.on_init = nvlsp.on_init
+	opts.on_attach = nvlsp.on_attach
 
 	if name == "pyright" then
 		opts.capabilities = (function()
-			local capabilities = configs.capabilities
-			capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+			local capabilities = vim.deepcopy(nvlsp.capabilities)
+			capabilities.textDocument.publishDiagnostics = {
+				tagSupport = { valueSet = { 2 } },
+			}
 			return capabilities
 		end)()
 	else
-		opts.capabilities = configs.capabilities
+		opts.capabilities = nvlsp.capabilities
 	end
 
-	require("lspconfig")[name].setup(opts)
+	lspconfig[name].setup(opts)
 end
