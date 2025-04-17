@@ -131,3 +131,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "sh"
 	end,
 })
+
+-- Jinja
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.j2" },
+	callback = function()
+		vim.bo.filetype = "jinja"
+	end,
+})
