@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+FILE_PATH="${1}"
+FILE_EXTENSION="${FILE_PATH##*.}"
+FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr '[:upper:]' '[:lower:]')"
+
+PV_WIDTH="${2}"
+PV_HEIGHT="${3}"
+HORIZONTAL_POS="${4}"
+VERTICAL_POS="${5}"
+
+bat() {
+  command bat \
+    --color=always --paging=never \
+    --style=plain \
+    --wrap=character \
+    --line-range :"${PV_HEIGHT}" \
+    --terminal-width="${PV_WIDTH}" "$@"
+}
+
+image_previewer() {
+  local place="${PV_WIDTH}x${PV_HEIGHT}@${HORIZONTAL_POS}x${VERTICAL_POS}"
+  kitty icat --clear --transfer-mode memory --stdin no --align left --place "$place" "$1" </dev/null >/dev/tty
+}
+
+handle_extension() {
+  case "${FILE_EXTENSION_LOWER}" in
+  # Markdown
+  md)
+    glow -s dark --width "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
+    ;;
+  # Archive
+  bz2 | gz | lz | tar | xz | zip)
+    atool --list -- "${FILE_PATH}" && exit 1
+    ;;
+  # PDF
+  pdf)
+    pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - | fmt -w "${PV_WIDTH}" && exit 1
+    ;;
+  # JSON
+  json)
+    jq --color-output . "${FILE_PATH}" && exit1
+    ;;
+  esac
+}
+
+handle_mime() {
+  local mimetype="${1}"
+  case "${mimetype}" in
+  # Image
+  image/*)
+    image_previewer "${FILE_PATH}"
+    exit 1
+    ;;
+  # Text
+  text/* | */xml)
+    (bat --style=numbers,changes -- "${FILE_PATH}" ||
+      highlight --out-format truecolor --style darkplus --force \
+        --line-numbers --line-range=1-"${PV_HEIGHT}" -- "${FILE_PATH}" ||
+      cat -- "${FILE_PATH}") && exit 1
+    ;;
+  esac
+}

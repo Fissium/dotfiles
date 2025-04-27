@@ -1,7 +1,6 @@
 # preview
-set previewer ctpv
-set cleaner ~/.config/lf/cleaner.sh
-&ctpv -s $id
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
 
 # icons
 set icons
