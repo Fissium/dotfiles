@@ -16,7 +16,7 @@ cmd on-quit ${{
 
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json|inode/x-empty|application/javascript)
+        text/*|application/json|inode/x-empty|application/octet-stream)
             case "${f##*.}" in 
             ipynb) jq -j '.cells | map( select(.cell_type == "code") | .source + ["\n\n"] ) | .[][]' "$f" | \
             $EDITOR +':setlocal ft=python | TSBufEnable python' -R - ;;

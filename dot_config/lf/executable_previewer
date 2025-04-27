@@ -23,11 +23,19 @@ image_previewer() {
   kitty icat --clear --transfer-mode memory --stdin no --align left --place "$place" "$1" </dev/null >/dev/tty
 }
 
+pdf_previewer() {
+  local tempfile
+  tempfile="$(mktemp --suffix=.jpg)"
+  if pdftoppm -f 1 -l 1 -scale-to-x 1920 -scale-to-y -1 -singlefile -jpeg -- "${FILE_PATH}" "${tempfile%.*}" >/dev/null 2>&1; then
+    image_previewer "${tempfile%.*}.jpg"
+  fi
+}
+
 handle_extension() {
   case "${FILE_EXTENSION_LOWER}" in
   # Markdown
   md)
-    glow -s dark --width "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
+    CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark -w "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
     ;;
   # Archive
   bz2 | gz | lz | tar | xz | zip)
@@ -35,11 +43,20 @@ handle_extension() {
     ;;
   # PDF
   pdf)
-    pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - | fmt -w "${PV_WIDTH}" && exit 1
+    pdf_previewer && exit 1
     ;;
   # JSON
   json)
     jq --color-output . "${FILE_PATH}" && exit1
+    ;;
+  # Notebooks
+  ipynb)
+    jq -j '
+  .cells
+  | map( select(.cell_type == "code") | .source + ["\n\n"] )
+  | .[][]
+  ' \
+      -- "${FILE_PATH}" | bat --language python && exit 1
     ;;
   esac
 }
@@ -54,10 +71,23 @@ handle_mime() {
     ;;
   # Text
   text/* | */xml)
-    (bat --style=numbers,changes -- "${FILE_PATH}" ||
+    (bat --style=changes -- "${FILE_PATH}" ||
       highlight --out-format truecolor --style darkplus --force \
         --line-numbers --line-range=1-"${PV_HEIGHT}" -- "${FILE_PATH}" ||
       cat -- "${FILE_PATH}") && exit 1
     ;;
   esac
 }
+
+handle_fallback() {
+  # Use file command as the fallback. It outputs the file properties, separated by comma, in a
+  # single lone line. In order to fit the width of the preview window, replace each comma with a
+  # line break, but leave the commas inside square brackets unchanged.
+  file --dereference --brief -- "${FILE_PATH}" | gsed -r ':a; s/(\[[^][]*),([^][]*\])/\1TTEEMMPP\2/g; ta; s/, /\n/g; s/TTEEMMPP/,/g' && exit 1
+  exit 1
+}
+
+MIMETYPE="$(file --dereference --brief --mime-type -- "${FILE_PATH}")"
+handle_extension
+handle_mime "${MIMETYPE}"
+handle_fallback
