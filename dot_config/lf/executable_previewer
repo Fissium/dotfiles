@@ -35,7 +35,7 @@ handle_extension() {
   case "${FILE_EXTENSION_LOWER}" in
   # Markdown
   md)
-    CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark -w "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
+    glow -s dark -w "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
     ;;
   # Archive
   bz2 | gz | lz | tar | xz | zip)
