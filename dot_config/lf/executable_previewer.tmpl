@@ -35,7 +35,12 @@ handle_extension() {
   case "${FILE_EXTENSION_LOWER}" in
   # Markdown
   md)
+    {{ if eq .chezmoi.os "darwin" -}}
+    CLICOLOR_FORCE=1 COLORTERM=truecolor glow -s dark -w "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
+    {{ end -}}
+    {{ if eq .chezmoi.os "linux" -}}
     glow -s dark -w "${PV_WIDTH}" -- "${FILE_PATH}" && exit 1
+    {{ end -}}
     ;;
   # Archive
   bz2 | gz | lz | tar | xz | zip)
