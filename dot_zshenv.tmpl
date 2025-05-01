@@ -15,7 +15,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 {{- if eq .chezmoi.os "linux" }}
 export OPENER="xdg-open"
 export GOPATH="/projects/go"
-export GOMODCACHE="/projects/go/pkg/mod"
+export GOMODCACHE="$HOME/.cache/go-modules"
 
 typeset -U path PATH
 path=(~/.local/bin $GOPATH/bin $path)
