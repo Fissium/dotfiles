@@ -23,6 +23,10 @@ M.treesitter = {
 		"hcl",
 		"nginx",
 		"requirements",
+		"go",
+		"gomod",
+		"gowork",
+		"gosum",
 	},
 	indent = {
 		enable = true,

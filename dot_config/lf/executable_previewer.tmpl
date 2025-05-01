@@ -75,7 +75,7 @@ handle_mime() {
     exit 1
     ;;
   # Text
-  text/* | */xml)
+  text/* | */xml | application/javascript)
     (bat --style=changes -- "${FILE_PATH}" ||
       highlight --out-format truecolor --style darkplus --force \
         --line-numbers --line-range=1-"${PV_HEIGHT}" -- "${FILE_PATH}" ||

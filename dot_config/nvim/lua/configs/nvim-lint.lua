@@ -23,6 +23,8 @@ M.linters_by_ft = {
 	gitcommit = { "typos" },
 	-- lua
 	lua = { "typos" },
+	--go
+	go = { "typos" },
 }
 
 return M
