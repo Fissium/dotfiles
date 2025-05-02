@@ -97,6 +97,7 @@ M.mason = {
 		"goimports",
 		"gofumpt",
 		"gopls",
+		"golines",
 	},
 }
 

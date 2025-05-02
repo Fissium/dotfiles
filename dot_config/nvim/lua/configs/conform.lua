@@ -18,8 +18,8 @@ M.formatters_by_ft = {
 	tf = { "terraform_fmt" },
 	terraform = { "terraform_fmt" },
 	["terraform-vars"] = { "terraform_fmt" },
-  -- go
-	go = { "goimports", "gofumpt" },
+	-- go
+	go = { "goimports", "golines", "gofumpt" },
 }
 
 M.formatters = {

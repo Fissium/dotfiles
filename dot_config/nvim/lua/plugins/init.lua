@@ -24,46 +24,6 @@ local plugins = {
 		end,
 	},
 
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	enabled = false,
-	-- },
-
-	-- {
-	-- 	"saghen/blink.cmp",
-	-- 	event = "InsertEnter",
-	-- 	version = "1.*",
-	-- 	dependencies = {
-	-- 		"rafamadriz/friendly-snippets",
-	-- 		{
-	-- 			-- snippet plugin
-	-- 			"L3MON4D3/LuaSnip",
-	-- 			dependencies = "rafamadriz/friendly-snippets",
-	-- 			opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-	-- 			config = function(_, opts)
-	-- 				require("luasnip").config.set_config(opts)
-	-- 				require("nvchad.configs.luasnip")
-	-- 			end,
-	-- 		},
-	-- 	},
-	--
-	-- 	opts_extend = { "sources.default" },
-	--
-	-- 	opts = function()
-	-- 		local config = require("nvchad.blink.config")
-	-- 		config.keymap = {
-	-- 			preset = "default",
-	-- 			["<CR>"] = { "accept", "fallback" },
-	-- 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
-	-- 			["<C-f"] = { "scroll_documentation_down", "fallback" },
-	-- 			["<Tab>"] = { "select_next", "fallback" },
-	-- 			["<S-Tab>"] = { "select_prev", "fallback" },
-	-- 		}
-	--
-	-- 		return config
-	-- 	end,
-	-- },
-
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
