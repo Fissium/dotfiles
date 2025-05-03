@@ -7,6 +7,13 @@ local mappings = {
 			":DiffviewOpen<CR>",
 			"open diffview",
 		},
+		["<C-h>"] = {
+			function()
+				local current_state = vim.lsp.inlay_hint.is_enabled()
+				vim.lsp.inlay_hint.enable(not current_state)
+			end,
+			"toggle inlay_hint",
+		},
 
 		["<leader>gc"] = {
 			":DiffviewClose<CR>",
