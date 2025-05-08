@@ -139,3 +139,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "jinja"
 	end,
 })
+
+-- go
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "go", "gomod" },
+	callback = function()
+		vim.bo.tabstop = 4
+		vim.bo.shiftwidth = 4
+		vim.bo.softtabstop = 4
+		vim.bo.expandtab = false
+	end,
+})
