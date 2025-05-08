@@ -1,6 +1,5 @@
 local overrides = require("configs.overrides")
 local conform_opts = require("configs.conform")
-local nvim_remote = require("configs.nvim-remote")
 local nvim_lint = require("configs.nvim-lint")
 
 local plugins = {
@@ -193,19 +192,6 @@ local plugins = {
 
 	-- Helm support
 	{ "towolf/vim-helm", ft = "helm" },
-
-	-- Remote development
-	{
-		"amitds1997/remote-nvim.nvim",
-		version = "*",
-		cmd = { "RemoteStart" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		opts = nvim_remote.opts,
-	},
 
 	-- search/replace in multiple files
 	{
