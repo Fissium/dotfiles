@@ -4,7 +4,18 @@ local nvim_lint = require("configs.nvim-lint")
 
 local plugins = {
 
-	-- Override plugin definition options
+	-- blink.cmp
+	{ import = "nvchad.blink.lazyspec" },
+	{
+		"saghen/blink.cmp",
+		opts = {
+			completion = {
+				ghost_text = {
+					enabled = false,
+				},
+			},
+		},
+	},
 
 	{
 		"folke/which-key.nvim",
