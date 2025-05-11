@@ -17,13 +17,6 @@ local plugins = {
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		opts = function(_, opts)
-			table.insert(opts.sources, { name = "render-markdown" })
-		end,
-	},
-
-	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("nvchad.configs.lspconfig").defaults()
@@ -168,11 +161,11 @@ local plugins = {
 		ft = { "markdown" },
 		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		-- config = function()
-		-- 	require("render-markdown").setup({
-		-- 		completions = { blink = { enabled = true } },
-		-- 	})
-		-- end,
+		config = function()
+			require("render-markdown").setup({
+				completions = { lsp = { enabled = true } },
+			})
+		end,
 	},
 
 	-- Commentstring
