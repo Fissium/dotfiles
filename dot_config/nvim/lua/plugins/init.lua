@@ -14,6 +14,14 @@ local plugins = {
 					enabled = false,
 				},
 			},
+			fuzzy = {
+				sorts = {
+					"exact",
+					-- defaults
+					"score",
+					"sort_text",
+				},
+			},
 		},
 	},
 
