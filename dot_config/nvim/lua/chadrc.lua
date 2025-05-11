@@ -25,29 +25,6 @@ M.ui = {
 		enabled = true,
 		theme = "minimal",
 		separator_style = "round",
-		order = {
-			"mode",
-			"file",
-			"yaml_schema",
-			"git",
-			"%=",
-			"lsp_msg",
-			"%=",
-			"diagnostics",
-			"lsp",
-			"cwd",
-			"cursor",
-		},
-		modules = {
-			yaml_schema = function()
-				local result = require("schema-companion.context").get_buffer_schema(0)
-				if not result.name or result.name == "none" then
-					return ""
-				end
-
-				return "%#St_schema#" .. result.name
-			end,
-		},
 	},
 }
 
