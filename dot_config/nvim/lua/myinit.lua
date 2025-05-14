@@ -100,8 +100,7 @@ local function yaml_ft(path, bufnr)
 		if
 			line
 			and (
-				line:match("^%s*-%s*name:")
-				or line:match("^%s*-%s*hosts:")
+				line:match("^%s*-%s*hosts:")
 				or line:match("^%s*hosts:")
 				or line:match("^%s*tasks:")
 				or line:match("^%s*roles:")
