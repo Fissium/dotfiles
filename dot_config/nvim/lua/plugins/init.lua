@@ -38,9 +38,8 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("nvchad.configs.lspconfig").defaults()
 			require("configs.lspconfig")
-		end, -- Override to setup mason-lspconfig
+		end,
 	},
 
 	-- override plugin configs
@@ -74,6 +73,7 @@ local plugins = {
 		event = "BufWritePre",
 		opts = {
 			formatters_by_ft = conform_opts.formatters_by_ft,
+			formatters = conform_opts.formatters,
 			default_format_opts = conform_opts.default_format_opts,
 		},
 	},

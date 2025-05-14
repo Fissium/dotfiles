@@ -5,7 +5,7 @@ M.formatters_by_ft = {
 	-- lua
 	lua = { "stylua" },
 	-- python
-	python = { "ruff_organize_imports", "ruff_format" },
+	python = { "ruff_sort", "ruff_format" },
 	-- yaml
 	yaml = { "yamlfmt" },
 	-- ansible
@@ -22,6 +22,22 @@ M.formatters_by_ft = {
 	go = { "goimports", "golines", "gofumpt" },
 	-- general
 	["_"] = { "trim_whitespace", lsp_format = "prefer" },
+}
+
+M.formatters = {
+	ruff_sort = {
+		command = "ruff",
+		args = {
+			"check",
+			"--select",
+			"I",
+			"--fix",
+			"--stdin-filename",
+			"$FILENAME",
+			"-",
+		},
+		stdin = true,
+	},
 }
 
 M.default_format_opts = {
