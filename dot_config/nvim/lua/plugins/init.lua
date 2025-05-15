@@ -154,23 +154,6 @@ local plugins = {
 					require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
 				},
 			})
-			require("lspconfig").yamlls.setup(require("schema-companion").setup_client({
-				settings = {
-					redhat = { telemetry = { enabled = false } },
-					yaml = {
-						hover = true,
-						completion = true,
-						keyOrdering = false,
-						format = {
-							enable = false,
-						},
-						validate = true,
-						schemas = {},
-						schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
-						schemaDownload = { enable = true },
-					},
-				},
-			}))
 		end,
 	},
 
