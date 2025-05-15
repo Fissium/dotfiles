@@ -2,7 +2,24 @@ require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
 	bashls = {},
-	yamlls = {},
+	yamlls = require("schema-companion").setup_client({
+		filetypes = { "yaml", "yaml.ansible", "yaml.gitlab", "yaml.docker-compose" },
+		settings = {
+			redhat = { telemetry = { enabled = false } },
+			yaml = {
+				hover = true,
+				completion = true,
+				keyOrdering = false,
+				format = {
+					enable = false,
+				},
+				validate = true,
+				schemas = {},
+				schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+				schemaDownload = { enable = true },
+			},
+		},
+	}),
 	ruff = {},
 	ty = {},
 	typos_lsp = {},
