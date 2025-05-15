@@ -5,6 +5,7 @@ local servers = {
 	yamlls = {},
 	ruff = {},
 	ty = {},
+	typos_lsp = {},
 	helm_ls = {},
 	terraformls = {},
 	dockerls = {},

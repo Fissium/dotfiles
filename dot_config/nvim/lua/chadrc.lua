@@ -36,7 +36,7 @@ M.mason = {
 		"stylua",
 
 		-- python stuff
-		"pyright",
+		"ty",
 		"ruff",
 
 		-- bash stuff
@@ -57,7 +57,7 @@ M.mason = {
 		"marksman",
 
 		-- typos
-		"typos",
+		"typos-lsp",
 
 		-- helm
 		"helm-ls",
