@@ -21,7 +21,21 @@ local servers = {
 		},
 	}),
 	ruff = {},
-	ty = {},
+	pyright = {
+		settings = {
+			pyright = {
+				disableOrganizeImports = true,
+			},
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "openFilesOnly",
+					useLibraryCodeForTypes = true,
+					typeCheckingMode = "basic",
+				},
+			},
+		},
+	},
 	typos_lsp = {},
 	helm_ls = {},
 	terraformls = {},
