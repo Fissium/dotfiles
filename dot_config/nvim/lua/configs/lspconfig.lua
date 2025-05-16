@@ -1,4 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
+local nvlsp = require("nvchad.configs.lspconfig")
 
 local servers = {
 	bashls = {},
@@ -35,6 +36,14 @@ local servers = {
 				},
 			},
 		},
+
+		capabilities = (function()
+			local capabilities = vim.deepcopy(nvlsp.capabilities)
+			capabilities.textDocument.publishDiagnostics = {
+				tagSupport = { valueSet = { 2 } },
+			}
+			return capabilities
+		end)(),
 	},
 	typos_lsp = {},
 	helm_ls = {},
@@ -83,6 +92,9 @@ local servers = {
 }
 
 for name, opts in pairs(servers) do
+	if name ~= "pyright" and not opts.capabilities then
+		opts.capabilities = nvlsp.capabilities
+	end
 	vim.lsp.config(name, opts)
 	vim.lsp.enable(name)
 end
