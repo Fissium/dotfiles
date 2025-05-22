@@ -12,7 +12,6 @@ M.override = {
 
 M.add = {
 	NvimTreeOpenedFolderName = { fg = "green", bold = true },
-	St_schema = { fg = "#6f737b", bold = true },
 }
 
 return M
