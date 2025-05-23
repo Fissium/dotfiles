@@ -125,9 +125,21 @@ local plugins = {
 	-- Diffview
 	{
 		"sindrets/diffview.nvim",
-		cmd = "DiffviewOpen",
+		cmd = { "DiffviewOpen" },
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {
+			enhanced_diff_hl = true,
+			view = {
+				default = { winbar_info = true },
+				file_history = { winbar_info = true },
+			},
+			hooks = {
+				diff_buf_read = function(bufnr)
+					vim.b[bufnr].view_activated = false
+				end,
+			},
 		},
 	},
 
