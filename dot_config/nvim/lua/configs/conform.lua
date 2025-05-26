@@ -7,7 +7,7 @@ M.formatters_by_ft = {
 	-- python
 	python = { "ruff_sort", "ruff_format" },
 	-- yaml
-	yaml = { "yamlfmt", "trim_whitespace" },
+	yaml = { "yamlfmt" },
 	-- ansible
 	ansible = { "yamlfmt" },
 	-- shell
@@ -21,7 +21,8 @@ M.formatters_by_ft = {
 	-- go
 	go = { "goimports", "golines", "gofumpt" },
 	-- general
-	["_"] = { "trim_whitespace", lsp_format = "prefer" },
+	["*"] = { "trim_whitespace" },
+	["_"] = { lsp_format = "fallback" },
 }
 
 M.formatters = {
