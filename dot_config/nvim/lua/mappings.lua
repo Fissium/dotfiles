@@ -43,13 +43,9 @@ local mappings = {
 		},
 		["<leader>fd"] = {
 			function()
-				require("telescope.builtin").live_grep({
-					additional_args = function()
-						return { "--hidden", "--no-ignore" }
-					end,
-				})
+				require("telescope.builtin").diagnostics()
 			end,
-			"telescope live grep all files",
+			"telescope show diagnostics",
 		},
 		["<leader>sr"] = {
 			function()
