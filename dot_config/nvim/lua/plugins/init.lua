@@ -1,6 +1,7 @@
 local overrides = require("configs.overrides")
 local conform_opts = require("configs.conform")
 local nvim_lint = require("configs.nvim-lint")
+local HOME = os.getenv("HOME")
 
 local plugins = {
 
@@ -84,8 +85,10 @@ local plugins = {
 		event = "LspAttach",
 		config = function()
 			require("lint").linters_by_ft = nvim_lint.linters_by_ft
+			local markdownlint_cli2 = require("lint").linters["markdownlint-cli2"]
+			markdownlint_cli2.args = { "--config", HOME .. "/.markdownlint-cli2.yaml", "--" }
 
-			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
+			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufReadPost" }, {
 				callback = function()
 					require("lint").try_lint()
 				end,
