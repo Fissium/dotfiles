@@ -7,7 +7,7 @@ M.formatters_by_ft = {
 	-- python
 	python = { "ruff_sort", "ruff_format" },
 	-- yaml
-	yaml = { "yamlfmt" },
+	yaml = { "yamlfmt", "trim_whitespace" },
 	-- ansible
 	ansible = { "yamlfmt" },
 	-- shell
