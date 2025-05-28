@@ -27,6 +27,8 @@ M.treesitter = {
 		"gomod",
 		"gowork",
 		"gosum",
+		"diff",
+		"regex",
 	},
 	indent = {
 		enable = true,
