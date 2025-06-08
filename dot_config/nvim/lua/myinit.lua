@@ -72,10 +72,10 @@ local function yaml_ft(path, bufnr)
 		return path:match("docker%-compose%.ya?ml$") or path:match(".*%.docker%-compose%.ya?ml$")
 	end
 
-	if is_helm_file() then
-		return "helm"
-	elseif is_helm_values_file() then
+	if is_helm_values_file() then
 		return "yaml.helm-values"
+	elseif is_helm_file() then
+		return "helm"
 	elseif is_gitlab_ci_file() then
 		return "yaml.gitlab"
 	elseif is_docker_compose_file() then
