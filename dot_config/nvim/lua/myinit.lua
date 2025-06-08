@@ -51,10 +51,17 @@ local function yaml_ft(path, bufnr)
 		if vim.tbl_isempty(check) then
 			return false
 		end
-		if path:match("Chart%.ya?ml$") or path:match("values%..*%.ya?ml$") or path:match("values%.ya?ml$") then
+		if path:match("Chart%.ya?ml$") then
 			return false
 		end
 		return true
+	end
+
+	local function is_helm_values_file()
+		if path:match("values%..*%.ya?ml$") or path:match("values%.ya?ml$") then
+			return true
+		end
+		return false
 	end
 
 	local function is_gitlab_ci_file()
@@ -67,6 +74,8 @@ local function yaml_ft(path, bufnr)
 
 	if is_helm_file() then
 		return "helm"
+	elseif is_helm_values_file() then
+		return "yaml.helm-values"
 	elseif is_gitlab_ci_file() then
 		return "yaml.gitlab"
 	elseif is_docker_compose_file() then
