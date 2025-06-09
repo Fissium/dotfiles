@@ -18,6 +18,7 @@ M.treesitter = {
 		"git_rebase",
 		"gitattributes",
 		"helm",
+		"gotmpl",
 		"make",
 		"terraform",
 		"hcl",

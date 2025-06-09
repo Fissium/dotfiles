@@ -192,9 +192,6 @@ local plugins = {
 		end,
 	},
 
-	-- Helm support
-	{ "towolf/vim-helm", ft = "helm" },
-
 	-- search/replace in multiple files
 	{
 		"MagicDuck/grug-far.nvim",
