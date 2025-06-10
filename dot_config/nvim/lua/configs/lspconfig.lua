@@ -84,18 +84,18 @@ local servers = {
 }
 
 for name, opts in pairs(servers) do
-    if name == "pyright" then
-        opts.capabilities = (function()
-            local capabilities = vim.deepcopy(nvlsp.capabilities)
-            capabilities.textDocument.publishDiagnostics = {
-                tagSupport = { valueSet = { 2 } },
-            }
-            return capabilities
-        end)()
-    else
-        opts.capabilities = nvlsp.capabilities
-    end
+	if name == "pyright" then
+		opts.capabilities = (function()
+			local capabilities = vim.deepcopy(nvlsp.capabilities)
+			capabilities.textDocument.publishDiagnostics = {
+				tagSupport = { valueSet = { 2 } },
+			}
+			return capabilities
+		end)()
+	else
+		opts.capabilities = nvlsp.capabilities
+	end
 
-    vim.lsp.config(name, opts)
-    vim.lsp.enable(name)
+	vim.lsp.config(name, opts)
+	vim.lsp.enable(name)
 end
