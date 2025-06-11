@@ -4,9 +4,19 @@ local nvlsp = require("nvchad.configs.lspconfig")
 local servers = {
 	bashls = {},
 	yamlls = require("schema-companion").setup_client({
-		filetypes = { "yaml", "yaml.ansible", "yaml.gitlab", "yaml.docker-compose" },
+		filetypes = {
+			"yaml",
+			"yaml.ansible",
+			"yaml.gitlab",
+			"yaml.docker-compose",
+			"yaml.helm-values",
+		},
 		settings = {
-			redhat = { telemetry = { enabled = false } },
+			redhat = {
+				telemetry = {
+					enabled = false,
+				},
+			},
 			yaml = {
 				hover = true,
 				completion = true,
@@ -16,8 +26,13 @@ local servers = {
 				},
 				validate = true,
 				schemas = {},
-				schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
-				schemaDownload = { enable = true },
+				schemaStore = {
+					enable = true,
+					url = "https://www.schemastore.org/api/json/catalog.json",
+				},
+				schemaDownload = {
+					enable = true,
+				},
 			},
 		},
 	}),
@@ -76,7 +91,13 @@ local servers = {
 				usePlaceholders = true,
 				completeUnimported = true,
 				staticcheck = true,
-				directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+				directoryFilters = {
+					"-.git",
+					"-.vscode",
+					"-.idea",
+					"-.vscode-test",
+					"-node_modules",
+				},
 				semanticTokens = true,
 			},
 		},
