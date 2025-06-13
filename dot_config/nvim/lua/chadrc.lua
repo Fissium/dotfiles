@@ -36,6 +36,7 @@ M.mason = {
 		"stylua",
 
 		-- python stuff
+		"ty",
 		"pyright",
 		"ruff",
 
