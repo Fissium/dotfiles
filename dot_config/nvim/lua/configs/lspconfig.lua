@@ -37,6 +37,17 @@ local servers = {
 		},
 	}),
 	ruff = {},
+	-- ty = {
+	-- 	init_options = {
+	-- 		settings = {
+	-- 			experimental = {
+	-- 				completions = {
+	-- 					enable = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	pyright = {
 		settings = {
 			pyright = {
