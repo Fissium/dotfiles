@@ -37,7 +37,6 @@ M.mason = {
 
 		-- python stuff
 		"ty",
-		"pyright",
 		"ruff",
 
 		-- bash stuff
