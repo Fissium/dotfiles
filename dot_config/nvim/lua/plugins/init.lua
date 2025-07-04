@@ -207,6 +207,16 @@ local plugins = {
 		},
 	},
 
+	-- gitsigns
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "User FilePost",
+		version = "1.0.x",
+		opts = function()
+			return require("nvchad.configs.gitsigns")
+		end,
+	},
+
 	-- tyny-glimmer
 	{
 		"rachartier/tiny-glimmer.nvim",
