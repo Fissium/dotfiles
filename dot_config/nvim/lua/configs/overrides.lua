@@ -31,6 +31,8 @@ M.treesitter = {
 		"gosum",
 		"diff",
 		"regex",
+		"html",
+		"xml",
 	},
 	indent = {
 		enable = true,
