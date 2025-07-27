@@ -3,7 +3,7 @@ local nvlsp = require("nvchad.configs.lspconfig")
 
 local servers = {
 	bashls = {},
-	yamlls = require("schema-companion").setup_client({
+	yamlls = {
 		filetypes = {
 			"yaml",
 			"yaml.ansible",
@@ -25,17 +25,17 @@ local servers = {
 					enable = false,
 				},
 				validate = true,
-				schemas = {},
+				schemas = require("schemastore").yaml.schemas(),
 				schemaStore = {
-					enable = true,
-					url = "https://www.schemastore.org/api/json/catalog.json",
+					enable = false,
+					url = "",
 				},
 				schemaDownload = {
 					enable = true,
 				},
 			},
 		},
-	}),
+	},
 	ruff = {},
 	-- ty = {},
 	pyright = {
