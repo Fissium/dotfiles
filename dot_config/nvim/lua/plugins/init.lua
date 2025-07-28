@@ -151,11 +151,22 @@ local plugins = {
 		opts = {},
 	},
 
-	-- SchemaStore
+	-- schema-companion
 	{
-		"b0o/SchemaStore.nvim",
+		"cenk1cenk2/schema-companion.nvim",
 		ft = { "yaml" },
-		version = false, -- last release is way too old
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		config = function()
+			require("schema-companion").setup({
+				enable_telescope = true,
+				matchers = {
+					require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
+				},
+			})
+		end,
 	},
 
 	-- Markdown

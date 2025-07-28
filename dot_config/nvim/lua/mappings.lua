@@ -29,6 +29,18 @@ local mappings = {
 			end,
 			"format with conform",
 		},
+		["<leader>yc"] = {
+			function()
+				require("telescope").extensions.schema_companion.select_schema()
+			end,
+			"select a schema for the current buffer",
+		},
+		["<leader>ym"] = {
+			function()
+				require("telescope").extensions.schema_companion.select_from_matching_schemas()
+			end,
+			"select a matched schema for the current buffer",
+		},
 		["<leader>fd"] = {
 			function()
 				require("telescope.builtin").diagnostics()
