@@ -38,7 +38,7 @@ M.mason = {
 		-- python stuff
 		"ty",
 		"ruff",
-    "pyright",
+		"pyright",
 
 		-- bash stuff
 		"bash-language-server",
@@ -52,7 +52,8 @@ M.mason = {
 
 		-- docker stuff
 		"hadolint",
-		"dockerfile-language-server",
+		"docker-language-server",
+		"docker-compose-language-service",
 
 		-- markdown
 		"marksman",
