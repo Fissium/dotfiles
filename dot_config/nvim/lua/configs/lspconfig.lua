@@ -57,7 +57,6 @@ local servers = {
 	helm_ls = {},
 	terraformls = {},
 	docker_language_server = {},
-	docker_compose_language_service = {},
 	marksman = {},
 	ansiblels = {},
 	gopls = {
