@@ -18,6 +18,20 @@ local plugins = {
 		},
 	},
 
+	-- Hardtime
+	{
+		"m4xshen/hardtime.nvim",
+		lazy = false,
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {
+			disabled_filetypes = { "NvimTree", "lazy", "mason" },
+			resetting_keys = {
+				["y"] = {},
+				["p"] = {},
+			},
+		},
+	},
+
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
