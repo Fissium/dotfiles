@@ -33,6 +33,7 @@ M.treesitter = {
 		"regex",
 		"html",
 		"xml",
+		"http",
 	},
 	indent = {
 		enable = true,

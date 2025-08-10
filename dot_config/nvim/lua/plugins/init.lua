@@ -18,6 +18,12 @@ local plugins = {
 		},
 	},
 
+	-- Kulala
+	{
+		"mistweaverco/kulala.nvim",
+		ft = "http",
+		opts = {},
+	},
 	-- Hardtime
 	{
 		"m4xshen/hardtime.nvim",

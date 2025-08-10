@@ -60,6 +60,24 @@ local mappings = {
 			end,
 			"search and replace",
 		},
+		["<leader>Rs"] = {
+			function()
+				require("kulala").run()
+			end,
+			"send request",
+		},
+		["<leader>Ra"] = {
+			function()
+				require("kulala").run_all()
+			end,
+			"send all request",
+		},
+		["<leader>Rb"] = {
+			function()
+				require("kulala").scratchpad()
+			end,
+			"open scratchpad",
+		},
 	},
 
 	v = {
@@ -75,6 +93,18 @@ local mappings = {
 				})
 			end,
 			"search and replace",
+		},
+		["<leader>Rs"] = {
+			function()
+				require("kulala").run()
+			end,
+			"send request",
+		},
+		["<leader>Ra"] = {
+			function()
+				require("kulala").run_all()
+			end,
+			"send all request",
 		},
 	},
 }

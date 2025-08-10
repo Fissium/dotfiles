@@ -145,3 +145,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.expandtab = false
 	end,
 })
+
+-- http
+vim.filetype.add({
+	extension = {
+		["http"] = "http",
+	},
+})
