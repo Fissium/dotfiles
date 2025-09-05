@@ -191,6 +191,7 @@ local plugins = {
 	{
 		"cenk1cenk2/schema-companion.nvim",
 		ft = { "yaml" },
+		commit = "b22243d3ca71be08d06a4b9bf200c1d677c41d45",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope.nvim" },
