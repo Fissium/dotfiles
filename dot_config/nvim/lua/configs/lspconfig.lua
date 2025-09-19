@@ -36,7 +36,16 @@ local servers = {
 		},
 	}),
 	ruff = {},
-	ty = {},
+	ty = {
+		settings = {
+			ty = {
+				experimental = {
+					rename = true,
+					autoImport = true,
+				},
+			},
+		},
+	},
 	typos_lsp = {},
 	helm_ls = require("schema-companion").setup_client({
 		settings = {
