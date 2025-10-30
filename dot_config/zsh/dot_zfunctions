@@ -10,3 +10,19 @@ function lt() {
 function lfcd () {
 	cd "$(command lf -print-last-dir "$@")"
 }
+
+function kubectl() {
+  if [[ $1 == "delete" ]]; then
+    echo "About to execute: kubectl $*"
+    read -r -q "?Continue? (y/n): "
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      command kubecolor "$@"
+    else
+      echo "Aborted"
+      return 1
+    fi
+  else
+    command kubecolor "$@"
+  fi
+}
