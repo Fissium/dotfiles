@@ -111,6 +111,7 @@ history_filter = [
   "docker login",
   "VAULT",
   "YC",
+  "kubectl delete nodes"
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
