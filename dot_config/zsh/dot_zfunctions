@@ -14,10 +14,10 @@ function lfcd () {
 function kubectl() {
   if [[ $1 == "delete" ]]; then
     echo "About to execute: kubectl $*"
-    read -r -q "?Continue? (y/n): "
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      command kubecolor "$@"
+    echo -n "Continue? (y/N): "
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+      command kubectl "$@"
     else
       echo "Aborted"
       return 1
