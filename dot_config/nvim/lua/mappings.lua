@@ -35,6 +35,12 @@ local mappings = {
 			end,
 			"telescope show diagnostics",
 		},
+		["<leader>ss"] = {
+			function()
+				require("custom.schema_selector").init()
+			end,
+			"select yaml schema",
+    },
 		["<leader>sr"] = {
 			function()
 				local grug = require("grug-far")
