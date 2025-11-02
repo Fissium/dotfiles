@@ -36,11 +36,11 @@ autocmd("BufEnter", {
 	end,
 })
 
--- Dockefile
+-- Dockerfile
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.Dockefile" },
+	pattern = { "*.Dockerfile" },
 	callback = function()
-		vim.bo.filetype = "Dockefile"
+		vim.bo.filetype = "Dockerfile"
 	end,
 })
 

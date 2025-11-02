@@ -10,10 +10,11 @@ local plugins = {
 	{
 		"saghen/blink.cmp",
 		opts = {
-			completion = {
-				ghost_text = {
-					enabled = false,
+			sources = {
+				per_filetype = {
+					markdown = { inherit_defaults = true },
 				},
+				default = { "lsp", "snippets", "buffer", "path" },
 			},
 		},
 	},
@@ -187,36 +188,27 @@ local plugins = {
 		opts = {},
 	},
 
-	-- schema-companion
-	{
-		"cenk1cenk2/schema-companion.nvim",
-		ft = { "yaml" },
-		commit = "b22243d3ca71be08d06a4b9bf200c1d677c41d45",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope.nvim" },
-		},
-		config = function()
-			require("schema-companion").setup({
-				enable_telescope = true,
-				matchers = {
-					require("schema-companion.matchers.kubernetes").setup({ version = "master" }),
-				},
-			})
-		end,
-	},
-
 	-- Markdown
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown" },
-		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("render-markdown").setup({
-				completions = { lsp = { enabled = true } },
-			})
-		end,
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {
+			completions = {
+				blink = {
+					enabled = true,
+				},
+			},
+			overrides = {
+				buftype = {
+					nofile = {
+						enabled = false,
+					},
+				},
+			},
+		},
 	},
 
 	-- Commentstring

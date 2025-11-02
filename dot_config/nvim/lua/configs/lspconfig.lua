@@ -2,14 +2,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
 	bashls = {},
-	yamlls = require("schema-companion").setup_client({
-		filetypes = {
-			"yaml",
-			"yaml.ansible",
-			"yaml.gitlab",
-			"yaml.docker-compose",
-			"yaml.helm-values",
-		},
+	yamlls = {
 		settings = {
 			redhat = {
 				telemetry = {
@@ -34,7 +27,7 @@ local servers = {
 				},
 			},
 		},
-	}),
+	},
 	ruff = {},
 	ty = {
 		settings = {
@@ -47,27 +40,7 @@ local servers = {
 		},
 	},
 	typos_lsp = {},
-	helm_ls = require("schema-companion").setup_client({
-		settings = {
-			flags = { debounce_text_changes = 50 },
-			["helm-ls"] = {
-				yamlls = {
-					enabled = true,
-					diagnosticsLimit = 50,
-					showDiagnosticsDirectly = false,
-					path = "yaml-language-server",
-					config = {
-						validate = true,
-						format = { enable = true },
-						completion = true,
-						hover = true,
-						schemaDownload = { enable = true },
-						schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
-					},
-				},
-			},
-		},
-	}, require("schema-companion.adapters").helmls_adapter()),
+	helm_ls = {},
 	terraformls = {},
 	docker_language_server = {},
 	marksman = {},
