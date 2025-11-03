@@ -3,6 +3,13 @@ require("nvchad.configs.lspconfig").defaults()
 local servers = {
 	bashls = {},
 	yamlls = {
+		filetypes = {
+			"yaml",
+			"yaml.ansible",
+			"yaml.gitlab",
+			"yaml.docker-compose",
+			"yaml.helm-values",
+		},
 		settings = {
 			redhat = {
 				telemetry = {
