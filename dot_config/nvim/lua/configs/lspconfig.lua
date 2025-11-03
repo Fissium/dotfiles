@@ -19,11 +19,8 @@ local servers = {
 				validate = true,
 				schemas = {},
 				schemaStore = {
-					enable = true,
-					url = "https://www.schemastore.org/api/json/catalog.json",
-				},
-				schemaDownload = {
-					enable = true,
+					enable = false,
+					url = "",
 				},
 			},
 		},

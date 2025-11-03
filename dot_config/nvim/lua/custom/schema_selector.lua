@@ -10,7 +10,8 @@ local M = {
 		["X-GitHub-Api-Version"] = "2022-11-28",
 	},
 	k8s_schemas_url = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master",
-	cache_dir = vim.fn.stdpath("cache") .. "/k8s-schemas",
+	schemastore_api_url = "https://www.schemastore.org/api/json/catalog.json",
+	cache_dir = vim.fn.stdpath("cache") .. "/schemas",
 	cache_ttl = 86400,
 }
 
@@ -99,12 +100,78 @@ M.get_k8s_versions = function()
 	return versions
 end
 
+M.get_schemastore_schemas = function()
+	local cache_file = M.cache_dir .. "/schemastore_catalog.json"
+
+	if M.is_cache_valid(cache_file) then
+		local cache_path = Path:new(cache_file)
+		local cached_data = cache_path:read()
+		return vim.fn.json_decode(cached_data)
+	end
+
+	vim.notify("Fetching SchemaStore catalog...", vim.log.levels.INFO)
+
+	local response = curl.get(M.schemastore_api_url, {})
+
+	if response.status ~= 200 then
+		vim.notify("Failed to fetch SchemaStore catalog: " .. response.status, vim.log.levels.ERROR)
+		return {}
+	end
+
+	local body = vim.fn.json_decode(response.body)
+	local schemas = {}
+
+	for _, schema in ipairs(body.schemas) do
+		if schema.url then
+			local file_types = {}
+			if schema.fileMatch then
+				for _, pattern in ipairs(schema.fileMatch) do
+					if pattern:match("%.ya?ml$") then
+						table.insert(file_types, "yaml")
+					elseif pattern:match("%.json$") then
+						table.insert(file_types, "json")
+					end
+				end
+			end
+
+			if #file_types == 0 then
+				file_types = { "yaml", "json" }
+			end
+
+			table.insert(schemas, {
+				name = schema.name,
+				description = schema.description or "",
+				url = schema.url,
+				fileMatch = schema.fileMatch or {},
+				fileTypes = file_types,
+				display = schema.name .. (schema.description and (" - " .. schema.description) or ""),
+			})
+		end
+	end
+
+	table.sort(schemas, function(a, b)
+		return a.name < b.name
+	end)
+
+	M.ensure_cache_dir()
+	Path:new(cache_file):write(vim.fn.json_encode(schemas), "w")
+
+	vim.notify("Loaded " .. #schemas .. " schemas from SchemaStore", vim.log.levels.INFO)
+
+	return schemas
+end
+
 M.get_best_schema_folder = function(version)
 	local cache_file = M.cache_dir .. "/k8s_folder_" .. version .. ".json"
 
 	if M.is_cache_valid(cache_file, 604800) then
 		local cache_path = Path:new(cache_file)
-		return vim.fn.json_decode(cache_path:read())
+		local cached_data = cache_path:read()
+		local decoded = vim.fn.json_decode(cached_data)
+		if type(decoded) == "table" and decoded.folder then
+			return decoded.folder
+		end
+		return decoded
 	end
 
 	local url = M.github_base_api_url .. "/yannh/kubernetes-json-schema/contents/"
@@ -156,7 +223,12 @@ M.get_best_schema_folder = function(version)
 	end
 
 	M.ensure_cache_dir()
-	Path:new(cache_file):write(vim.fn.json_encode(selected_folder), "w")
+	local cache_data = {
+		folder = selected_folder,
+		version = version,
+		cached_at = os.time(),
+	}
+	Path:new(cache_file):write(vim.fn.json_encode(cache_data), "w")
 
 	return selected_folder
 end
@@ -399,6 +471,29 @@ M.select_crd_schema = function()
 	end)
 end
 
+M.select_schemastore_schema = function()
+	M.ensure_cache_dir()
+
+	local schemas = M.get_schemastore_schemas()
+	if #schemas == 0 then
+		vim.notify("No SchemaStore schemas found", vim.log.levels.ERROR)
+		return
+	end
+
+	M.telescope_select(schemas, {
+		prompt = "Select SchemaStore schema",
+		telescope_opts = {
+			layout_config = { width = 0.9, height = 0.8 },
+		},
+	}, function(schema)
+		if not schema then
+			return
+		end
+
+		M.add_schema_modeline(schema.url)
+	end)
+end
+
 M.clear_cache = function()
 	local cache_path = Path:new(M.cache_dir)
 	if cache_path:exists() then
@@ -409,10 +504,14 @@ M.clear_cache = function()
 end
 
 M.init = function()
-	M.telescope_select({ "Kubernetes (standard)", "CRDs (custom)" }, {
+	M.telescope_select({
+		"Kubernetes (standard)",
+		"CRDs (custom)",
+		"SchemaStore (general)",
+	}, {
 		prompt = "Select schema type",
 		telescope_opts = {
-			layout_config = { width = 0.4, height = 0.3 },
+			layout_config = { width = 0.5, height = 0.4 },
 		},
 	}, function(choice)
 		if not choice then
@@ -421,8 +520,10 @@ M.init = function()
 
 		if choice:match("^Kubernetes") then
 			M.select_k8s_schema()
-		else
+		elseif choice:match("^CRDs") then
 			M.select_crd_schema()
+		elseif choice:match("^SchemaStore") then
+			M.select_schemastore_schema()
 		end
 	end)
 end
