@@ -36,104 +36,62 @@ autocmd("BufEnter", {
 	end,
 })
 
--- Dockerfile
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.Dockerfile" },
-	callback = function()
-		vim.bo.filetype = "Dockerfile"
-	end,
-})
-
-local function yaml_ft(path, bufnr)
-	local content = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-	if type(content) == "table" then
-		content = table.concat(content, "\n")
-	end
-
-	local function is_helm_file()
-		local check = vim.fs.find("Chart.yaml", { path = vim.fs.dirname(path), upward = true })
-		if vim.tbl_isempty(check) then
-			return false
-		end
-		if path:match("Chart%.ya?ml$") then
-			return false
-		end
-		return true
-	end
-
-	local function is_helm_values_file()
-		if path:match("values%..*%.ya?ml$") or path:match("values%.ya?ml$") then
-			return true
-		end
-		return false
-	end
-
-	local function is_gitlab_ci_file()
-		return path:match("%.gitlab%-ci.*%.ya?ml$") or path:match("[cC][iI][cC][dD].*%.ya?ml$")
-	end
-
-	local function is_docker_compose_file()
-		return path:match("docker%-compose%.ya?ml$") or path:match(".*%.docker%-compose%.ya?ml$")
-	end
-
-	if is_helm_values_file() then
-		return "yaml.helm-values"
-	elseif is_helm_file() then
-		return "helm"
-	elseif is_gitlab_ci_file() then
-		return "yaml.gitlab"
-	elseif is_docker_compose_file() then
-		return "yaml.docker-compose"
-	end
-
-	local path_regex =
-		vim.regex("/\\(ansible\\|group_vars\\|handlers\\|host_vars\\|playbooks\\|roles\\|vars\\|tasks\\)/")
-	if path_regex and path_regex:match_str(path) then
-		return "yaml.ansible"
-	end
-
-	local content_regex = vim.regex("^(hosts\\|tasks\\|roles\\|handlers):")
-	if content_regex and content_regex:match_str(content) then
-		return "yaml.ansible"
-	end
-
-	return "yaml"
-end
-
--- Helm, Ansible, Gitlab CI/CD, Docker Compose
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.yml", "*.yaml" },
-	callback = function()
-		local ft = yaml_ft(vim.fn.expand("%:p"), vim.fn.bufnr("%"))
-		vim.bo.filetype = ft
-	end,
-})
-
+-- Filetypes
 vim.filetype.add({
 	extension = {
 		gotmpl = "gotmpl",
+		http = "http",
+	},
+
+	filename = {
+		["Dockerfile"] = "dockerfile",
 	},
 	pattern = {
+		-- Jinja
+		["*.j2"] = "jinja",
+
+		-- Env
+		[".envrc"] = "sh",
+
+		-- Docker
+		["*.Dockerfile"] = "dockerfile",
+
+		-- Docker Compose
+		[".*docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+
+		-- GitLab CI
+		[".*gitlab%-ci.*%.ya?ml"] = "yaml.gitlab",
+		[".*[cC][iI][cC][dD].*%.ya?ml"] = "yaml.gitlab",
+
+		-- Helm
 		[".*/templates/.*%.tpl"] = "helm",
-		[".*/templates/.*%.ya?ml"] = "helm",
+		[".*/templates/.*%.ya?ml"] = function(path, _)
+			local chart = vim.fs.find({ "Chart.yaml", "Chart.yml" }, {
+				path = vim.fs.dirname(path),
+				upward = true,
+			})
+			return not vim.tbl_isempty(chart) and "helm" or "yaml"
+		end,
+		[".*/templates/.*%.txt"] = "helm",
 		["helmfile.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml.gotmpl"] = "helm",
+		["values.*%.ya?ml"] = "yaml.helm-values",
+		["Chart.yaml"] = "yaml",
+
+		-- Ansible
+		[".*/defaults/.*%.ya?ml"] = "yaml.ansible",
+		[".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
+		[".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
+		[".*/group_vars/.*/.*%.ya?ml"] = "yaml.ansible",
+		[".*/playbook.*%.ya?ml"] = "yaml.ansible",
+		[".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+		[".*/tasks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/molecule/.*%.ya?ml"] = "yaml.ansible",
+		[".*/handlers/.*%.ya?ml"] = "yaml.ansible",
+		[".*/vars/.*%.ya?ml"] = "yaml.ansible",
 	},
-})
-
--- Env
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { ".envrc" },
-	callback = function()
-		vim.bo.filetype = "sh"
-	end,
-})
-
--- Jinja
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { "*.j2" },
-	callback = function()
-		vim.bo.filetype = "jinja"
-	end,
 })
 
 -- go
@@ -145,11 +103,4 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.softtabstop = 4
 		vim.bo.expandtab = false
 	end,
-})
-
--- http
-vim.filetype.add({
-	extension = {
-		["http"] = "http",
-	},
 })

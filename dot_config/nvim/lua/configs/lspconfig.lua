@@ -8,7 +8,6 @@ local servers = {
 			"yaml.ansible",
 			"yaml.gitlab",
 			"yaml.docker-compose",
-			"yaml.helm-values",
 		},
 		settings = {
 			redhat = {
