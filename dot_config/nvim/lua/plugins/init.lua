@@ -19,22 +19,6 @@ local plugins = {
 		},
 	},
 
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-		},
-	},
-
 	-- Kulala
 	{
 		"mistweaverco/kulala.nvim",
@@ -214,7 +198,7 @@ local plugins = {
 	-- Commentstring
 	{
 		"numToStr/Comment.nvim",
-		ft = { "helm", "terraform" },
+		ft = { "helm" },
 		config = function()
 			require("Comment").setup({
 				pre_hook = function()
