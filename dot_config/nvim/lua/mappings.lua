@@ -3,21 +3,12 @@ local map = vim.keymap.set
 
 local mappings = {
 	n = {
-		["<leader>gd"] = {
-			":DiffviewOpen<CR>",
-			"open diffview",
-		},
 		["<C-i>"] = {
 			function()
 				local current_state = vim.lsp.inlay_hint.is_enabled()
 				vim.lsp.inlay_hint.enable(not current_state)
 			end,
 			"toggle inlay_hint",
-		},
-
-		["<leader>gc"] = {
-			":DiffviewClose<CR>",
-			"close diffview",
 		},
 		["<leader>gb"] = {
 			":Gitsigns blame<CR>",
@@ -40,7 +31,7 @@ local mappings = {
 				require("custom.schema_selector").init()
 			end,
 			"select yaml schema",
-    },
+		},
 		["<leader>sr"] = {
 			function()
 				local grug = require("grug-far")
