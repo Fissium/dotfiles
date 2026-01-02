@@ -55,7 +55,7 @@ M.mason = {
 
 		-- markdown
 		"marksman",
-		"rudml",
+		"rumdl",
 
 		-- typos
 		"typos-lsp",
