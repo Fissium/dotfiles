@@ -55,6 +55,7 @@ M.mason = {
 
 		-- markdown
 		"marksman",
+		"rudml",
 
 		-- typos
 		"typos-lsp",
@@ -75,9 +76,6 @@ M.mason = {
 		"gofumpt",
 		"gopls",
 		"golines",
-
-		-- markdown
-		"markdownlint-cli2",
 	},
 }
 

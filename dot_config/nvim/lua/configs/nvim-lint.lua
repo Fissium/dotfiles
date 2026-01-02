@@ -11,8 +11,6 @@ M.linters_by_ft = {
 	["terraform-vars"] = { "tflint" },
 	-- ansible
 	ansible = { "ansible_lint" },
-	-- markdown
-	markdown = { "markdownlint-cli2" },
 }
 
 return M

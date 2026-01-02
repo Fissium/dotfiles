@@ -22,6 +22,8 @@ M.formatters_by_ft = {
 	go = { "goimports", "golines", "gofumpt" },
 	-- http
 	http = { "kulala_fmt" },
+	-- markdown
+	markdown = { "rumdl" },
 	-- general
 	["*"] = { "trim_whitespace" },
 	["_"] = { lsp_format = "fallback" },

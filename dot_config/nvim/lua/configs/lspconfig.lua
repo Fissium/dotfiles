@@ -1,6 +1,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
+	rumdl = {},
 	bashls = {},
 	yamlls = {
 		filetypes = {
