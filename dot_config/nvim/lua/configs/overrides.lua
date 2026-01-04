@@ -23,7 +23,7 @@ M.treesitter = {
 		"gomod",
 		"gowork",
 		"gosum",
-		"http",
+		"kulala_http",
 	},
 	indent = {
 		enable = true,
