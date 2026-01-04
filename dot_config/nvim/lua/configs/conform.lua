@@ -20,8 +20,6 @@ M.formatters_by_ft = {
 	["terraform-vars"] = { "terraform_fmt" },
 	-- go
 	go = { "goimports", "golines", "gofumpt" },
-	-- http
-	http = { "kulala_fmt" },
 	-- markdown
 	markdown = { "rumdl" },
 	-- general

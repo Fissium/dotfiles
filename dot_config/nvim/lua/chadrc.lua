@@ -7,7 +7,7 @@ M.base46 = {
 	theme = "chadracula",
 	hl_override = highlights.override,
 	hl_add = highlights.add,
-	integrations = { "render-markdown", "diffview", "todo", "flash" },
+	integrations = { "render-markdown", "todo" },
 }
 
 M.lsp = {
