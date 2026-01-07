@@ -19,12 +19,25 @@ local plugins = {
 		},
 	},
 
+	-- Markdown TOC
+	{
+		"hedyhli/markdown-toc.nvim",
+		ft = "markdown",
+		cmd = { "Mtoc" },
+		opts = {
+			toc_list = {
+				markers = "-",
+			},
+		},
+	},
+
 	-- Kulala
 	{
 		"mistweaverco/kulala.nvim",
 		ft = "http",
 		opts = {},
 	},
+
 	-- Hardtime
 	{
 		"m4xshen/hardtime.nvim",
@@ -39,6 +52,7 @@ local plugins = {
 		},
 	},
 
+  -- WhichKey
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -49,6 +63,7 @@ local plugins = {
 		end,
 	},
 
+  -- LspConfig
 	{
 		"neovim/nvim-lspconfig",
 		config = function()

@@ -54,7 +54,6 @@ M.mason = {
 		"docker-language-server",
 
 		-- markdown
-		"marksman",
 		"rumdl",
 
 		-- typos

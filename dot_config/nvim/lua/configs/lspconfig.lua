@@ -47,7 +47,6 @@ local servers = {
 	helm_ls = {},
 	terraformls = {},
 	docker_language_server = {},
-	marksman = {},
 	ansiblels = {},
 	gopls = {
 		settings = {
