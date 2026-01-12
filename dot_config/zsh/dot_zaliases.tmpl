@@ -6,7 +6,10 @@ if command -v bat >/dev/null 2>&1; then
   alias cat="$(which bat)"
 fi
 
-alias ssh="kitten ssh"
+if command -v kitten >/dev/null 2>&1; then
+  alias rssh="command ssh"
+  alias ssh="kitten ssh"
+fi
 alias lf="lfcd"
 alias sudo="sudo "
 
