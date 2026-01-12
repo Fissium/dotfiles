@@ -75,6 +75,9 @@ M.mason = {
 		"gofumpt",
 		"gopls",
 		"golines",
+
+		-- json
+		"jsonlint",
 	},
 }
 

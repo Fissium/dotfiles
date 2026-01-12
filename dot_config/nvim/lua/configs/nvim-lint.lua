@@ -11,6 +11,8 @@ M.linters_by_ft = {
 	["terraform-vars"] = { "tflint" },
 	-- ansible
 	ansible = { "ansible_lint" },
+	-- json
+	json = { "jsonlint" },
 }
 
 return M

@@ -52,7 +52,7 @@ local plugins = {
 		},
 	},
 
-  -- WhichKey
+	-- WhichKey
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -63,7 +63,7 @@ local plugins = {
 		end,
 	},
 
-  -- LspConfig
+	-- LspConfig
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
