@@ -1,7 +1,6 @@
 local overrides = require("configs.overrides")
 local conform_opts = require("configs.conform")
-local nvim_lint = require("configs.nvim-lint")
-local HOME = os.getenv("HOME")
+local nvim_lint_opts = require("configs.nvim-lint")
 
 local plugins = {
 
@@ -71,12 +70,6 @@ local plugins = {
 		end,
 	},
 
-	-- override plugin configs
-	{
-		"williamboman/mason.nvim",
-		opts = overrides.mason,
-	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = overrides.treesitter,
@@ -112,9 +105,7 @@ local plugins = {
 		"mfussenegger/nvim-lint",
 		event = "LspAttach",
 		config = function()
-			require("lint").linters_by_ft = nvim_lint.linters_by_ft
-			local markdownlint_cli2 = require("lint").linters["markdownlint-cli2"]
-			markdownlint_cli2.args = { "--config", HOME .. "/.markdownlint-cli2.yaml", "--" }
+			require("lint").linters_by_ft = nvim_lint_opts.linters_by_ft
 
 			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufReadPost" }, {
 				callback = function()
@@ -216,14 +207,6 @@ local plugins = {
 		"MagicDuck/grug-far.nvim",
 		opts = { headerMaxWidth = 80 },
 		cmd = "GrugFar",
-	},
-
-	-- Nvim-tree
-	{
-		"nvim-tree/nvim-tree.lua",
-		opts = {
-			git = { enable = true },
-		},
 	},
 
 	-- tyny-glimmer
