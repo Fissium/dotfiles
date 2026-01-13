@@ -3,9 +3,7 @@ vim.lsp.set_log_level("off")
 vim.o.relativenumber = true
 
 dofile(vim.g.base46_cache .. "render-markdown")
-dofile(vim.g.base46_cache .. "diffview")
 dofile(vim.g.base46_cache .. "todo")
-dofile(vim.g.base46_cache .. "flash")
 
 if vim.fn.executable("zsh") == 1 then
 	vim.o.shell = "zsh"
