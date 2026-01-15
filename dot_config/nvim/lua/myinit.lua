@@ -48,6 +48,9 @@ vim.filetype.add({
 		-- Jinja
 		["*.j2"] = "jinja",
 
+		-- HAProxy
+		["haproxy*.cfg"] = "haproxy",
+
 		-- Env
 		[".envrc"] = "sh",
 

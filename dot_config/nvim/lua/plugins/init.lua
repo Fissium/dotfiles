@@ -18,6 +18,12 @@ local plugins = {
 		},
 	},
 
+	-- HAProxy syntax
+	{
+		"Joorem/vim-haproxy",
+		ft = { "haproxy" },
+	},
+
 	-- Markdown TOC
 	{
 		"hedyhli/markdown-toc.nvim",
