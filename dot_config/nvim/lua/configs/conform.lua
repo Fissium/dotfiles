@@ -9,7 +9,7 @@ M.formatters_by_ft = {
 	-- yaml
 	yaml = { "yamlfmt" },
 	-- ansible
-	ansible = { "yamlfmt" },
+	ansible = { "yamlfmt", "ansible-lint" },
 	-- shell
 	sh = { "shfmt" },
 	-- json
@@ -41,10 +41,14 @@ M.formatters = {
 		},
 		stdin = true,
 	},
+	["ansible-lint"] = {
+		prepend_args = { "--offline" },
+	},
 }
 
 M.default_format_opts = {
 	lsp_format = "fallback",
+	timeout_ms = 5000,
 }
 
 return M
