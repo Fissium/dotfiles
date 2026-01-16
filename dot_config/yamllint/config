@@ -7,3 +7,12 @@ rules:
 
   braces:
     max-spaces-inside: 1
+
+  comments:
+    min-spaces-from-content: 1
+
+  comments-indentation: disable
+
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
