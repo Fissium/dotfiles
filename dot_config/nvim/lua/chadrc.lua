@@ -78,6 +78,9 @@ M.mason = {
 
 		-- json
 		"jsonlint",
+
+		-- treesitter
+		"tree-sitter-cli",
 	},
 }
 
