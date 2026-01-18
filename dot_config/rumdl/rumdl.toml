@@ -1,54 +1,45 @@
-# Google Markdown Style Guide Configuration
-# https://google.github.io/styleguide/docguide/style.html
+# Prettier-Compatible Markdown Configuration
+# https://prettier.io/docs/options
 #
-# This config enforces Google's Markdown conventions. Use alongside any flavor:
+# This config aligns rumdl with Prettier's markdown formatting choices.
+# Use when your project uses Prettier for markdown formatting.
 #
-#   [global]
-#   flavor = "mkdocs"  # Flavor handles parsing, this config handles style
-#
+# Note: Prettier's default prose-wrap is "preserve" (no line wrapping).
+# Line length warnings only apply if you use --prose-wrap always.
 
 [global]
-line_length = 120  # Google: "Wrap to 80 characters"
+line_length = 120  # Prettier default print width (with --prose-wrap always)
 
-# Headings: ATX-style only (# Heading), not Setext (underlines)
+# Headings: ATX-style (# Heading) - Prettier converts setext to ATX
 [MD003]
 style = "atx"
 
-# Lists: Google uses asterisk (*) for unordered lists
+# Lists: Prettier maintains consistent markers within each list
+# It doesn't enforce a global marker style across all lists
 [MD004]
-style = "asterisk"
+style = "consistent"
 
-# Lists: 4-space indent for nesting
+# Lists: Prettier uses 2-space indentation (tab-width default)
 [MD007]
-indent = 4
+indent = 2
 
-# Trailing spaces: Google says use backslash for line breaks, not trailing spaces
-[MD009]
-strict = true
-
-# Lists: Google uses lazy numbering (all 1.) for long lists
-# Use "one_or_ordered" to allow both lazy and explicit numbering
+# Ordered lists: Prettier renumbers by default, but allows lazy (all 1.)
+# Use "one_or_ordered" to accept either style
 [MD029]
 style = "one_or_ordered"
 
-# Lists: Google specifies 3 spaces after bullet, 2 after number
-# This aligns continuation text with first word
-#   *   List item text
-#   1.  Numbered item text
-[MD030]
-ul_single = 3
-ul_multi = 3
-ol_single = 2
-ol_multi = 2
+# Note: MD046 (code block style) is not configured because Prettier
+# preserves both fenced and indented code blocks as-is.
 
-# Code blocks: Fenced (```) preferred over indented
-[MD046]
-style = "fenced"
+# Emphasis: Prettier normalizes italics to underscores, bold to asterisks
+[MD049]
+style = "underscore"
 
-# The following rules are enabled by default and match Google's guide:
-# - MD018: Space after hash in headings
-# - MD022: Blank lines around headings
-# - MD025: Single H1 per document
-# - MD033: No inline HTML (Google: "Strongly prefer Markdown")
-# - MD040: Code blocks should specify language
+[MD050]
+style = "asterisk"
+
+# The following rules are enabled by default and align with Prettier:
+# - MD010: No hard tabs (Prettier converts to spaces)
+# - MD012: No multiple consecutive blank lines
+# - MD023: Headings must start at beginning of line
 # - MD047: Files end with single newline
