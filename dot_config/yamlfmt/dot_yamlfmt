@@ -10,4 +10,3 @@ formatter:
   trim_trailing_whitespace: true
   drop_merge_tag: true
   disable_alias_key_correction: true
-  force_quote_style: double
