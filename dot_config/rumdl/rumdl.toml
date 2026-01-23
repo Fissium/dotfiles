@@ -49,4 +49,4 @@ style = "asterisk"
 # - MD047: Files end with single newline
 
 [MD033]
-allowed-elements = [details, summary]
+allowed-elements = ["details", "summary"]
