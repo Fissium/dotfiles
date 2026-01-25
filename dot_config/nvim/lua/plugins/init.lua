@@ -157,8 +157,8 @@ local plugins = {
 
 	-- Diffview
 	{
-		"esmuellert/vscode-diff.nvim",
-		event = "VeryLazy",
+		"esmuellert/codediff.nvim",
+		cmd = "CodeDiff",
 		dependencies = { "MunifTanjim/nui.nvim" },
 	},
 
