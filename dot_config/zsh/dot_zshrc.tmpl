@@ -30,8 +30,8 @@ bindkey '^[[B' history-substring-search-down
 unsetopt beep
 
 # history
-export HISTSIZE=100000
-export SAVEHIST=20000
+export HISTSIZE=20000
+export SAVEHIST=50000
 export HISTFILE="$HOME/.config/zsh/history"
 export HIST_STAMPS="%d/%m/%y %T"
 setopt hist_ignore_dups     # do not record an event that was just recorded again
@@ -97,8 +97,8 @@ plugin-load $repos
 
 #completion-style
 zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}' 
-zstyle ':completion:*' menu no 
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
+zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --height=~10
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd $realpath'
 zstyle ':completion:*:descriptions' format '[%d]'
@@ -109,8 +109,12 @@ zle_highlight=('paste:none')
 # starship
 eval "$(starship init zsh)"
 
-# atuin
-eval "$(atuin init zsh --disable-up-arrow)"
+# fzf
+source <(fzf --zsh)
+
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:5:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'"
 
 # uv
 eval "$(uv generate-shell-completion zsh)"
