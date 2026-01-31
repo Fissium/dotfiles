@@ -47,3 +47,5 @@ style = "asterisk"
 # - MD012: No multiple consecutive blank lines
 # - MD023: Headings must start at beginning of line
 # - MD047: Files end with single newline
+[MD073]
+enabled = true
