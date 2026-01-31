@@ -33,6 +33,11 @@ local plugins = {
 			toc_list = {
 				markers = "-",
 			},
+			fences = {
+				enabled = true,
+				start_text = "toc",
+				end_text = "tocstop",
+			},
 		},
 	},
 
