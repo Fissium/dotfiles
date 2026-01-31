@@ -63,6 +63,10 @@ local mappings = {
 			end,
 			"open scratchpad",
 		},
+		["<leader>toc"] = {
+			":InsertTOC<CR>",
+			"Insert TOC markers",
+		},
 	},
 
 	v = {

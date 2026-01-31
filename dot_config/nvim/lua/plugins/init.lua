@@ -24,23 +24,6 @@ local plugins = {
 		ft = { "haproxy" },
 	},
 
-	-- Markdown TOC
-	{
-		"hedyhli/markdown-toc.nvim",
-		ft = "markdown",
-		cmd = { "Mtoc" },
-		opts = {
-			toc_list = {
-				markers = "-",
-			},
-			fences = {
-				enabled = true,
-				start_text = "toc",
-				end_text = "tocstop",
-			},
-		},
-	},
-
 	-- Kulala
 	{
 		"mistweaverco/kulala.nvim",

@@ -105,3 +105,15 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.expandtab = false
 	end,
 })
+
+-- md TOC
+vim.api.nvim_create_user_command("InsertTOC", function()
+	local line = vim.api.nvim_win_get_cursor(0)[1]
+	vim.api.nvim_buf_set_lines(0, line - 1, line - 1, false, {
+		"",
+		"<!-- toc -->",
+		"",
+		"<!-- tocstop -->",
+		"",
+	})
+end, {})
