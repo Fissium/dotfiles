@@ -18,6 +18,13 @@ local plugins = {
 		},
 	},
 
+	-- helm
+	{
+		"qvalentin/helm-ls.nvim",
+		ft = "helm",
+		opts = {},
+	},
+
 	-- HAProxy syntax
 	{
 		"Joorem/vim-haproxy",
