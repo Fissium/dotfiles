@@ -70,7 +70,7 @@ handle_mime() {
     exit 1
     ;;
   # Text
-  text/* | */xml | application/javascript | application/x-wine-extension-ini)
+  text/* | */xml | application/javascript | application/x-wine-extension-ini | application/json)
     (bat --style=changes -- "${FILE_PATH}" ||
       highlight --out-format truecolor --style darkplus --force \
         --line-numbers --line-range=1-"${PV_HEIGHT}" -- "${FILE_PATH}" ||
