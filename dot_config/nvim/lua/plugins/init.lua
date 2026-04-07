@@ -1,5 +1,5 @@
 local overrides = require("configs.overrides")
-local conform_opts = require("configs.conform")
+local conform_opts = require("configs.conform-cfg")
 local nvim_lint_opts = require("configs.nvim-lint")
 
 local plugins = {
@@ -66,8 +66,9 @@ local plugins = {
 	-- LspConfig
 	{
 		"neovim/nvim-lspconfig",
+		event = "User FilePost",
 		config = function()
-			require("configs.lspconfig")
+			require("nvchad.configs.lspconfig").defaults()
 		end,
 	},
 
