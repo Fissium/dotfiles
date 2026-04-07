@@ -81,6 +81,9 @@ M.mason = {
 
 		-- treesitter
 		"tree-sitter-cli",
+
+		-- hcl
+		"hclfmt",
 	},
 }
 

@@ -22,6 +22,8 @@ M.formatters_by_ft = {
 	go = { "goimports", "golines", "gofumpt" },
 	-- markdown
 	markdown = { "rumdl" },
+	-- hcl
+	hcl = { "hcl" },
 	-- general
 	["*"] = { "trim_whitespace" },
 	["_"] = { lsp_format = "fallback" },
