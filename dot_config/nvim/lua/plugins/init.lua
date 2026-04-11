@@ -1,5 +1,4 @@
 local overrides = require("configs.overrides")
-local conform_opts = require("configs.conform")
 local nvim_lint_opts = require("configs.nvim-lint")
 
 local plugins = {
@@ -94,11 +93,7 @@ local plugins = {
 	{
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
-		opts = {
-			formatters_by_ft = conform_opts.formatters_by_ft,
-			formatters = conform_opts.formatters,
-			default_format_opts = conform_opts.default_format_opts,
-		},
+		opts = require("configs.conform"),
 	},
 
 	-- Linter

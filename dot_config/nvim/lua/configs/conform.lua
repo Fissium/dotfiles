@@ -1,6 +1,6 @@
-local M = {}
+local options = {}
 
-M.formatters_by_ft = {
+options.formatters_by_ft = {
 
 	-- lua
 	lua = { "stylua" },
@@ -29,7 +29,7 @@ M.formatters_by_ft = {
 	["_"] = { lsp_format = "fallback" },
 }
 
-M.formatters = {
+options.formatters = {
 	ruff_sort = {
 		command = "ruff",
 		args = {
@@ -45,8 +45,8 @@ M.formatters = {
 	},
 }
 
-M.default_format_opts = {
+options.default_format_opts = {
 	lsp_format = "fallback",
 }
 
-return M
+return options
