@@ -84,6 +84,9 @@ M.mason = {
 
 		-- hcl
 		"hclfmt",
+
+		--toml
+		"tombi",
 	},
 }
 

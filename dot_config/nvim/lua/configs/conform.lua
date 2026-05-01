@@ -24,6 +24,8 @@ options.formatters_by_ft = {
 	markdown = { "rumdl" },
 	-- hcl
 	hcl = { "hcl" },
+	-- toml
+	toml = { "tombi" },
 	-- general
 	["*"] = { "trim_whitespace" },
 	["_"] = { lsp_format = "fallback" },
