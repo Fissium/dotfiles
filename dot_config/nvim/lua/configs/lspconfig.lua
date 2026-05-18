@@ -46,7 +46,12 @@ local servers = {
 	},
 	typos_lsp = {},
 	helm_ls = {},
-	tofu_ls = {},
+	tofu_ls = {
+		filetypes = { "opentofu", "opentofu-vars", "terraform", "terraform-vars" },
+		init_options = {
+			ignoreSingleFileWarning = true,
+		},
+	},
 	docker_language_server = {},
 	ansiblels = {
 		settings = {
