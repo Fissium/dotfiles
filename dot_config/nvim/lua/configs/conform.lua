@@ -14,10 +14,10 @@ options.formatters_by_ft = {
 	sh = { "shfmt" },
 	-- json
 	json = { "jq" },
-	-- terraform
-	tf = { "terraform_fmt" },
-	terraform = { "terraform_fmt" },
-	["terraform-vars"] = { "terraform_fmt" },
+	-- terraform/opentofu
+	tf = { "tofu_fmt" },
+	terraform = { "tofu_fmt" },
+	["terraform-vars"] = { "tofu_fmt" },
 	-- go
 	go = { "goimports", "golines", "gofumpt" },
 	-- markdown

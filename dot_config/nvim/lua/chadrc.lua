@@ -62,8 +62,8 @@ M.mason = {
 		-- helm
 		"helm-ls",
 
-		-- terraform
-		"terraform-ls",
+		-- terraform/opentofu
+		"tofu-ls",
 		"tflint",
 
 		-- ansible

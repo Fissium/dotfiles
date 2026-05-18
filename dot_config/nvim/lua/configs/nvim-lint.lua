@@ -5,9 +5,9 @@ M.linters_by_ft = {
 	dockerfile = { "hadolint" },
 	-- yaml
 	yaml = { "yamllint" },
-	-- terraform
-	tf = { "tflint", "terraform_validate" },
-	terraform = { "tflint", "terraform_validate" },
+	-- terraform/opentofu
+	tf = { "tflint", "tofu" },
+	terraform = { "tflint", "tofu" },
 	["terraform-vars"] = { "tflint" },
 	-- ansible
 	ansible = { "ansible_lint" },

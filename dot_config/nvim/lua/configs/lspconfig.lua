@@ -46,7 +46,7 @@ local servers = {
 	},
 	typos_lsp = {},
 	helm_ls = {},
-	terraformls = {},
+	tofu_ls = {},
 	docker_language_server = {},
 	ansiblels = {
 		settings = {
