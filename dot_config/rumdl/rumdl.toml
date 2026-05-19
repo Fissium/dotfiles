@@ -49,3 +49,6 @@ style = "asterisk"
 # - MD047: Files end with single newline
 [MD073]
 enabled = true
+
+[MD033]
+allowed-elements = ["a"]
