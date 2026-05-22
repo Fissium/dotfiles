@@ -34,6 +34,7 @@ local plugins = {
 	{
 		"mistweaverco/kulala.nvim",
 		ft = "http",
+		tag = "v5.3.4",
 		opts = {},
 	},
 
