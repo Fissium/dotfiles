@@ -26,6 +26,8 @@ options.formatters_by_ft = {
 	hcl = { "hcl" },
 	-- toml
 	toml = { "tombi" },
+	-- rego
+	rego = { "opa_fmt" },
 	-- general
 	["*"] = { "trim_whitespace" },
 	["_"] = { lsp_format = "fallback" },

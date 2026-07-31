@@ -87,6 +87,10 @@ M.mason = {
 
 		--toml
 		"tombi",
+
+		-- rego
+		"regal",
+		"opa",
 	},
 }
 

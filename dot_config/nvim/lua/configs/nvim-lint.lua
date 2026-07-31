@@ -13,6 +13,8 @@ M.linters_by_ft = {
 	ansible = { "ansible_lint" },
 	-- json
 	json = { "jsonlint" },
+	-- rego
+	rego = { "opa_check" },
 }
 
 return M

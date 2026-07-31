@@ -4,6 +4,7 @@ local servers = {
 	rumdl = {},
 	tombi = {},
 	bashls = {},
+	regal = {},
 	yamlls = {
 		filetypes = {
 			"yaml",
