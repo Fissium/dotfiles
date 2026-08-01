@@ -47,7 +47,7 @@ handle_extension() {
     ;;
   # JSON
   json)
-    jq --color-output . "${FILE_PATH}" && exit1
+    jq --color-output . "${FILE_PATH}" && exit 1
     ;;
   # Notebooks
   ipynb)

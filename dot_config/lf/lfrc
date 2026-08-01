@@ -10,8 +10,8 @@ cmd edit-config ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
-cmd on-quit ${{
-	pkill ctpv
+cmd on-quit &{{
+	~/.config/lf/cleaner
 }}
 
 cmd open ${{
@@ -27,7 +27,7 @@ cmd open ${{
 }}
 
 cmd on-select &{{
-    lf -remote "send $id set statfmt \"$(lsd -ld --color=always "$f")\""
+    lf -remote "send $id set user_stat \"$(lsd -ld --color=always "$f")\""
 }}
 
 cmd mkdir ${{
