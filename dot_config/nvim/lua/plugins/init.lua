@@ -30,21 +30,13 @@ local plugins = {
 		ft = { "haproxy" },
 	},
 
-	-- Kulala
-	{
-		"mistweaverco/kulala.nvim",
-		ft = "http",
-		tag = "v5.3.4",
-		opts = {},
-	},
-
 	-- Hardtime
 	{
 		"m4xshen/hardtime.nvim",
 		lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim" },
 		opts = {
-			disabled_filetypes = { "NvimTree", "lazy", "mason", "json.kulala_ui", "grug-far", "text.kulala_ui" },
+			disabled_filetypes = { "NvimTree", "lazy", "mason", "grug-far" },
 			resetting_keys = {
 				["y"] = {},
 				["p"] = {},
