@@ -15,6 +15,8 @@ M.linters_by_ft = {
 	json = { "jsonlint" },
 	-- rego
 	rego = { "opa_check" },
+	-- make
+	make = { "mbake" },
 }
 
 return M

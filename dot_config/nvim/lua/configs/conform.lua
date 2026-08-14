@@ -28,6 +28,8 @@ options.formatters_by_ft = {
 	toml = { "tombi" },
 	-- rego
 	rego = { "opa_fmt" },
+	-- make
+	make = { "bake" },
 	-- general
 	["*"] = { "trim_whitespace" },
 	["_"] = { lsp_format = "fallback" },
