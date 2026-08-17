@@ -24,12 +24,6 @@ local plugins = {
 		opts = {},
 	},
 
-	-- HAProxy syntax
-	{
-		"Joorem/vim-haproxy",
-		ft = { "haproxy" },
-	},
-
 	-- Hardtime
 	{
 		"m4xshen/hardtime.nvim",
