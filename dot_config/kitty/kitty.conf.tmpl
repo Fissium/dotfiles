@@ -72,7 +72,7 @@ map ctrl+down resize_window shorter
 # END RESIZE PANE
 
 # START REMOTE CONTROL
-allow_remote_control yes
+allow_remote_control socket-only
 {{- if eq .chezmoi.os "linux" }}
 listen_on unix:@kitty
 {{- end }}
