@@ -51,4 +51,4 @@ style = "asterisk"
 enabled = true
 
 [MD033]
-allowed-elements = ["a"]
+allowed-elements = ["a", "details", "summary"]
