@@ -3,7 +3,7 @@ local map = vim.keymap.set
 
 local mappings = {
 	n = {
-		["<C-i>"] = {
+		["<leader>ih"] = {
 			function()
 				local current_state = vim.lsp.inlay_hint.is_enabled()
 				vim.lsp.inlay_hint.enable(not current_state)
@@ -11,7 +11,7 @@ local mappings = {
 			"toggle inlay_hint",
 		},
 		["<leader>gb"] = {
-			":Gitsigns blame<CR>",
+			"<cmd>Gitsigns blame<CR>",
 			"git blame",
 		},
 		["<leader>fm"] = {

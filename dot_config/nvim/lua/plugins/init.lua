@@ -86,15 +86,17 @@ local plugins = {
 	-- Linter
 	{
 		"mfussenegger/nvim-lint",
-		event = "LspAttach",
+		event = { "BufReadPost", "BufNewFile", "BufWritePost" },
 		config = function()
-			require("lint").linters_by_ft = nvim_lint_opts.linters_by_ft
-
-			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "BufReadPost" }, {
+			local lint = require("lint")
+			lint.linters_by_ft = nvim_lint_opts.linters_by_ft
+			vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
+				group = vim.api.nvim_create_augroup("UserLint", { clear = true }),
 				callback = function()
-					require("lint").try_lint()
+					lint.try_lint()
 				end,
 			})
+			lint.try_lint()
 		end,
 	},
 
@@ -116,16 +118,17 @@ local plugins = {
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
-		opts = {
-			extensions = {
+		opts = function(_, opts)
+			opts.extensions = vim.tbl_deep_extend("force", opts.extensions or {}, {
 				fzf = {
 					fuzzy = true,
 					override_generic_sorter = true,
 					override_file_sorter = true,
 					case_mode = "smart_case",
 				},
-			},
-		},
+			})
+			table.insert(opts.extensions_list, "fzf")
+		end,
 
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
