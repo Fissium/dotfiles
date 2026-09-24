@@ -173,7 +173,7 @@ local plugins = {
 	-- Commentstring
 	{
 		"numToStr/Comment.nvim",
-		ft = { "helm" },
+		event = "VeryLazy",
 		config = function()
 			require("Comment").setup({
 				pre_hook = function()
