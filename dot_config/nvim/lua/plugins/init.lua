@@ -179,9 +179,13 @@ local plugins = {
 		event = "VeryLazy",
 		config = function()
 			require("Comment").setup({
-				pre_hook = function()
+				pre_hook = function(ctx)
+					-- helm
 					if vim.bo.filetype == "helm" then
 						return "{{/* %s */}}"
+					end
+					if not vim.treesitter.get_parser(0, nil, { error = false }) then
+						return require("Comment.ft").get(vim.bo.filetype, ctx.ctype) or vim.bo.commentstring
 					end
 				end,
 			})
