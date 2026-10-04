@@ -40,23 +40,16 @@ vim.filetype.add({
 	extension = {
 		gotmpl = "gotmpl",
 		http = "http",
+		j2 = "jinja",
 	},
 
 	filename = {
 		["Dockerfile"] = "dockerfile",
+		[".envrc"] = "sh",
 	},
 	pattern = {
-		-- Jinja
-		["*.j2"] = "jinja",
-
 		-- HAProxy
-		["haproxy*.cfg"] = "haproxy",
-
-		-- Env
-		[".envrc"] = "sh",
-
-		-- Docker
-		["*.Dockerfile"] = "dockerfile",
+		["haproxy.*%.cfg"] = "haproxy",
 
 		-- Docker Compose
 		[".*docker%-compose.*%.ya?ml"] = "yaml.docker-compose",

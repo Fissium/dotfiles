@@ -35,16 +35,7 @@ local servers = {
 		},
 	},
 	ruff = {},
-	ty = {
-		settings = {
-			ty = {
-				experimental = {
-					rename = true,
-					autoImport = true,
-				},
-			},
-		},
-	},
+	ty = {},
 	typos_lsp = {},
 	helm_ls = {},
 	tofu_ls = {

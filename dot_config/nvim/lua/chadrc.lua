@@ -91,6 +91,9 @@ M.mason = {
 		-- rego
 		"regal",
 		"opa",
+
+		-- make
+		"mbake",
 	},
 }
 
