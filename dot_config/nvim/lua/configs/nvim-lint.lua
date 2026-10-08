@@ -17,6 +17,8 @@ M.linters_by_ft = {
 	rego = { "opa_check" },
 	-- make
 	make = { "mbake" },
+	-- jinja
+	jinja = { "j2lint" },
 }
 
 return M

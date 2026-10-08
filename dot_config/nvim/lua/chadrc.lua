@@ -69,6 +69,7 @@ M.mason = {
 		-- ansible
 		"ansible-language-server",
 		"ansible-lint",
+		"j2lint",
 
 		-- go
 		"goimports",
